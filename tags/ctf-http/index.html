@@ -8,25 +8,16 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Tag: ctf-http | Gm_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于http部分不是很难，所以直接在wp里总结了。">
+  <meta name="description" content="个人技术博客">
 <meta property="og:type" content="website">
-<meta property="og:title" content="（wp）ctfweb-http">
-<meta property="og:url" content="http://example.com/await/(wp)ctfweb-http.html">
+<meta property="og:title" content="Gm_blog">
+<meta property="og:url" content="http://example.com/tags/ctf-http/index.html">
 <meta property="og:site_name" content="Gm_blog">
-<meta property="og:description" content="由于http部分不是很难，所以直接在wp里总结了。">
+<meta property="og:description" content="个人技术博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png">
-<meta property="og:image" content="https://i.loli.net/2021/07/09/QayuWrD5PXvZ28o.png">
-<meta property="og:image" content="https://i.loli.net/2021/07/09/J72xVO9I3rhwS5F.png">
-<meta property="og:image" content="https://i.loli.net/2021/07/09/beNQ7p8JLwmOB2z.png">
-<meta property="og:image" content="https://i.loli.net/2021/07/09/aDtPbyWs7F1rYjQ.png">
-<meta property="og:image" content="https://i.loli.net/2021/07/09/AbH2kJqEK1eCx4S.png">
-<meta property="article:published_time" content="2021-07-09T11:37:20.013Z">
-<meta property="article:modified_time" content="2021-07-09T11:37:20.013Z">
 <meta property="article:author" content="gaomeng">
 <meta property="article:tag" content="学习经验分享及总结">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png">
   
     <link rel="alternative" href="/atom.xml" title="Gm_blog" type="application/atom+xml">
   
@@ -177,201 +168,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      （wp）ctfweb-http
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/07/08/(wp)ctfweb-http&java/" class="archive-article-date">
+  	<time datetime="2021-07-08T14:30:37.254Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/07/08/(wp)ctfweb-http&java/">（wp）ctfweb-http&amp;java</a>
     </h1>
   
 
-        
-        <a href="/await/(wp)ctfweb-http.html" class="archive-article-date">
-  	<time datetime="2021-07-09T11:37:20.013Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于http部分不是很难，所以直接在wp里总结了。</p>
-<span id="more"></span>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf-http</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-<h1 id="1-极客大挑战-2019-Http"><a href="#1-极客大挑战-2019-Http" class="headerlink" title="1.[极客大挑战 2019]Http"></a>1.[极客大挑战 2019]Http</h1><p>进去后是个介绍页面，由于没有信息，先查看源码</p>
-<p>发现相关信息，看名字可能与答案有关：</p>
-<p><img src="https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png" alt="1.1.png" style="zoom:50%;"><!--p1--></p>
-<p>点进去后界面如下：</p>
-<p><img src="https://i.loli.net/2021/07/09/QayuWrD5PXvZ28o.png" alt="1.2.png" style="zoom:50%;"><!--p2--></p>
-<p>根据网页提示，应该在头请求里修改referer，这里有很多方法（burp抓包添加，火狐F12网络里拦截修改，hackbar修改）</p>
-<p>我都已尝试过了，所以这里用最简单的hackbar：</p>
-<p><img src="https://i.loli.net/2021/07/09/J72xVO9I3rhwS5F.png" alt="1.3.png" style="zoom:50%;"><!--p3--></p>
-<p>界面如下，根据提示，要通过Syclover浏览，所以修改user-agent：</p>
-<p><img src="https://i.loli.net/2021/07/09/beNQ7p8JLwmOB2z.png" alt="1.4.png" style="zoom:50%;"><!--p4--></p>
-<p>界面如下，再根据提示，需要本地查看</p>
-<p>在简单的学习后，发现通过 X-Forwarded-For:127.0.0.1 可以伪造ip地址到本地</p>
-<p>（顺便学习了一下html请求头和响应头，相关文章附到后文）</p>
-<p>此时不能用hackbar添加，所以我选择用火狐工具直接修改：</p>
-<p><img src="https://i.loli.net/2021/07/09/aDtPbyWs7F1rYjQ.png" alt="1.5.png" style="zoom:50%;"><!--p5--></p>
-<p><img src="https://i.loli.net/2021/07/09/AbH2kJqEK1eCx4S.png" alt="1.6.png" style="zoom:50%;"><!--p6--></p>
-<hr>
-<h1 id="附：参考文章"><a href="#附：参考文章" class="headerlink" title="附：参考文章"></a>附：参考文章</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/klvchen/p/10169245.html">HTML 请求头，响应头和 HTTP状态码</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/http/http-methods.html">菜鸟教程HTTP 请求方法</a></p>
-<p><a target="_blank" rel="noopener" href="https://windard.com/project/2016/05/08/Forge-IP-Address">通过修改http请求的header请求头来伪造ip</a></p>
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/wechatzf.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/wait/(wp)ctfweb-http.html" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Http"><span class="toc-number">1.</span> <span class="toc-text">1.[极客大挑战 2019]Http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">附：参考文章</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
   
   
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cyvvAVWea",
-        conf: "cc487dd5c1839c1337e8870e3549cecd"
-    });
-</script>
-</script>
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -468,7 +318,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">SSTI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,19 +326,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ctf-http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SSTI</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件包含</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">upload</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件包含</a>
               </li>
              
               <li class="article-tag-list-item">

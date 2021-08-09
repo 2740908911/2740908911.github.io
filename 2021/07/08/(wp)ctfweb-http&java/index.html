@@ -6,18 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/8 | Gm_blog</title>
+  <title>（wp）ctfweb-http&amp;java | Gm_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gm_blog">
-<meta property="og:url" content="http://example.com/archives/2021/08/index.html">
+  <meta name="description" content="最近遇到不少奇奇怪怪的题，方法很少见且唯一，直接总结一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（wp）ctfweb-http&amp;java">
+<meta property="og:url" content="http://example.com/2021/07/08/(wp)ctfweb-http&java/index.html">
 <meta property="og:site_name" content="Gm_blog">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="最近遇到不少奇奇怪怪的题，方法很少见且唯一，直接总结一下。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/09/QayuWrD5PXvZ28o.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/09/J72xVO9I3rhwS5F.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/09/beNQ7p8JLwmOB2z.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/09/aDtPbyWs7F1rYjQ.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/09/AbH2kJqEK1eCx4S.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/09/TGKIYO9XR3WZFi2.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/09/4wSl2v31ZkYTWdn.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/09/mNJiabWD8R4QPKv.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/09/qoeW7GXHcf5R81S.png">
+<meta property="article:published_time" content="2021-07-08T14:30:37.254Z">
+<meta property="article:modified_time" content="2021-08-09T09:41:19.920Z">
 <meta property="article:author" content="gaomeng">
-<meta property="article:tag" content="学习经验分享及总结">
+<meta property="article:tag" content="ctf-http">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png">
   
     <link rel="alternative" href="/atom.xml" title="Gm_blog" type="application/atom+xml">
   
@@ -169,97 +182,249 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-(wp)ctfweb-http&amp;java" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/02/(wp)ctfweb-upload%E7%B1%BB%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%9A%81%E5%89%91%E7%9A%84%E8%BF%90%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2021-08-02T13:26:51.812Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/02/(wp)ctfweb-upload%E7%B1%BB%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%9A%81%E5%89%91%E7%9A%84%E8%BF%90%E7%94%A8/">（wp）ctfweb-upload类题目及蚁剑的运用</a>
+    <h1 class="article-title" itemprop="name">
+      （wp）ctfweb-http&amp;java
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/07/08/(wp)ctfweb-http&java/" class="archive-article-date">
+  	<time datetime="2021-07-08T14:30:37.254Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近遇到不少奇奇怪怪的题，方法很少见且唯一，直接总结一下。</p>
+<span id="more"></span>
+
+<h1 id="1-极客大挑战-2019-Http"><a href="#1-极客大挑战-2019-Http" class="headerlink" title="1.[极客大挑战 2019]Http"></a>1.[极客大挑战 2019]Http</h1><p>进去后是个介绍页面，由于没有信息，先查看源码</p>
+<p>发现相关信息，看名字可能与答案有关：</p>
+<p><img src="https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png" alt="1.1.png" style="zoom:50%;"><!--p1--></p>
+<p>点进去后界面如下：</p>
+<p><img src="https://i.loli.net/2021/07/09/QayuWrD5PXvZ28o.png" alt="1.2.png" style="zoom: 33%;"><!--p2--></p>
+<p>根据网页提示，应该在头请求里修改referer，这里有很多方法（burp抓包添加，火狐F12网络里拦截修改，hackbar修改）</p>
+<p>我都已尝试过了，所以这里用最简单的hackbar：</p>
+<p><img src="https://i.loli.net/2021/07/09/J72xVO9I3rhwS5F.png" alt="1.3.png" style="zoom: 33%;"><!--p3--></p>
+<p>界面如下，根据提示，要通过Syclover浏览，所以修改user-agent：</p>
+<p><img src="https://i.loli.net/2021/07/09/beNQ7p8JLwmOB2z.png" alt="1.4.png" style="zoom: 33%;"><!--p4--></p>
+<p>界面如下，再根据提示，需要本地查看</p>
+<p>在简单的学习后，发现通过 X-Forwarded-For:127.0.0.1 可以伪造ip地址到本地</p>
+<p>（顺便学习了一下html请求头和响应头，相关文章附到后文）</p>
+<p>此时不能用hackbar添加，所以我选择用火狐工具直接修改：</p>
+<p><img src="https://i.loli.net/2021/07/09/aDtPbyWs7F1rYjQ.png" alt="1.5.png" style="zoom: 33%;"><!--p5--></p>
+<p><img src="https://i.loli.net/2021/07/09/AbH2kJqEK1eCx4S.png" alt="1.6.png" style="zoom:50%;"><!--p6--></p>
+<hr>
+<h1 id="2-RoarCTF-2019-Easy-Java"><a href="#2-RoarCTF-2019-Easy-Java" class="headerlink" title="2.[RoarCTF 2019]Easy Java"></a>2.[RoarCTF 2019]Easy Java</h1><p>这题真是没见过就不会做，进去先注入了几下，没有；扫目录，没有，点开help，考虑是利用了download下载了啥东西：</p>
+<p><img src="https://i.loli.net/2021/08/09/TGKIYO9XR3WZFi2.png" alt="7.png" style="zoom:50%;"><!--p7--></p>
+<p>然后就没思路了，被迫看了眼wp：</p>
+<p><img src="https://i.loli.net/2021/08/09/4wSl2v31ZkYTWdn.png" alt="8.png" style="zoom:50%;"><!--p8--></p>
+<p>确实有漏洞，能带出源码，虽然我没听过，所以我查了一下相关资料：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wy_97/article/details/78165051">ctf/web源码泄露及利用办法</a> </p>
+<p>nb，继续做题：</p>
+<p>这里get下载不下来东西，burp抓包后用post下载web-xml(通过WEB-INF)：</p>
+<p><img src="https://i.loli.net/2021/08/09/mNJiabWD8R4QPKv.png" alt="9.png" style="zoom:33%;"><!--p9--></p>
+<p>根据漏洞说明，找到相关的class文件，下载（就是我图中画出来的文件）：</p>
+<p><img src="https://i.loli.net/2021/08/09/qoeW7GXHcf5R81S.png" alt="10.png" style="zoom:33%;"><!--p10--></p>
+<p>得到base64加密后的flag，结束</p>
+<p>说实话这题挺简单，主要靠经验做，但是像我这种cj，直接傻眼。。</p>
+<hr>
+<h1 id="附：参考文章"><a href="#附：参考文章" class="headerlink" title="附：参考文章"></a>附：参考文章</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/klvchen/p/10169245.html">HTML 请求头，响应头和 HTTP状态码</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/http/http-methods.html">菜鸟教程HTTP 请求方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://windard.com/project/2016/05/08/Forge-IP-Address">通过修改http请求的header请求头来伪造ip</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wy_97/article/details/78165051">ctf/web源码泄露及利用办法</a> </p>
+<hr>
+<p>遇到类似的的奇怪题再总结</p>
+<p>END</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechatzf.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">upload</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf-http</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/07/08/(wp)ctfweb-http&java/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/01/(wp)ctfweb-sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2021-08-01T07:01:31.153Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2021/07/27/(wp)ctfweb-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          （wp）ctfweb-伪协议文件包含漏洞
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/04/(wp)ctfweb-buu%E4%B8%ADphp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">（wp）ctfweb-buu中php反序列化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/01/(wp)ctfweb-sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/">（wp）ctfweb-sql堆叠注入及预编译的学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Http"><span class="toc-number">1.</span> <span class="toc-text">1.[极客大挑战 2019]Http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-RoarCTF-2019-Easy-Java"><span class="toc-number">2.</span> <span class="toc-text">2.[RoarCTF 2019]Easy Java</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">附：参考文章</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+  <div id="SOHUCS" sid="(wp)ctfweb-http&amp;java" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyvvAVWea",
+        conf: "cc487dd5c1839c1337e8870e3549cecd"
+    });
+</script>
+</script>
+  
+
+  
+
+  
 
 
           </div>
@@ -286,8 +451,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
