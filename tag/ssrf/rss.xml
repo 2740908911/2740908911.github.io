@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>FanqieのBlog • Posts by &#34;ssrf&#34; tag</title>
+        <title>imFanqie • Posts by &#34;ssrf&#34; tag</title>
         <link>http://example.com</link>
         <description>学习博客</description>
         <language>zh-CN</language>
         <pubDate>Wed, 04 Aug 2021 19:17:39 +0800</pubDate>
         <lastBuildDate>Wed, 04 Aug 2021 19:17:39 +0800</lastBuildDate>
-        <category>反序列化</category>
         <category>随笔</category>
-        <category>代码审计</category>
+        <category>反序列化</category>
         <category>SSTI</category>
         <category>命令执行</category>
         <category>http</category>
         <category>sql</category>
-        <category>SSRF</category>
+        <category>代码审计</category>
         <category>upload</category>
+        <category>SSRF</category>
         <category>反序列化2</category>
-        <category>业余爱好</category>
         <category>文件包含</category>
+        <category>业余爱好</category>
         <category>RCE</category>
+        <category>yeah</category>
         <category>php</category>
         <category>python</category>
-        <category>yeah</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/08/04/(ctfwp)ssrf%E5%AD%A6%E4%B9%A0/</guid>
             <title>(ctfwp)ssrf学习</title>
