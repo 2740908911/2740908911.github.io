@@ -7,12 +7,12 @@
         <language>zh-CN</language>
         <pubDate>Mon, 16 Aug 2021 20:35:41 +0800</pubDate>
         <lastBuildDate>Mon, 16 Aug 2021 20:35:41 +0800</lastBuildDate>
-        <category>随笔</category>
-        <category>SSTI</category>
         <category>反序列化</category>
-        <category>http</category>
+        <category>随笔</category>
         <category>代码审计</category>
+        <category>SSTI</category>
         <category>命令执行</category>
+        <category>http</category>
         <category>sql</category>
         <category>SSRF</category>
         <category>upload</category>
