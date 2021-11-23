@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>FanqieのBlog • Posts by &#34;反序列化&#34; tag</title>
+        <link>http://example.com</link>
+        <description>学习博客</description>
+        <language>zh-CN</language>
+        <pubDate>Sun, 04 Jul 2021 22:48:57 +0800</pubDate>
+        <lastBuildDate>Sun, 04 Jul 2021 22:48:57 +0800</lastBuildDate>
+        <category>随笔</category>
+        <category>SSTI</category>
+        <category>反序列化</category>
+        <category>命令执行</category>
+        <category>http</category>
+        <category>代码审计</category>
+        <category>sql</category>
+        <category>SSRF</category>
+        <category>反序列化2</category>
+        <category>文件包含</category>
+        <category>upload</category>
+        <category>业余爱好</category>
+        <category>RCE</category>
+        <category>php</category>
+        <category>python</category>
+        <category>yeah</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/07/04/(ctfwp)buu%E4%B8%ADphp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+            <title>(ctfwp)buu中php反序列化</title>
+            <link>http://example.com/2021/07/04/(ctfwp)buu%E4%B8%ADphp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+            <category>反序列化</category>
+            <pubDate>Sun, 04 Jul 2021 22:48:57 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;上一篇整理了 php 反序列化的知识点，本文是我对练习中题目的整理。&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;1极客大挑战-2019php&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1极客大挑战-2019php&#34;&gt;#&lt;/a&gt; 1.[极客大挑战 2019] PHP&lt;/h1&gt;
+&lt;p&gt;进入页面，根据提示，考虑备份导致源码泄露。&lt;/p&gt;
+&lt;p&gt;于是用扫描工具（ctfwscan）进行目录扫描，发现备份文件可以成功访问，如图&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvT3V2YnNjcTV6bjRFODYxLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/Ouvbscq5zn4E861.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;然后下载下来，打开，有五个文件：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvSDRCRWFPWDE4cVlMb2tBLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/H4BEaOX18qYLokA.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;尝试 flag.php 后不对，审计 class.php 和 index.php，找到了可反序列化点&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvbGJCb0dmNFluUjN5SXpLLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/lbBoGf4YnR3yIzK.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;因为包含了 class.php 文件，所以审计 class.php&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvM2dtTXZ1WVpXajVpcG43LnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/3gmMvuYZWj5ipn7.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;class 中没有调用类，根据 index 中代码，只是进行了反序列化。&lt;/p&gt;
+&lt;p&gt;根据流程分析，先__wakeup ()，然后__destruct ()。&lt;/p&gt;
+&lt;p&gt;在 destruct () 中，当 password == 100，username === admin 时，能读取 flag：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvbEd6SHNLSlF5ajRobUUyLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/lGzHsKJQyj4hmE2.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.5.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;p&gt;但是在 wakeup () 时，username 会被赋值为 guest，会使我们输入的值改变，导致无法获取答案。&lt;/p&gt;
+&lt;p&gt;此时我们只需改对象属性个数绕过 wakeup () 即可：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/04/qfRyJZDdMrTK4SC.png&#34; alt=&#34;1.6.png&#34;&gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;p&gt;打入 payload，得到 flag&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvRjI2eXY1c0pnbHdUWHJ4LnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/F26yv5sJglwTXrx.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.7.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;2网鼎杯-2020-青龙组areuserialz&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2网鼎杯-2020-青龙组areuserialz&#34;&gt;#&lt;/a&gt; 2.[网鼎杯 2020 青龙组] AreUSerialz&lt;/h1&gt;
+&lt;p&gt;据说是当年的签到题，作为一个新手，当然要玩一下&lt;/p&gt;
+&lt;p&gt;进去直接给了原码，先复制到本地，找反序列化点：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvU2REbjQyQ3hIUUdZQWFQLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/SdDn42CxHQGYAaP.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;然后审计代码，同第一题，但没有 wakeup ()，如果反序列化直接会 destruct ()&lt;/p&gt;
+&lt;p&gt;但再反序列化前，需要先绕过 is_valid () 中的 ascll 检查（私有类需要 %00）&lt;/p&gt;
+&lt;p&gt;在 destruct () 中，当 op === &amp;quot;2&amp;quot; 时，会被强制为 &amp;quot;1&amp;quot;，当 op == &amp;quot;1&amp;quot; 时，沿着代码走下去发现只能写，不能读，无法找到 flag；而当 op == &amp;quot;2&amp;quot; 时，通过 file_get_contents () 函数可以读到 filename，如图：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvTUk0akRWM2Y2Y21ZUm9hLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/MI4jDV3f6cmYRoa.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;所以我们的目标 1. 绕过 op === &amp;quot;2&amp;quot; 时的强制转换   2. 绕过私有属性时的 ascll 检测&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;1. 当 op === &amp;quot;2&amp;quot; 时才会转换，所以当 op == &amp;quot;2&amp;quot; 时，不会强制转换，因为后者没有对类型强制要求，所以只需让 op = 2  （int 型），在判断时不会因为类型而引起强制转换，即绕过。&lt;/p&gt;
+&lt;p&gt;2. 有以下两个方法，第一个更常用：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// PHP7.1 以上版本对属性类型不敏感，可以用 public 属性来绕过检查&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 在序列化内容中用大写 S 表示字符串，此时这个字符串就支持将后面的字符串用 16 进制表示&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;本题第二个绕过我选择第一种方法，如图：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvQ0FORFJzWU15M1BVcVFjLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/CANDRsYMy3PUqQc.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;打入 payload，在注释中得到 flag，如图：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvc1Z1ZzVoN1VuZkN6alNHLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/sVug5h7UnfCzjSG.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.4.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;h1 id=&#34;3网鼎杯-2020-朱雀组phpweb&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3网鼎杯-2020-朱雀组phpweb&#34;&gt;#&lt;/a&gt; 3.[网鼎杯 2020 朱雀组] phpweb&lt;/h1&gt;
+&lt;p&gt;进去页面后发现五秒刷新一次，还会出现警告 warning，如图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/06/vREfAQ4MzBOsNuZ.png&#34; alt=&#34;3.1.png&#34;&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;用 bp 抓一下包，发现一直在传送两条数据&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvNFNLQU9Nd20xUWZMV25yLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/4SKAOMwm1QfLWnr.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;百度了一下，发现可能有函数执行的操作&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvUW1sWno5eFMxdEY3MkpSLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/QmlZz9xS1tF72JR.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;根据函数 file_get_contents 读取信息，于是得到 index.php：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvTGNCZ2g2RDFhWGtkUkViLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/LcBgh6D1aXkdREb.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.4.00.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;考虑通过 system、passthur 或者 exec 执行命令读取信息，但是可以发现第 24 行已经将它们在 func 中屏蔽掉。&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvSVpwNVBGbkdUTjZremlXLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/IZp5PFnGTN6kziW.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.5.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;p&gt;就是说其不能作为函数，但是我们可以用反序列化 unserialize () 绕过&lt;/p&gt;
+&lt;p&gt;先序列化构造 payload&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvalQ4ZlZVa3RoREZJM1JZLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/jT8fVUkthDFI3RY.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.6.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;p&gt;然后再通过 bp 传一次参&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvN3VaTWo5d2Zkb2FUazRyLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/7uZMj9wfdoaTk4r.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.7.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;p&gt;由于找不到有用的信息，于是百度后，我 get 到了新方法！！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;find 用法：&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;find path -option [ -print ] [ -exec -ok command ] {} ;&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;path： . 代表当前路径，/ 代表总目录&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt; - name name, -iname name : 文件名称符合 name 的文件。iname 会忽略大小写&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt; name 可以使用通配符，如 “flag.*”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucnVub29iLmNvbS9saW51eC9saW51eC1jb21tLWZpbmQuaHRtbA==&#34;&gt;菜鸟教程 find 用法&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;所以可以构造 find /-iname&amp;quot;flag.*&amp;quot;, 然后序列化得到字符串：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvRFY1NFVBbGNaZ2l2V011LnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/DV54UAlcZgivWMu.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.8.png&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
+&lt;p&gt;然后继续用 bp 传参，找到 flag 文件，通过 readfile 或 file_get_contents 读取 flag&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvYTJmSVRxUzRHNWt0Vk5FLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/a2fITqS4G5ktVNE.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.9.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvdlgxUUNub2hldVpSQjRiLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/vX1QCnoheuZRB4b.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.10.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p10--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;4安洵杯-2019easy_serialize_php&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4安洵杯-2019easy_serialize_php&#34;&gt;#&lt;/a&gt; 4.[安洵杯 2019] easy_serialize_php&lt;/h1&gt;
+&lt;p&gt;进入网站就能看到原码，先复制到本地&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvSG9CRmlNNFRFSlVmWXRqLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/HoBFiM4TEJUfYtj.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.1.png&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;先审计代码，在 31 行找到序列化函数，在 38 行找到但反列化函数，且参数可控通过 get 传参&lt;/p&gt;
+&lt;p&gt;所以，根据提示先让 $function = phpinfo，通过 bp 传参（或是直接在浏览器输入）&lt;/p&gt;
+&lt;p&gt;我先用的 bp，出现代码后复制到本地，查找 flag、ag、fl、f1ag 等等相关名词，成功找到文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/06/ct24bNzhofQ9BvD.png&#34; alt=&#34;4.2.png&#34;&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;后来又试了一下网址直接传，大概浏览了一遍也能找到。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/06/HnglVwDsRmkUfZy.png&#34; alt=&#34;4.3.png&#34;&gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;知道了文件名，无法直接读，所以准备用代码中的 file_get_contents () 函数读取&lt;/p&gt;
+&lt;p&gt;所以需要让 base64_decode ($userinfo [‘img’]) = d0g3_f1ag.php ，根据百度进行 base64 加密，&lt;/p&gt;
+&lt;p&gt;就需要让 $userinfo [‘img’] = ZDBnM19mMWFnLnBocA==&lt;/p&gt;
+&lt;p&gt;又因为&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;[&lt;/mo&gt;&lt;mtext&gt;‘&lt;/mtext&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mtext&gt;’&lt;/mtext&gt;&lt;mo stretchy=&#34;false&#34;&gt;]&lt;/mo&gt;&lt;mtext&gt;是由&lt;/mtext&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;userinfo[‘img’]是由&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.10764em;&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;‘&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;’&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;是&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;由&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; serialize_info 反序列化得到的&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;msub&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mtext&gt;又是由&lt;/mtext&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;serialize_info又是由&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8888799999999999em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.04398em;&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathnormal mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.10764em;&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;又&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;是&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;由&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;_SESSION 序列化然后过滤得到的&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvSDg1VjNMamdHUjI2Rm1oLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/H85V3LjgGR26Fmh.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.7.png&amp;quot; style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;p&gt;但是如果对 $_SESSION [&#39;img&#39;] 赋值，则会被 sha1 进行再次加密，且不可逆，无法得到答案&lt;/p&gt;
+&lt;p&gt;所以只能从过滤函数过滤序列化字符串处开始下手&lt;/p&gt;
+&lt;p&gt;此处参考了 https://blog.csdn.net/qq_43622442/article/details/106003691&lt;/p&gt;
+&lt;p&gt;当中对对象逃逸问题有详细的说明：（我还在参悟这东西，实在头大）&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvcWJ4cllDYzh5UE1PdzFkLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/qbxrYCc8yPMOw1d.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;_SESSION&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;user&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;flagflagflagflagflagflag&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;_SESSION&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;a&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;;s:8:&#34;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;;s:7:&#34;&lt;/span&gt;xxx&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;;s:3:&#34;&lt;/span&gt;img&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;;s:20:&#34;&lt;/span&gt;ZDBnM19mMWFnLnBocA&lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt;&#34;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后输入后查看源码有注释：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvMk85dWZjOHJGTUJzUXlpLnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/2O9ufc8rFMBsQyi.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.5.png&amp;quot; style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;p&gt;把 img 文件名加密后一换，长度没变，就能得到 flag&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDYvVGZ2UGRsQTlLV0dzaGF0LnBuZw==&#34;&gt;https://i.loli.net/2021/07/06/TfvPdlA9KWGshat.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.6.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;END&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/07/04/ctfweb-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+            <title>ctfweb-PHP反序列化</title>
+            <link>http://example.com/2021/07/04/ctfweb-PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+            <category>反序列化</category>
+            <pubDate>Sun, 04 Jul 2021 18:33:13 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;学习了一下 php 反序列化漏洞，并做了一些整理。&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;简单理解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简单理解&#34;&gt;#&lt;/a&gt; 简单理解&lt;/h1&gt;
+&lt;p&gt;serialize 将一个对象转换成一个字符串&lt;br&gt;
+ unserialize 将一个字符串还原成一个对象&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;序列化：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvajhQRXVrbTZ0UzNoeEwxLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/j8PEukm6tS3hxL1.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;如图所示:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;O:6:&amp;quot;People&amp;quot;:2:&amp;#123;s:4:&amp;quot;name&amp;quot;;s:4:&amp;quot;jack&amp;quot;;s:3:&amp;quot;age&amp;quot;;i:18;&amp;#125;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;就是我们输入的 people 信息经过序列化得到的字符串，其中&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvT2pQbnpZYWcxb0xTc1FXLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/OjPnzYag1oLSsQW.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;需要注意的是：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;\x00 + 类名 + \x00 + 变量名 反序列化出来的是 private 变量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;\x00 + * + \x00 + 变量名 反序列化出来的是 protected 变量&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;反序列化&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;我们通过 post 传递这串序列化的字符串，来验证使用 unserialize&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvb1VLY1NQTVF0a0hSM0lGLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/oUKcSPMQtkHR3IF.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;两者配合引起了问题所在。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;魔术方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#魔术方法&#34;&gt;#&lt;/a&gt; 魔术方法&lt;/h1&gt;
+&lt;p&gt;__wakeup () // 使用 unserialize 时触发&lt;br&gt;
+__sleep () // 使用 serialize 时触发&lt;/p&gt;
+&lt;p&gt;__destruct () // 对象被销毁时触发&lt;/p&gt;
+&lt;p&gt;__call () // 在对象上下文中调用不可访问的方法时触发&lt;br&gt;
+__callStatic () // 在静态上下文中调用不可访问的方法时触发&lt;/p&gt;
+&lt;p&gt;__get () // 用于从不可访问的属性读取数据&lt;br&gt;
+__set () // 用于将数据写入不可访问的属性&lt;/p&gt;
+&lt;p&gt;__isset () // 在不可访问的属性上调用 isset () 或 empty () 触发&lt;br&gt;
+__unset () // 在不可访问的属性上使用 unset () 时触发&lt;/p&gt;
+&lt;p&gt;__toString () // 把类当作字符串使用时触发&lt;br&gt;
+__invoke () // 当脚本尝试将对象调用为函数时触发&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;最常用的：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__construct，构造函数，PHP 5 允行开发者在一个类中定义一个方法作为构造函数。具有构造函数的类会在每次创建新对象时先调用此方法，所以非常适合在使用对象之前做一些初 始化工作。 
+__toString，打印一个对象时，如果定义了__toString()方法，就能在测试时，通过echo 打印对象体，对象就会自动调用它所属类定义的toString方法，格式化输出这个对象所包含 的数据。
+__destruct，析构函数，PHP 5 引入了析构函数的概念，这类似于其它面向对象的语言， 如 C++。析构函数会在到某个对象的所有引用都被删除或者当对象被显式销毁时执行。 
+__sleep magic方法在一个对象被序列化的时候调用。 
+__wakeup magic方法在一个对象被反序列化的时候调用。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvYUgxQlRqVjRJM2tuOExkLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/aH1BTjV4I3kn8Ld.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDQvSXI2Z1RNT0dXZVY1eGtBLnBuZw==&#34;&gt;https://i.loli.net/2021/07/04/Ir6gTMOGWeV5xkA.png&lt;/span&gt;&amp;quot; alt=&amp;quot;5.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;php反序列化漏洞&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#php反序列化漏洞&#34;&gt;#&lt;/a&gt; php 反序列化漏洞&lt;/h1&gt;
+&lt;p&gt;PHP 反序列化漏洞又叫 PHP 对象注入漏洞，反序列化的数据本质上来说是没有危害的，但是在 反序列化参数可控时，可能会产生严重的安全威胁。当传给  unserialize () 的参数可控时， 我们可以通过传入一个精心构造的序列化字符串，从而控制对象内部的变量甚至是函数。&lt;/p&gt;
+&lt;p&gt;攻击流程就是在本地写一个序列化的文件，拿得到的字符串去打远程&lt;/p&gt;
+&lt;p&gt;重点关注的函数：&lt;br&gt;
+代码执行：eval ()      assert ()&lt;br&gt;
+ 命令执行：exec ()      passthru ()      system ()      popen ()&lt;br&gt;
+&lt;strong&gt; 文件操作&lt;/strong&gt;：file_put_contents ()      file_get_contents ()      unlink ()&lt;/p&gt;
+&lt;p&gt;常用：&lt;/p&gt;
+&lt;p&gt;exec — 执行一个外部程序（exec (whoami)）&lt;/p&gt;
+&lt;p&gt;passthru — 执行外部程序并且显示原始输出，同上&lt;/p&gt;
+&lt;p&gt;system — 执行外部程序，并且显示输出（system (whoami)、system (ls)）&lt;/p&gt;
+&lt;p&gt;file_get_contents — 将整个文件读入一个字符串（file_get_contents (flag.php)）&lt;/p&gt;
+&lt;p&gt;unlink — 删除文件&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;下一篇做题练手&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;END&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

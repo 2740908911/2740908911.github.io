@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title>FanqieのBlog • Posts by &#34;ssrf&#34; tag</title>
+    <link href="http://example.com" />
+    <updated>2021-08-04T11:17:39.048Z</updated>
+    <category term="随笔" />
+    <category term="SSTI" />
+    <category term="反序列化" />
+    <category term="命令执行" />
+    <category term="http" />
+    <category term="代码审计" />
+    <category term="sql" />
+    <category term="SSRF" />
+    <category term="反序列化2" />
+    <category term="文件包含" />
+    <category term="upload" />
+    <category term="业余爱好" />
+    <category term="RCE" />
+    <category term="php" />
+    <category term="python" />
+    <category term="yeah" />
+    <entry>
+        <id>http://example.com/2021/08/04/(ctfwp)ssrf%E5%AD%A6%E4%B9%A0/</id>
+        <title>(ctfwp)ssrf学习</title>
+        <link rel="alternate" href="http://example.com/2021/08/04/(ctfwp)ssrf%E5%AD%A6%E4%B9%A0/"/>
+        <content type="html">&lt;p&gt;学习一下 ssrf&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;1网鼎杯-2018fakebook&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1网鼎杯-2018fakebook&#34;&gt;#&lt;/a&gt; 1.[网鼎杯 2018] Fakebook&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;这题本来没做出来，搜了下 wp，学会了几种方法，并且大致认识了 ssrf。&lt;/p&gt;
+&lt;p&gt;下面记录一下：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;进去找了找，发现有 sql 注入漏洞，并且能通过联合查询查到库名表明列名，但是最后显示序列化过的，也没有发现和 flag 相关的东西，遂没有思路了：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDQvUlNHb1g0YWpsRUpzWjZDLnBuZw==&#34;&gt;https://i.loli.net/2021/08/04/RSGoX4ajlEJsZ6C.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.1.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDQvTlZadTQ3eEZCbk1MR0hiLnBuZw==&#34;&gt;https://i.loli.net/2021/08/04/NVZu47xFBnMLGHb.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.2.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDQvaE01OUVwWXdpVWFJeXFvLnBuZw==&#34;&gt;https://i.loli.net/2021/08/04/hM59EpYwiUaIyqo.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.3.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;看了 wp 后，发现了这个网站还有 robots.txt 文件，我压根没考虑那么多。。&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDQvTGhBbE9Oems2Q2VzTXJLLnBuZw==&#34;&gt;https://i.loli.net/2021/08/04/LhAlONzk6CesMrK.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.4.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;根据大概意思可以猜测出，应该是 get 了一组信息在 blog 的位置，所以可以把需要 get 的信息写到 blog 位置，应该能出 flag，另外还要注意得用序列化的形式写&lt;/p&gt;
+&lt;p&gt;把 txt 中前面的信息复制下来，根据题目中爆出来的文件路径，本地构造序列化内容，用 file 协议读：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDQvNkc1aG5FdVlmeEJrN0hJLnBuZw==&#34;&gt;https://i.loli.net/2021/08/04/6G5hnEuYfxBk7HI.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.5.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--P5--&amp;gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;no&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;/*!union*/&lt;/span&gt; select &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;O:8:&#34;UserInfo&#34;:3:&amp;#123;s:4:&#34;name&#34;;s:1:&#34;1&#34;;s:3:&#34;age&#34;;i:10;s:4:&#34;blog&#34;;s:29:&#34;file:///var/www/html/flag.php&#34;;&amp;#125;&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在源码中读取 flag：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDQvZTZPem51eFhGRHlhOW9pLnBuZw==&#34;&gt;https://i.loli.net/2021/08/04/e6OznuxXFDya9oi.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.6.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;* 其他方法：&lt;/p&gt;
+&lt;p&gt;通过 load_file 读取文件获取&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token string-interpolation&#34;&gt;&lt;span class=&#34;token string&#34;&gt;f&#34;if(ascii(substr((load_file(&#39;/var/www/html/flag.php&#39;)),&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;,1))&gt;&lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;mid&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;,1,0)&#34;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;把 payload 带入盲注二分法程序中跑，能跑出来 flag，原理就是 load_file 能读取本地文件。&lt;/p&gt;
+&lt;p&gt;还可以通过 load_file 注入一句话木马，用菜刀链接解：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzQyMTQxL2FydGljbGUvZGV0YWlscy8xMDMyNTMxMjQ=&#34;&gt;SQL 注入一句话木马（load_file/out file&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;遇到类似的再补充&lt;/p&gt;
+&lt;p&gt;END&lt;/p&gt;
+</content>
+        <category term="SSRF" />
+        <updated>2021-08-04T11:17:39.048Z</updated>
+    </entry>
+</feed>

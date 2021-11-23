@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>FanqieのBlog • Posts by &#34;http&#34; tag</title>
+        <link>http://example.com</link>
+        <description>学习博客</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 08 Jul 2021 22:30:37 +0800</pubDate>
+        <lastBuildDate>Thu, 08 Jul 2021 22:30:37 +0800</lastBuildDate>
+        <category>随笔</category>
+        <category>SSTI</category>
+        <category>反序列化</category>
+        <category>命令执行</category>
+        <category>http</category>
+        <category>代码审计</category>
+        <category>sql</category>
+        <category>SSRF</category>
+        <category>反序列化2</category>
+        <category>文件包含</category>
+        <category>upload</category>
+        <category>业余爱好</category>
+        <category>RCE</category>
+        <category>php</category>
+        <category>python</category>
+        <category>yeah</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/07/08/(ctfwp)http&amp;java/</guid>
+            <title>(ctfwp)http&amp;java</title>
+            <link>http://example.com/2021/07/08/(ctfwp)http&amp;java/</link>
+            <category>http</category>
+            <pubDate>Thu, 08 Jul 2021 22:30:37 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;最近遇到不少奇奇怪怪的题，方法很少见且唯一，直接总结一下。&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;1极客大挑战-2019http&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1极客大挑战-2019http&#34;&gt;#&lt;/a&gt; 1.[极客大挑战 2019] Http&lt;/h1&gt;
+&lt;p&gt;进去后是个介绍页面，由于没有信息，先查看源码&lt;/p&gt;
+&lt;p&gt;发现相关信息，看名字可能与答案有关：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDkvNzVpU09GS2h1THZFcXp4LnBuZw==&#34;&gt;https://i.loli.net/2021/07/09/75iSOFKhuLvEqzx.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;点进去后界面如下：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDkvUWF5dVdyRDVQWHZaMjhvLnBuZw==&#34;&gt;https://i.loli.net/2021/07/09/QayuWrD5PXvZ28o.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.2.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;根据网页提示，应该在头请求里修改 referer，这里有很多方法（burp 抓包添加，火狐 F12 网络里拦截修改，hackbar 修改）&lt;/p&gt;
+&lt;p&gt;我都已尝试过了，所以这里用最简单的 hackbar：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDkvSjcyeFZPOUkzcmh3UzVGLnBuZw==&#34;&gt;https://i.loli.net/2021/07/09/J72xVO9I3rhwS5F.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.3.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;界面如下，根据提示，要通过 Syclover 浏览，所以修改 user-agent：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDkvYmVOUTdwOEpMd21PQjJ6LnBuZw==&#34;&gt;https://i.loli.net/2021/07/09/beNQ7p8JLwmOB2z.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.4.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;界面如下，再根据提示，需要本地查看&lt;/p&gt;
+&lt;p&gt;在简单的学习后，发现通过 X-Forwarded-For:127.0.0.1 可以伪造 ip 地址到本地&lt;/p&gt;
+&lt;p&gt;（顺便学习了一下 html 请求头和响应头，相关文章附到后文）&lt;/p&gt;
+&lt;p&gt;此时不能用 hackbar 添加，所以我选择用火狐工具直接修改：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDkvYUR0UGJ5V3M3RjFyWWpRLnBuZw==&#34;&gt;https://i.loli.net/2021/07/09/aDtPbyWs7F1rYjQ.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.5.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMDkvQWJIMmtKcUVLMWVDeDRTLnBuZw==&#34;&gt;https://i.loli.net/2021/07/09/AbH2kJqEK1eCx4S.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.6.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;2roarctf-2019easy-java&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2roarctf-2019easy-java&#34;&gt;#&lt;/a&gt; 2.[RoarCTF 2019]Easy Java&lt;/h1&gt;
+&lt;p&gt;这题真是没见过就不会做，进去先注入了几下，没有；扫目录，没有，点开 help，考虑是利用了 download 下载了啥东西：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDkvVEdLSVlPOVhSM1daRmkyLnBuZw==&#34;&gt;https://i.loli.net/2021/08/09/TGKIYO9XR3WZFi2.png&lt;/span&gt;&amp;quot; alt=&amp;quot;7.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;p&gt;然后就没思路了，被迫看了眼 wp：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDkvNHdTbDJ2MzFaa1lUV2RuLnBuZw==&#34;&gt;https://i.loli.net/2021/08/09/4wSl2v31ZkYTWdn.png&lt;/span&gt;&amp;quot; alt=&amp;quot;8.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
+&lt;p&gt;确实有漏洞，能带出源码，虽然我没听过，所以我查了一下相关资料：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d5Xzk3L2FydGljbGUvZGV0YWlscy83ODE2NTA1MQ==&#34;&gt;ctf/web 源码泄露及利用办法&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;nb，继续做题：&lt;/p&gt;
+&lt;p&gt;这里 get 下载不下来东西，burp 抓包后用 post 下载 web-xml (通过 WEB-INF)：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDkvbU5KaWFiV0Q4UjRRUEt2LnBuZw==&#34;&gt;https://i.loli.net/2021/08/09/mNJiabWD8R4QPKv.png&lt;/span&gt;&amp;quot; alt=&amp;quot;9.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
+&lt;p&gt;根据漏洞说明，找到相关的 class 文件，下载（就是我图中画出来的文件）：&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDkvcW9lVzdHWEhjZjVSODFTLnBuZw==&#34;&gt;https://i.loli.net/2021/08/09/qoeW7GXHcf5R81S.png&lt;/span&gt;&amp;quot; alt=&amp;quot;10.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p10--&amp;gt;&lt;/p&gt;
+&lt;p&gt;得到 base64 加密后的 flag，结束&lt;/p&gt;
+&lt;p&gt;说实话这题挺简单，主要靠经验做，但是像我这种 cj，直接傻眼。。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;附参考文章&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#附参考文章&#34;&gt;#&lt;/a&gt; 附：参考文章&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20va2x2Y2hlbi9wLzEwMTY5MjQ1Lmh0bWw=&#34;&gt;HTML 请求头，响应头和 HTTP 状态码&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucnVub29iLmNvbS9odHRwL2h0dHAtbWV0aG9kcy5odG1s&#34;&gt;菜鸟教程 HTTP 请求方法&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93aW5kYXJkLmNvbS9wcm9qZWN0LzIwMTYvMDUvMDgvRm9yZ2UtSVAtQWRkcmVzcw==&#34;&gt;通过修改 http 请求的 header 请求头来伪造 ip&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d5Xzk3L2FydGljbGUvZGV0YWlscy83ODE2NTA1MQ==&#34;&gt;ctf/web 源码泄露及利用办法&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;遇到类似的的奇怪题再总结&lt;/p&gt;
+&lt;p&gt;END&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
