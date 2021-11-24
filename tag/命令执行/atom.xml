@@ -6,18 +6,18 @@
     <updated>2021-07-27T13:45:24.931Z</updated>
     <category term="随笔" />
     <category term="反序列化" />
-    <category term="http" />
-    <category term="SSTI" />
     <category term="命令执行" />
+    <category term="代码审计" />
+    <category term="http" />
     <category term="sql" />
     <category term="SSRF" />
+    <category term="SSTI" />
+    <category term="反序列化2" />
+    <category term="文件包含" />
     <category term="upload" />
     <category term="业余爱好" />
-    <category term="代码审计" />
-    <category term="文件包含" />
-    <category term="反序列化2" />
-    <category term="php" />
     <category term="RCE" />
+    <category term="php" />
     <category term="python" />
     <category term="yeah" />
     <entry>
