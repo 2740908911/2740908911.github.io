@@ -7,21 +7,21 @@
         <language>zh-CN</language>
         <pubDate>Tue, 27 Jul 2021 17:46:52 +0800</pubDate>
         <lastBuildDate>Tue, 27 Jul 2021 17:46:52 +0800</lastBuildDate>
-        <category>反序列化</category>
-        <category>SSTI</category>
-        <category>http</category>
         <category>随笔</category>
-        <category>代码审计</category>
+        <category>反序列化</category>
+        <category>http</category>
+        <category>SSTI</category>
         <category>命令执行</category>
+        <category>代码审计</category>
         <category>sql</category>
-        <category>SSRF</category>
         <category>upload</category>
         <category>反序列化2</category>
-        <category>文件包含</category>
+        <category>SSRF</category>
         <category>业余爱好</category>
+        <category>文件包含</category>
         <category>RCE</category>
-        <category>php</category>
         <category>python</category>
+        <category>php</category>
         <category>yeah</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/07/27/(ctfwp)%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/</guid>
