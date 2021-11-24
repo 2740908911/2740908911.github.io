@@ -9,18 +9,18 @@
         <lastBuildDate>Tue, 29 Jun 2021 18:41:39 +0800</lastBuildDate>
         <category>随笔</category>
         <category>反序列化</category>
-        <category>命令执行</category>
-        <category>代码审计</category>
-        <category>SSTI</category>
         <category>http</category>
+        <category>SSTI</category>
+        <category>命令执行</category>
         <category>sql</category>
         <category>SSRF</category>
-        <category>反序列化2</category>
         <category>upload</category>
-        <category>文件包含</category>
         <category>业余爱好</category>
-        <category>RCE</category>
+        <category>代码审计</category>
+        <category>文件包含</category>
+        <category>反序列化2</category>
         <category>php</category>
+        <category>RCE</category>
         <category>python</category>
         <category>yeah</category>
         <item>
