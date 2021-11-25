@@ -6,19 +6,19 @@
     <updated>2021-08-13T10:49:41.433Z</updated>
     <category term="随笔" />
     <category term="反序列化" />
-    <category term="命令执行" />
-    <category term="代码审计" />
+    <category term="SSTI" />
     <category term="http" />
+    <category term="代码审计" />
+    <category term="命令执行" />
     <category term="sql" />
     <category term="SSRF" />
-    <category term="SSTI" />
+    <category term="upload" />
     <category term="反序列化2" />
     <category term="文件包含" />
-    <category term="upload" />
     <category term="业余爱好" />
     <category term="RCE" />
-    <category term="php" />
     <category term="python" />
+    <category term="php" />
     <category term="yeah" />
     <entry>
         <id>http://example.com/2021/08/13/ctfweb-%E6%97%A0%E5%8F%82RCE/</id>
