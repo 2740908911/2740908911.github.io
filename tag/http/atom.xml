@@ -5,20 +5,20 @@
     <link href="http://example.com" />
     <updated>2021-07-08T14:30:37.254Z</updated>
     <category term="随笔" />
+    <category term="反序列化" />
     <category term="SSTI" />
     <category term="http" />
-    <category term="反序列化" />
     <category term="命令执行" />
-    <category term="代码审计" />
     <category term="sql" />
-    <category term="SSRF" />
+    <category term="代码审计" />
     <category term="upload" />
-    <category term="业余爱好" />
+    <category term="SSRF" />
     <category term="反序列化2" />
     <category term="文件包含" />
+    <category term="业余爱好" />
     <category term="RCE" />
-    <category term="php" />
     <category term="python" />
+    <category term="php" />
     <category term="yeah" />
     <entry>
         <id>http://example.com/2021/07/08/(ctfwp)http&amp;java/</id>

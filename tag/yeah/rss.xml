@@ -8,20 +8,20 @@
         <pubDate>Wed, 16 Jun 2021 16:45:29 +0800</pubDate>
         <lastBuildDate>Wed, 16 Jun 2021 16:45:29 +0800</lastBuildDate>
         <category>随笔</category>
+        <category>反序列化</category>
         <category>SSTI</category>
         <category>http</category>
-        <category>反序列化</category>
         <category>命令执行</category>
-        <category>代码审计</category>
         <category>sql</category>
-        <category>SSRF</category>
+        <category>代码审计</category>
         <category>upload</category>
-        <category>业余爱好</category>
+        <category>SSRF</category>
         <category>反序列化2</category>
         <category>文件包含</category>
+        <category>业余爱好</category>
         <category>RCE</category>
-        <category>php</category>
         <category>python</category>
+        <category>php</category>
         <category>yeah</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/06/16/running%20till%20the%20sun%20goes%20down/</guid>
