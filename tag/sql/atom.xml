@@ -7,18 +7,18 @@
     <category term="随笔" />
     <category term="反序列化" />
     <category term="SSTI" />
-    <category term="http" />
     <category term="命令执行" />
-    <category term="sql" />
     <category term="代码审计" />
-    <category term="upload" />
+    <category term="http" />
+    <category term="sql" />
     <category term="SSRF" />
+    <category term="upload" />
     <category term="反序列化2" />
     <category term="文件包含" />
     <category term="业余爱好" />
     <category term="RCE" />
-    <category term="python" />
     <category term="php" />
+    <category term="python" />
     <category term="yeah" />
     <entry>
         <id>http://example.com/2021/08/17/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/</id>
