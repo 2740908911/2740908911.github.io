@@ -4,12 +4,12 @@
     <title>imFanqie • Posts by &#34;业余爱好&#34; tag</title>
     <link href="http://example.com" />
     <updated>2021-10-23T02:44:00.030Z</updated>
+    <category term="SSTI" />
     <category term="随笔" />
     <category term="反序列化" />
-    <category term="SSTI" />
-    <category term="http" />
     <category term="命令执行" />
     <category term="sql" />
+    <category term="http" />
     <category term="代码审计" />
     <category term="SSRF" />
     <category term="upload" />
@@ -18,8 +18,8 @@
     <category term="业余爱好" />
     <category term="RCE" />
     <category term="php" />
-    <category term="python" />
     <category term="yeah" />
+    <category term="python" />
     <entry>
         <id>http://example.com/2021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/</id>
         <title>CRYPTO——密码的取经之路</title>
