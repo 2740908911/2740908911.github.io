@@ -18,8 +18,8 @@
     <category term="业余爱好" />
     <category term="RCE" />
     <category term="php" />
-    <category term="python" />
     <category term="yeah" />
+    <category term="python" />
     <entry>
         <id>http://example.com/2021/08/04/(ctfwp)ssrf%E5%AD%A6%E4%B9%A0/</id>
         <title>(ctfwp)ssrf学习</title>

@@ -18,8 +18,8 @@
     <category term="业余爱好" />
     <category term="RCE" />
     <category term="php" />
-    <category term="python" />
     <category term="yeah" />
+    <category term="python" />
     <entry>
         <id>http://example.com/2021/07/27/(ctfwp)%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/</id>
         <title>(ctfwp)伪协议文件包含漏洞</title>

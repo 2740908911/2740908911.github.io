@@ -18,8 +18,8 @@
     <category term="业余爱好" />
     <category term="RCE" />
     <category term="php" />
-    <category term="python" />
     <category term="yeah" />
+    <category term="python" />
     <entry>
         <id>http://example.com/2021/08/10/(ctfwp)%E5%87%A0%E9%81%93%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E7%9A%84%E9%A2%98(POP%E9%93%BE%E3%80%81%E9%80%83%E9%80%B8)/</id>
         <title>(ctfwp)几道序列化相关的题(POP链、逃逸)</title>
