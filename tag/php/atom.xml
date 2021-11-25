@@ -5,17 +5,17 @@
     <link href="http://example.com" />
     <updated>2021-07-01T03:03:51.726Z</updated>
     <category term="随笔" />
-    <category term="反序列化" />
-    <category term="http" />
     <category term="SSTI" />
+    <category term="http" />
+    <category term="反序列化" />
     <category term="命令执行" />
     <category term="代码审计" />
     <category term="sql" />
     <category term="SSRF" />
     <category term="upload" />
-    <category term="文件包含" />
     <category term="业余爱好" />
     <category term="反序列化2" />
+    <category term="文件包含" />
     <category term="RCE" />
     <category term="php" />
     <category term="python" />
