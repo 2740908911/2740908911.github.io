@@ -7,22 +7,22 @@
         <language>zh-CN</language>
         <pubDate>Tue, 23 Nov 2021 19:57:15 +0800</pubDate>
         <lastBuildDate>Tue, 23 Nov 2021 19:57:15 +0800</lastBuildDate>
-        <category>SSTI</category>
         <category>随笔</category>
         <category>反序列化</category>
+        <category>SSTI</category>
+        <category>http</category>
         <category>命令执行</category>
         <category>sql</category>
-        <category>http</category>
         <category>代码审计</category>
         <category>SSRF</category>
-        <category>upload</category>
         <category>反序列化2</category>
+        <category>upload</category>
         <category>文件包含</category>
         <category>业余爱好</category>
         <category>RCE</category>
         <category>php</category>
-        <category>yeah</category>
         <category>python</category>
+        <category>yeah</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/11/23/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</guid>
             <title>ctfweb-SSTI服务器模板注入</title>
