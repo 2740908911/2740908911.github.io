@@ -6,20 +6,20 @@
     <updated>2021-08-04T11:17:39.048Z</updated>
     <category term="随笔" />
     <category term="SSTI" />
+    <category term="反序列化" />
     <category term="http" />
     <category term="命令执行" />
-    <category term="反序列化" />
     <category term="代码审计" />
     <category term="sql" />
-    <category term="SSRF" />
-    <category term="upload" />
-    <category term="反序列化2" />
     <category term="文件包含" />
-    <category term="业余爱好" />
+    <category term="SSRF" />
+    <category term="反序列化2" />
+    <category term="upload" />
     <category term="RCE" />
-    <category term="yeah" />
-    <category term="php" />
     <category term="python" />
+    <category term="php" />
+    <category term="yeah" />
+    <category term="业余爱好" />
     <entry>
         <id>http://example.com/2021/08/04/(ctfwp)ssrf%E5%AD%A6%E4%B9%A0/</id>
         <title>(ctfwp)ssrf学习</title>

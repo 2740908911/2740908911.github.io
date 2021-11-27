@@ -9,20 +9,20 @@
         <lastBuildDate>Tue, 23 Nov 2021 19:57:15 +0800</lastBuildDate>
         <category>随笔</category>
         <category>SSTI</category>
+        <category>反序列化</category>
         <category>http</category>
         <category>命令执行</category>
-        <category>反序列化</category>
         <category>代码审计</category>
         <category>sql</category>
-        <category>SSRF</category>
-        <category>upload</category>
-        <category>反序列化2</category>
         <category>文件包含</category>
-        <category>业余爱好</category>
+        <category>SSRF</category>
+        <category>反序列化2</category>
+        <category>upload</category>
         <category>RCE</category>
-        <category>yeah</category>
-        <category>php</category>
         <category>python</category>
+        <category>php</category>
+        <category>yeah</category>
+        <category>业余爱好</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/11/23/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</guid>
             <title>ctfweb-SSTI服务器模板注入</title>
@@ -251,9 +251,9 @@ POST /subscribe?0=cat+/etc/passwd HTTP/1.1
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/</guid>
+            <guid isPermalink="true">http://example.com/2021/10/23/ctf/crypto/cryptotal/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/</guid>
             <title>CRYPTO——密码的取经之路</title>
-            <link>http://example.com/2021/10/23/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/</link>
+            <link>http://example.com/2021/10/23/ctf/crypto/cryptotal/CRYPTO%E2%80%94%E2%80%94%E5%AF%86%E7%A0%81%E7%9A%84%E5%8F%96%E7%BB%8F%E4%B9%8B%E8%B7%AF/</link>
             <category>业余爱好</category>
             <pubDate>Sat, 23 Oct 2021 10:44:00 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;just an introduction for 1024CTF to beginner, I&#39;m also an amateur&lt;/p&gt;
