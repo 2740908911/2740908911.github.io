@@ -5,22 +5,121 @@
         <link>http://example.com</link>
         <description>学习博客</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 23 Nov 2021 19:57:15 +0800</pubDate>
-        <lastBuildDate>Tue, 23 Nov 2021 19:57:15 +0800</lastBuildDate>
+        <pubDate>Sun, 28 Nov 2021 22:55:56 +0800</pubDate>
+        <lastBuildDate>Sun, 28 Nov 2021 22:55:56 +0800</lastBuildDate>
         <category>随笔</category>
+        <category>debug, wsl</category>
         <category>业余爱好</category>
-        <category>命令执行</category>
-        <category>文件包含</category>
-        <category>RCE</category>
-        <category>反序列化</category>
         <category>http</category>
-        <category>python</category>
-        <category>sql</category>
-        <category>代码审计</category>
-        <category>SSTI</category>
+        <category>文件包含</category>
         <category>php</category>
-        <category>SSRF</category>
+        <category>反序列化</category>
+        <category>代码审计</category>
+        <category>sql</category>
         <category>upload</category>
+        <category>SSTI</category>
+        <category>RCE</category>
+        <category>python</category>
+        <category>命令执行</category>
+        <category>SSRF</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/11/28/debug/wsl2%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E5%8F%8Adebug%E5%BF%83%E5%BE%97/</guid>
+            <title>wsl2安装使用及debug心得</title>
+            <link>http://example.com/2021/11/28/debug/wsl2%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E5%8F%8Adebug%E5%BF%83%E5%BE%97/</link>
+            <category>debug, wsl</category>
+            <pubDate>Sun, 28 Nov 2021 22:55:56 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;分享一下我对 wsl2 的看法及使用心得，顺便记录在安装 wsl2 时我的心路历程&lt;/p&gt;
+&lt;p&gt;(遇到的问题及解决方法)&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;为什么选择wsl2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么选择wsl2&#34;&gt;#&lt;/a&gt; 为什么选择 WSL2?&lt;/h1&gt;
+&lt;p&gt;很多人接触到 &lt;code&gt;wsl&lt;/code&gt;  时都有一种陌生感和抵触感，因为我们常常会选择 &lt;code&gt;VM&lt;/code&gt; ，认为老牌产品更靠谱。&lt;/p&gt;
+&lt;p&gt;的确，但是随着系统的发展，我们去不断尝试和接触新的产品，其实也未尝不是一件好事，正比如今天说的 &lt;code&gt;wsl&lt;/code&gt; ，它大大简化了虚拟机安装繁琐的过程，以及每次使用的步骤，大大提高了使用效率，节约了空间，方便转移甚至移植到其他机器，同时 &lt;code&gt;wsl&lt;/code&gt;  有着很高的自主选择权，让用户可以自己定义功能等等，从上面角度来说，我认为是优于传统 &lt;code&gt;VM&lt;/code&gt;  的。&lt;/p&gt;
+&lt;p&gt;尽管 &lt;code&gt;wsl&lt;/code&gt;  也有着不少缺点，比如操作容错率小，自定义时想实现更高的功能会稍有复杂，debug 贴少于 &lt;code&gt;VM&lt;/code&gt; （这点劝退了很多人）、或者说很多人入门时装好了 &lt;code&gt;VM&lt;/code&gt;  懒得再折腾等等。&lt;/p&gt;
+&lt;p&gt;对于有想法且不嫌麻烦折腾一次的人，我的意见是 wsl 绝对物超所值，配置好后能带来极大的便利，你值得拥有，如果对 &lt;code&gt;wsl&lt;/code&gt;  感兴趣或者有什么疑问，欢迎来评论区交流！&lt;/p&gt;
+&lt;p&gt;至于我，为什么选择 &lt;code&gt;wsl&lt;/code&gt; ？恐怕是我没有深度依赖于 &lt;code&gt;VM&lt;/code&gt; ，并且厌倦了繁琐的 &lt;code&gt;VM&lt;/code&gt;  使用方法（其实还好，是我懒），且本人爱折腾。&lt;/p&gt;
+&lt;p&gt;万幸的是， &lt;code&gt;wsl&lt;/code&gt;  目前带给了我很好的体验感，并且学到了很多不一样的知识，所以我认为写本帖其实很有意义。&lt;/p&gt;
+&lt;h1 id=&#34;kali-wsl&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kali-wsl&#34;&gt;#&lt;/a&gt; kali-wsl&lt;/h1&gt;
+&lt;p&gt;很多人都刚开始接触 kali-wsl 可能都会发现，这个 kali 非常不完整，很多工具都没有，这是因为这个 kali 并不是完整版的，但其实我们只需只需一个命令即可让其变成完整版，让其变得可以运行几乎所有的 kali 工具包。&lt;/p&gt;
+&lt;p&gt;wsl 安装过程可以参考下面这个帖子，比较靠谱。&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;安装完整kali&lt;/code&gt;  一步时，注意可以选择不同的版本，请根据需求谨慎选择！&lt;/p&gt;
+&lt;p&gt;具体参见：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnVqaWVhY2UuY29tL2thbGktbGludXgvbWV0YXBhY2thZ2VzLmh0bWw=&#34;&gt;Kali Linux 高级教程：元数据包 “工具子集” 介绍与安装&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;:::note info&lt;/p&gt;
+&lt;p&gt;值得一提的是，换源的时候不是很好操作，如果要调整光标位置，请先按一下 &lt;code&gt;del&lt;/code&gt; ，再操控方向，否则你试试就懂了，两下 d 删除一行。&lt;/p&gt;
+&lt;p&gt;如果能复制尽量复制，打错了或者复制错了如果不会删除建议关掉重开。&lt;/p&gt;
+&lt;p&gt;按一下 &lt;code&gt;esc&lt;/code&gt; ，输入 &lt;code&gt;:q&lt;/code&gt;  直接退出， &lt;code&gt;:wq&lt;/code&gt;  保存退出。&lt;/p&gt;
+&lt;p&gt;剩下的直接参考 csdn 上面贴子。&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NjExMjMwL2FydGljbGUvZGV0YWlscy8xMDg2NzU5MTU=&#34;&gt;wsl2-kali 基础配置&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;重点来了&lt;/strong&gt;，默认的 wsl2 的存储位置在 c 盘，如果分配空间过大或者使用过大的话，很容易导致爆盘，所以建议配置完基础后进行移盘操作，保证好不要出岔子！&lt;/p&gt;
+&lt;p&gt;（血泪教训，我就爆过盘！！！）&lt;/p&gt;
+&lt;p&gt;操作如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;查看 WSL 分发版本&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 &lt;code&gt;Windows PowerShell&lt;/code&gt;  中输入如下命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl -l --all -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;导出分发版为 tar 文件到 d 盘&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl --export kali-linux d:\kali-linux.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注销当前分发版&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl --unregister kali-linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;重新导入并安装 WSL 在 d:\wsl-ubuntu20.04&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl --import kali-linux d:\kali-linux d:\kali-linux.tar --version 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;删除 tar 文件 (不删也行)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;del d:\kali-linux.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;wsl-ubuntu 参考下面这篇文章&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdGw1NDI0NzU3MzYvcC8xNDg1NTg2My5odG1s&#34;&gt;WSL 修改默认安装目录到其他盘&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;:::note info&lt;/p&gt;
+&lt;p&gt;个人建议早点移盘，不然会后悔的，配置变量多了很麻烦&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;p&gt;一切安装好后，可以查看目录是否有自己需要的软件，下面附一个软件功能表：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbHprYWxpc2x3L3AvMTI4NDU3MTQuaHRtbA==&#34;&gt;kali 各工具使用介绍&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;kali docker 安装&lt;/strong&gt;：由于 kali 佬可能会用到 &lt;code&gt;docker&lt;/code&gt; ，下面加一个靠谱的安装教程，亲测好用：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODMyODM3L2FydGljbGUvZGV0YWlscy8xMDM5NDgzMTQ=&#34;&gt;kali 安装 docker&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;其他软件自己搜就好，此时的 kali 与正常的 kali 图像化界面已经大同小异，直接调用命令行就可。&lt;/p&gt;
+&lt;h1 id=&#34;kali-快速debug分享&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kali-快速debug分享&#34;&gt;#&lt;/a&gt; kali 快速 debug 分享&lt;/h1&gt;
+&lt;p&gt;下面分享一下我遇到的 bug 和解决方法，帮助新手减少点难度，其他 bug 可以上百度搜，时至今日基本都能解决（有很多大佬）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 找不到 wsl&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在控制面板 &amp;gt; 程序 &amp;gt; 启动或关闭 &lt;code&gt;Windows&lt;/code&gt;  功能处，打开适用于 &lt;code&gt;Linux&lt;/code&gt;  的 &lt;code&gt;Windows&lt;/code&gt;  子系统功能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 参考的对象类型不支持尝试的操作&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载此软件：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucHJveGlmaWVyLmNvbS90bXAvVGVzdDIwMjAwMjI4L05vTHNwLmV4ZQ==&#34;&gt;www.proxifier.com/tmp/Test20200228/NoLsp.exe&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;管理员身份运行 CMD 输入：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;NoLsp.exe C:\windows\system32\wsl.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;请自行注意 &lt;code&gt;NoLsp.exe&lt;/code&gt;  程序的位置，以及你的 &lt;code&gt;wsl.exe&lt;/code&gt;  位置。&lt;/p&gt;
+&lt;p&gt;方法摘自&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xNTEzOTI0MTE=&#34;&gt;参考的对象类型不支持尝试的操作&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. 修改数据时出现问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在汉化和换源时出现问题，如果还没保存， &lt;code&gt;esc&lt;/code&gt;  后 &lt;code&gt;:q&lt;/code&gt;  重新进去修改就行&lt;/p&gt;
+&lt;p&gt;否则最简单的就是卸载重装（我经历了四次）&lt;/p&gt;
+&lt;h1 id=&#34;gui界面安装可选&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gui界面安装可选&#34;&gt;#&lt;/a&gt; GUI 界面安装（可选）&lt;/h1&gt;
+&lt;p&gt;其实我是没准备写这方面的，但总是有人嫌没有界面化系统所以觉得 &lt;code&gt;wsl&lt;/code&gt;  不如 &lt;code&gt;VM&lt;/code&gt; ，其实我想说的是：人不行还非要怪路不平～～人家有你也不想装！&lt;/p&gt;
+&lt;p&gt;由于本人没有安装 GUI 的需求，个人也认为没必要，实在是没有代码行好用，所以只提供几个帖子，但在我反复比对后，发现其实都大同小异。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2wxNDQ3MzIwMjI5L2FydGljbGUvZGV0YWlscy8xMDgyMTA3NjA/c3BtPTEwMDEuMjEwMS4zMDAxLjY2NjEuMSZhbXA7dXRtX21lZGl1bT1kaXN0cmlidXRlLnBjX3JlbGV2YW50X3QwLm5vbmUtdGFzay1ibG9nLTIlN0VkZWZhdWx0JTdFQ1RSTElTVCU3RWRlZmF1bHQtMS5ub19zZWFyY2hfbGluayZhbXA7ZGVwdGhfMS11dG1fc291cmNlPWRpc3RyaWJ1dGUucGNfcmVsZXZhbnRfdDAubm9uZS10YXNrLWJsb2ctMiU3RWRlZmF1bHQlN0VDVFJMSVNUJTdFZGVmYXVsdC0xLm5vX3NlYXJjaF9saW5r&#34;&gt;WSL2（win10 子系统）Linux 图形化 GUI 教程 win-kex&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8yOTkzMjYxMy9hcnRpY2xlL2RldGFpbHMvMTE0NDc2MzA1P3NwbT0xMDAxLjIxMDEuMzAwMS42NjUwLjMmYW1wO3V0bV9tZWRpdW09ZGlzdHJpYnV0ZS5wY19yZWxldmFudC5ub25lLXRhc2stYmxvZy0yJTdFZGVmYXVsdCU3RUNUUkxJU1QlN0VkZWZhdWx0LTMuZXNzZWFyY2hfcGNfcmVsZXZhbnQmYW1wO2RlcHRoXzEtdXRtX3NvdXJjZT1kaXN0cmlidXRlLnBjX3JlbGV2YW50Lm5vbmUtdGFzay1ibG9nLTIlN0VkZWZhdWx0JTdFQ1RSTElTVCU3RWRlZmF1bHQtMy5lc3NlYXJjaF9wY19yZWxldmFudA==&#34;&gt;wsl 使用可视化界面_为 Windows 子系统 Kali-Linux 提供桌面体验 Win-kex 安装说明使用书&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cua2FsaS5vcmcvZG9jcy93c2wvd2luLWtleC8=&#34;&gt;win-hex 官网&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;END&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2021/11/23/ctf/web/ssti/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</guid>
             <title>ctfweb-SSTI服务器模板注入</title>

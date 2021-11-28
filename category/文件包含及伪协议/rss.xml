@@ -8,19 +8,20 @@
         <pubDate>Tue, 27 Jul 2021 17:46:52 +0800</pubDate>
         <lastBuildDate>Tue, 27 Jul 2021 17:46:52 +0800</lastBuildDate>
         <category>随笔</category>
+        <category>debug, wsl</category>
         <category>业余爱好</category>
-        <category>命令执行</category>
-        <category>文件包含</category>
-        <category>RCE</category>
-        <category>反序列化</category>
         <category>http</category>
-        <category>python</category>
-        <category>sql</category>
-        <category>代码审计</category>
-        <category>SSTI</category>
+        <category>文件包含</category>
         <category>php</category>
-        <category>SSRF</category>
+        <category>反序列化</category>
+        <category>代码审计</category>
+        <category>sql</category>
         <category>upload</category>
+        <category>SSTI</category>
+        <category>RCE</category>
+        <category>python</category>
+        <category>命令执行</category>
+        <category>SSRF</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/07/27/ctf/web/file/(ctfwp)%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/</guid>
             <title>(ctfwp)伪协议文件包含漏洞</title>
