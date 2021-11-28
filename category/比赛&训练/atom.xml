@@ -7,18 +7,18 @@
     <category term="随笔" />
     <category term="debug, wsl" />
     <category term="业余爱好" />
-    <category term="http" />
     <category term="文件包含" />
-    <category term="php" />
-    <category term="反序列化" />
+    <category term="http" />
     <category term="代码审计" />
+    <category term="反序列化" />
     <category term="sql" />
-    <category term="upload" />
-    <category term="SSTI" />
     <category term="RCE" />
-    <category term="python" />
     <category term="命令执行" />
     <category term="SSRF" />
+    <category term="SSTI" />
+    <category term="upload" />
+    <category term="php" />
+    <category term="python" />
     <entry>
         <id>http://example.com/2021/08/28/ctf/match/xjusec%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B/</id>
         <title>xjusec考核赛解题过程</title>
