@@ -9,18 +9,18 @@
         <lastBuildDate>Tue, 17 Aug 2021 21:51:59 +0800</lastBuildDate>
         <category>随笔</category>
         <category>业余爱好</category>
-        <category>文件包含</category>
-        <category>http</category>
-        <category>代码审计</category>
         <category>命令执行</category>
+        <category>文件包含</category>
         <category>RCE</category>
         <category>反序列化</category>
+        <category>http</category>
+        <category>python</category>
         <category>sql</category>
+        <category>代码审计</category>
         <category>SSTI</category>
+        <category>php</category>
         <category>SSRF</category>
         <category>upload</category>
-        <category>python</category>
-        <category>php</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/08/17/ctf/web/sql/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/</guid>
             <title>ctfweb-各种盲注脚本</title>
@@ -201,7 +201,7 @@ select 1,2,3 from users where linestring(id);
             <link>http://example.com/2021/06/20/ctf/web/sql/(ctfwp)sql%E6%B3%A8%E5%85%A5%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/</link>
             <category>sql</category>
             <pubDate>Sun, 20 Jun 2021 17:25:52 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;buuctf 极客大挑战系列    &lt;em&gt;&lt;strong&gt;&amp;lt;u&amp;gt;sql 注入 &amp;lt;/u&amp;gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+            <description><![CDATA[ &lt;p&gt;buuctf 极客大挑战系列    &lt;em&gt;&lt;strong&gt;sql 注入&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h1 id=&#34;no1-easysql&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#no1-easysql&#34;&gt;#&lt;/a&gt; NO.1 EasySQL&lt;/h1&gt;
 &lt;p&gt;题目如图：&lt;/p&gt;

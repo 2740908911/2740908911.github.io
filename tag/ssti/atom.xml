@@ -6,26 +6,27 @@
     <updated>2021-11-23T11:57:15.038Z</updated>
     <category term="随笔" />
     <category term="业余爱好" />
-    <category term="文件包含" />
-    <category term="http" />
-    <category term="代码审计" />
     <category term="命令执行" />
+    <category term="文件包含" />
     <category term="RCE" />
     <category term="反序列化" />
+    <category term="http" />
+    <category term="python" />
     <category term="sql" />
+    <category term="代码审计" />
     <category term="SSTI" />
+    <category term="php" />
     <category term="SSRF" />
     <category term="upload" />
-    <category term="python" />
-    <category term="php" />
     <entry>
         <id>http://example.com/2021/11/23/ctf/web/ssti/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</id>
         <title>ctfweb-SSTI服务器模板注入</title>
         <link rel="alternate" href="http://example.com/2021/11/23/ctf/web/ssti/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/"/>
-        <content type="html">&lt;h2 id=&#34;概述&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概述&#34;&gt;#&lt;/a&gt; 概述&lt;/h2&gt;
+        <content type="html">&lt;p&gt;简单学习了一下 ssti，这方面可以说是很烦了:（&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;概述&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概述&#34;&gt;#&lt;/a&gt; 概述&lt;/h2&gt;
 &lt;p&gt;模板引擎可以让（网站）程序实现界面与数据分离，业务代码与逻辑代码的分离，这大大提升了开发效率，良好的设计也使得代码重用变得更加容易。与此同时，它也扩展了黑客的攻击面。除了常规的 XSS 外，注入到模板中的代码还有可能引发 RCE（远程代码执行）。通常来说，这类问题会在博客，CMS，wiki 中产生。虽然模板引擎会提供沙箱机制，攻击者依然有许多手段绕过它。在这篇文章中，我将会攻击几个模板引擎来说明该类漏洞，并展示沙箱逃逸技术。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;在考虑进行模板注入之前，我们需要进行漏洞探测&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;探测漏洞&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#探测漏洞&#34;&gt;#&lt;/a&gt; 探测漏洞&lt;/h2&gt;
 &lt;h3 id=&#34;1文本类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1文本类&#34;&gt;#&lt;/a&gt; 1. 文本类&lt;/h3&gt;
 &lt;p&gt;大部分的模板语言支持我们输入 HTML，未经过滤的输入会产生 XSS，我们可以利用 XSS 做我们最基本的探针。&lt;/p&gt;
