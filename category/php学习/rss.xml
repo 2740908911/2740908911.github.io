@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>imFanqie • Posts by &#34;php学习&#34; category</title>
+        <link>http://example.com</link>
+        <description>学习博客</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 01 Jul 2021 11:03:51 +0800</pubDate>
+        <lastBuildDate>Thu, 01 Jul 2021 11:03:51 +0800</lastBuildDate>
+        <category>随笔</category>
+        <category>业余爱好</category>
+        <category>文件包含</category>
+        <category>http</category>
+        <category>代码审计</category>
+        <category>命令执行</category>
+        <category>RCE</category>
+        <category>反序列化</category>
+        <category>sql</category>
+        <category>SSTI</category>
+        <category>SSRF</category>
+        <category>upload</category>
+        <category>python</category>
+        <category>php</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+            <title>php的浅显学习中一些知识点</title>
+            <link>http://example.com/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+            <category>php</category>
+            <pubDate>Thu, 01 Jul 2021 11:03:51 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;为了读懂 web 一些漏洞和原理，浅显学习了一下 php 语言，并做了一点简陋的笔记，方便回顾。&lt;/p&gt;
+&lt;p&gt;后面还会不断的或是专业的学习这门语言。&lt;/p&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;1. 变量以 $ 符号开始，不能包含空格，区分大小写。php 定义变量，不用声明变量类型。&lt;/p&gt;
+&lt;p&gt;2. 以 &lt;code&gt;?php&lt;/code&gt;  开始，以 &lt;code&gt;?&amp;gt;&lt;/code&gt;  结尾。&lt;/p&gt;
+&lt;p&gt;3. 在函数内调用全局变量，要用  &lt;code&gt;global&lt;/code&gt;  关键字，比如：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$x&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$y&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$x&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$y&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$x&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$x&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$y&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;当然，也可这么引用：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$GLOBALS&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;x&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$GLOBALS&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;x&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$GLOBALS&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;y&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;4. &lt;code&gt;static&lt;/code&gt;  作用域，用法语 c 语言差不多，让一个变量的值不会被清除或重置。&lt;/p&gt;
+&lt;p&gt;5.echo 和 print 的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;echo&lt;/code&gt;  - 可以输出一个或多个字符串，没有返回值，速度比 print 要快。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;print&lt;/code&gt;  - 只允许输出一个字符串，返回值总为 1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;6. 类型比较， &lt;code&gt;==&lt;/code&gt;  只比较值，不比较类型； &lt;code&gt;===&lt;/code&gt;  既比较值也比较类型&lt;/p&gt;
+&lt;p&gt;7. 定义常量时 可选择是否区分大小写区分，不区分则在后面加 &lt;code&gt;true&lt;/code&gt; ，例如：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;define&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;name&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;value&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant boolean&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;8. 并置运算符 (.)，例如&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$txt1&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34; &#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$txt2&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;9. 整除运算符 &lt;code&gt; intdiv()&lt;/code&gt;  ，该函数返回值为第一个参数除以第二个参数的值并向下取整数，例如 &lt;code&gt;intdiv(10,3)&lt;/code&gt;   值为 3&lt;/p&gt;
+&lt;p&gt;10. 赋值运算符中    &lt;code&gt;a .= b&lt;/code&gt; , 相当于  &lt;code&gt;a = a . b&lt;/code&gt;  , 连接两个字符串。&lt;/p&gt;
+&lt;p&gt;11. 比较运算符中   &lt;code&gt;x &amp;lt;&amp;gt; y&lt;/code&gt;  相当于  &lt;code&gt;x != y&lt;/code&gt;  ， &lt;code&gt;x!==y&lt;/code&gt;  会同时判断值和类型。&lt;/p&gt;
+&lt;p&gt;12. 数组运算符中， &lt;code&gt;x + y&lt;/code&gt;  能拼接两个数组。&lt;/p&gt;
+&lt;p&gt;13. 组合比较符 &lt;code&gt;&amp;lt;=&amp;gt;&lt;/code&gt; ，用法：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$c&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$a&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;&amp;lt;=&gt;&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$b&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;if $a &amp;gt; $b, $c = 1;&lt;/p&gt;
+&lt;p&gt;if $a &amp;lt; $b, $c = -1;&lt;/p&gt;
+&lt;p&gt;if $a = $b, $c = 0;&lt;/p&gt;
+&lt;p&gt;14. 数组，可以储存字符串，用 &lt;strong&gt;array()&lt;/strong&gt; 函数创建。&lt;/p&gt;
+&lt;p&gt;关联数组，可以通过一个数组关联到另外的数组。&lt;/p&gt;
+&lt;p&gt;部分有关数组的函数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sort () - 对数组进行升序排列&lt;/li&gt;
+&lt;li&gt;rsort () - 对数组进行降序排列&lt;/li&gt;
+&lt;li&gt;asort () - 根据关联数组的键值，对数组进行升序排列&lt;/li&gt;
+&lt;li&gt;ksort () - 根据关联数组的键名，对数组进行升序排列&lt;/li&gt;
+&lt;li&gt;arsort () - 根据关联数组的键值，对数组进行降序排列&lt;/li&gt;
+&lt;li&gt;krsort () - 根据关联数组的键名，对数组进行降序排列&lt;/li&gt;
+&lt;li&gt;count () - 用于返回数组元素的数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;15.foreach 循环，用于遍历数组。例如：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token php language-php&#34;&gt;&lt;span class=&#34;token delimiter important&#34;&gt;&amp;lt;?php&lt;/span&gt; &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$x&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;Google&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;Runoob&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;Taobao&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;foreach&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$x&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$value&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$value&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;PHP_EOL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token delimiter important&#34;&gt;?&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;16. 常用函数&lt;/p&gt;
+&lt;p&gt;创建一个函数用   &lt;code&gt;function xxx()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;strpos()&lt;/strong&gt;  用于在字符串内查找一个字符或一段指定的文本。&lt;/p&gt;
+&lt;p&gt;如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果 未找到匹配，则返回 FALSE。&lt;/p&gt;
+&lt;p&gt;17.php 魔术常量&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__LINE__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#报行号&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__FILE__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#报文件路径和文件名&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__DIR__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#报文件所在目录&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__FUNCTION__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#返回函数名&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__CLASS__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#返回类名&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__TRAIT__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#trait 名&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__METHOD__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#类的方法名，返回该方法被定义时的名字&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token constant&#34;&gt;__NAMESPACE__&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;#当前命名空间的名称&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;18.php 命名空间（namespace）&lt;/p&gt;
+&lt;p&gt;PHP 命名空间可以解决以下两类问题：&lt;/p&gt;
+&lt;p&gt;1. 用户编写的代码与 PHP 内部的类 / 函数 / 常量或第三方类 / 函数 / 常量之间的名字冲突。&lt;br&gt;
+2. 为很长的标识符名称 (通常是为了缓解第一类问题而定义的) 创建一个别名（或简短）的名称，提高源代码的可读性。&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;p&gt;在声明命名空间之前唯一合法的代码是用于定义源文件编码方式的 declare 语句。所有非 PHP 代码包括空白符都不能出现在命名空间的声明之前。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;上面的知识点摘录于&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucnVub29iLmNvbS9waHAvcGhwLXR1dG9yaWFsLmh0bWw=&#34;&gt;菜鸟教程 php&lt;/span&gt;，更详细。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
