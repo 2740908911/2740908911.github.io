@@ -11,17 +11,17 @@
         <category>debug</category>
         <category>业余爱好</category>
         <category>文件包含</category>
-        <category>http</category>
         <category>反序列化</category>
+        <category>http</category>
         <category>代码审计</category>
-        <category>sql</category>
-        <category>RCE</category>
-        <category>命令执行</category>
         <category>SSRF</category>
-        <category>python</category>
-        <category>SSTI</category>
-        <category>php</category>
         <category>upload</category>
+        <category>命令执行</category>
+        <category>SSTI</category>
+        <category>RCE</category>
+        <category>sql</category>
+        <category>python</category>
+        <category>php</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/</guid>
             <title>ctfweb-无参RCE</title>
