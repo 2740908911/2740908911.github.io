@@ -8,20 +8,20 @@
         <pubDate>Fri, 13 Aug 2021 18:49:41 +0800</pubDate>
         <lastBuildDate>Fri, 13 Aug 2021 18:49:41 +0800</lastBuildDate>
         <category>随笔</category>
-        <category>debug, wsl</category>
-        <category>业余爱好</category>
-        <category>python</category>
-        <category>php</category>
+        <category>debug</category>
         <category>文件包含</category>
-        <category>http</category>
-        <category>反序列化</category>
-        <category>代码审计</category>
+        <category>业余爱好</category>
         <category>sql</category>
-        <category>命令执行</category>
+        <category>代码审计</category>
         <category>RCE</category>
-        <category>SSRF</category>
+        <category>反序列化</category>
+        <category>http</category>
+        <category>命令执行</category>
         <category>upload</category>
+        <category>SSRF</category>
         <category>SSTI</category>
+        <category>php</category>
+        <category>python</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/</guid>
             <title>ctfweb-无参RCE</title>

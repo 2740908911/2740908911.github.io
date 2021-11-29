@@ -5,20 +5,20 @@
     <link href="http://example.com" />
     <updated>2021-07-01T03:03:51.726Z</updated>
     <category term="随笔" />
-    <category term="debug, wsl" />
-    <category term="业余爱好" />
-    <category term="python" />
-    <category term="php" />
+    <category term="debug" />
     <category term="文件包含" />
-    <category term="http" />
-    <category term="反序列化" />
-    <category term="代码审计" />
+    <category term="业余爱好" />
     <category term="sql" />
-    <category term="命令执行" />
+    <category term="代码审计" />
     <category term="RCE" />
-    <category term="SSRF" />
+    <category term="反序列化" />
+    <category term="http" />
+    <category term="命令执行" />
     <category term="upload" />
+    <category term="SSRF" />
     <category term="SSTI" />
+    <category term="php" />
+    <category term="python" />
     <entry>
         <id>http://example.com/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
         <title>php的浅显学习中一些知识点</title>

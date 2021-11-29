@@ -8,25 +8,25 @@
         <pubDate>Sun, 28 Nov 2021 22:55:56 +0800</pubDate>
         <lastBuildDate>Sun, 28 Nov 2021 22:55:56 +0800</lastBuildDate>
         <category>随笔</category>
-        <category>debug, wsl</category>
-        <category>业余爱好</category>
-        <category>python</category>
-        <category>php</category>
+        <category>debug</category>
         <category>文件包含</category>
-        <category>http</category>
-        <category>反序列化</category>
-        <category>代码审计</category>
+        <category>业余爱好</category>
         <category>sql</category>
-        <category>命令执行</category>
+        <category>代码审计</category>
         <category>RCE</category>
-        <category>SSRF</category>
+        <category>反序列化</category>
+        <category>http</category>
+        <category>命令执行</category>
         <category>upload</category>
+        <category>SSRF</category>
         <category>SSTI</category>
+        <category>php</category>
+        <category>python</category>
         <item>
             <guid isPermalink="true">http://example.com/2021/11/28/debug/wsl2%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E5%8F%8Adebug%E5%BF%83%E5%BE%97/</guid>
             <title>wsl2安装使用及debug心得</title>
             <link>http://example.com/2021/11/28/debug/wsl2%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E5%8F%8Adebug%E5%BF%83%E5%BE%97/</link>
-            <category>debug, wsl</category>
+            <category>debug</category>
             <pubDate>Sun, 28 Nov 2021 22:55:56 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;分享一下我对 wsl2 的看法及使用心得，顺便记录在安装 wsl2 时我的心路历程&lt;/p&gt;
 &lt;p&gt;(遇到的问题及解决方法)&lt;/p&gt;
@@ -40,17 +40,17 @@
 &lt;p&gt;至于我，为什么选择 &lt;code&gt;wsl&lt;/code&gt; ？恐怕是我没有深度依赖于 &lt;code&gt;VM&lt;/code&gt; ，并且厌倦了繁琐的 &lt;code&gt;VM&lt;/code&gt;  使用方法（其实还好，是我懒），且本人爱折腾。&lt;/p&gt;
 &lt;p&gt;万幸的是， &lt;code&gt;wsl&lt;/code&gt;  目前带给了我很好的体验感，并且学到了很多不一样的知识，所以我认为写本帖其实很有意义。&lt;/p&gt;
 &lt;h1 id=&#34;kali-wsl&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kali-wsl&#34;&gt;#&lt;/a&gt; kali-wsl&lt;/h1&gt;
-&lt;p&gt;很多人都刚开始接触 kali-wsl 可能都会发现，这个 kali 非常不完整，很多工具都没有，这是因为这个 kali 并不是完整版的，但其实我们只需只需一个命令即可让其变成完整版，让其变得可以运行几乎所有的 kali 工具包。&lt;/p&gt;
+&lt;p&gt;很多人都刚开始接触 kali-wsl 可能都会发现，这个 kali 非常不完整，很多工具都没有，这是因为这个 kali 并不是完整版的，但其实我们只需一个命令即可让其变成完整版，让其变得可以运行几乎所有的 kali 工具包。&lt;/p&gt;
 &lt;p&gt;wsl 安装过程可以参考下面这个帖子，比较靠谱。&lt;/p&gt;
 &lt;p&gt;在 &lt;code&gt;安装完整kali&lt;/code&gt;  一步时，注意可以选择不同的版本，请根据需求谨慎选择！&lt;/p&gt;
 &lt;p&gt;具体参见：&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnVqaWVhY2UuY29tL2thbGktbGludXgvbWV0YXBhY2thZ2VzLmh0bWw=&#34;&gt;Kali Linux 高级教程：元数据包 “工具子集” 介绍与安装&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;:::note info&lt;/p&gt;
+&lt;div class=&#34;note info&#34;&gt;
 &lt;p&gt;值得一提的是，换源的时候不是很好操作，如果要调整光标位置，请先按一下 &lt;code&gt;del&lt;/code&gt; ，再操控方向，否则你试试就懂了，两下 d 删除一行。&lt;/p&gt;
 &lt;p&gt;如果能复制尽量复制，打错了或者复制错了如果不会删除建议关掉重开。&lt;/p&gt;
 &lt;p&gt;按一下 &lt;code&gt;esc&lt;/code&gt; ，输入 &lt;code&gt;:q&lt;/code&gt;  直接退出， &lt;code&gt;:wq&lt;/code&gt;  保存退出。&lt;/p&gt;
 &lt;p&gt;剩下的直接参考 csdn 上面贴子。&lt;/p&gt;
-&lt;p&gt;:::&lt;/p&gt;
+&lt;/div&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NjExMjMwL2FydGljbGUvZGV0YWlscy8xMDg2NzU5MTU=&#34;&gt;wsl2-kali 基础配置&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;重点来了&lt;/strong&gt;，默认的 wsl2 的存储位置在 c 盘，如果分配空间过大或者使用过大的话，很容易导致爆盘，所以建议配置完基础后进行移盘操作，保证好不要出岔子！&lt;/p&gt;
 &lt;p&gt;（血泪教训，我就爆过盘！！！）&lt;/p&gt;
@@ -66,16 +66,16 @@
 &lt;li&gt;&lt;strong&gt;注销当前分发版&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wsl &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;unregister kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;重新导入并安装 WSL 在 d:\wsl-ubuntu20.04&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重新导入并安装 WSL 在 d:\kali-linux&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wsl &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;import kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;tar &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;version 2&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;删除 tar 文件 (不删也行)&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;del&lt;/span&gt; d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;tar&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;wsl-ubuntu 参考下面这篇文章&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdGw1NDI0NzU3MzYvcC8xNDg1NTg2My5odG1s&#34;&gt;WSL 修改默认安装目录到其他盘&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;:::note info&lt;/p&gt;
+&lt;div class=&#34;note info&#34;&gt;
 &lt;p&gt;个人建议早点移盘，不然会后悔的，配置变量多了很麻烦&lt;/p&gt;
-&lt;p&gt;:::&lt;/p&gt;
+&lt;/div&gt;
 &lt;p&gt;一切安装好后，可以查看目录是否有自己需要的软件，下面附一个软件功能表：&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbHprYWxpc2x3L3AvMTI4NDU3MTQuaHRtbA==&#34;&gt;kali 各工具使用介绍&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;kali docker 安装&lt;/strong&gt;：由于 kali 佬可能会用到 &lt;code&gt;docker&lt;/code&gt; ，下面加一个靠谱的安装教程，亲测好用：&lt;/p&gt;
