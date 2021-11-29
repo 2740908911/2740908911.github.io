@@ -10,16 +10,16 @@
         <category>随笔</category>
         <category>debug, wsl</category>
         <category>业余爱好</category>
-        <category>反序列化</category>
         <category>文件包含</category>
+        <category>反序列化</category>
         <category>http</category>
         <category>代码审计</category>
         <category>sql</category>
-        <category>命令执行</category>
         <category>RCE</category>
-        <category>php</category>
-        <category>SSRF</category>
+        <category>命令执行</category>
         <category>SSTI</category>
+        <category>SSRF</category>
+        <category>php</category>
         <category>upload</category>
         <category>python</category>
         <item>
@@ -59,29 +59,19 @@
 &lt;li&gt;&lt;strong&gt;查看 WSL 分发版本&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在 &lt;code&gt;Windows PowerShell&lt;/code&gt;  中输入如下命令:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl -l --all -v
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wsl &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;l &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;all &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;v&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;导出分发版为 tar 文件到 d 盘&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl --export kali-linux d:\kali-linux.tar
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wsl &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;export kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;tar&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;注销当前分发版&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl --unregister kali-linux
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wsl &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;unregister kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;重新导入并安装 WSL 在 d:\wsl-ubuntu20.04&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;wsl --import kali-linux d:\kali-linux d:\kali-linux.tar --version 2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wsl &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;import kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;tar &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;version 2&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;删除 tar 文件 (不删也行)&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;del d:\kali-linux.tar
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;wsl-ubuntu 参考下面这篇文章&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;figcaption data-lang=&#34;PowerShell&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;del&lt;/span&gt; d:\kali&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;tar&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;wsl-ubuntu 参考下面这篇文章&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdGw1NDI0NzU3MzYvcC8xNDg1NTg2My5odG1s&#34;&gt;WSL 修改默认安装目录到其他盘&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;:::note info&lt;/p&gt;
 &lt;p&gt;个人建议早点移盘，不然会后悔的，配置变量多了很麻烦&lt;/p&gt;
