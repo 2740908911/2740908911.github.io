@@ -6,19 +6,19 @@
     <updated>2021-08-13T10:49:41.433Z</updated>
     <category term="随笔" />
     <category term="debug" />
-    <category term="php" />
     <category term="业余爱好" />
-    <category term="命令执行" />
-    <category term="文件包含" />
-    <category term="代码审计" />
-    <category term="http" />
-    <category term="RCE" />
-    <category term="sql" />
     <category term="反序列化" />
+    <category term="文件包含" />
+    <category term="http" />
+    <category term="代码审计" />
+    <category term="sql" />
+    <category term="命令执行" />
+    <category term="RCE" />
     <category term="SSRF" />
-    <category term="SSTI" />
     <category term="upload" />
     <category term="python" />
+    <category term="SSTI" />
+    <category term="php" />
     <entry>
         <id>http://example.com/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/</id>
         <title>ctfweb-无参RCE</title>
