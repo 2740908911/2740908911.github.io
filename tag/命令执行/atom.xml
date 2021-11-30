@@ -7,17 +7,17 @@
     <category term="随笔" />
     <category term="debug" />
     <category term="业余爱好" />
-    <category term="反序列化" />
-    <category term="文件包含" />
     <category term="http" />
     <category term="代码审计" />
-    <category term="sql" />
-    <category term="命令执行" />
+    <category term="文件包含" />
+    <category term="反序列化" />
     <category term="RCE" />
+    <category term="命令执行" />
+    <category term="sql" />
     <category term="SSRF" />
-    <category term="upload" />
-    <category term="python" />
     <category term="SSTI" />
+    <category term="python" />
+    <category term="upload" />
     <category term="php" />
     <entry>
         <id>http://example.com/2021/07/27/ctf/web/rce/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</id>

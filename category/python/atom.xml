@@ -7,17 +7,17 @@
     <category term="随笔" />
     <category term="debug" />
     <category term="业余爱好" />
-    <category term="反序列化" />
-    <category term="文件包含" />
     <category term="http" />
     <category term="代码审计" />
-    <category term="sql" />
-    <category term="命令执行" />
+    <category term="文件包含" />
+    <category term="反序列化" />
     <category term="RCE" />
+    <category term="命令执行" />
+    <category term="sql" />
     <category term="SSRF" />
-    <category term="upload" />
-    <category term="python" />
     <category term="SSTI" />
+    <category term="python" />
+    <category term="upload" />
     <category term="php" />
     <entry>
         <id>http://example.com/2021/12/01/program/py/pysolve/chre1.0/</id>
@@ -51,11 +51,10 @@
 &lt;li&gt;大大降低了工作的出错率，提高了自己的容错率&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;address&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#address&#34;&gt;#&lt;/a&gt; Address&lt;/h1&gt;
-&lt;p&gt;提供两个地址&lt;/p&gt;
-&lt;p&gt;github: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tLzI3NDA5MDg5MTEvMjc0MDkwODkxMS5naXRodWIuaW8vdHJlZS9tYXN0ZXIvcHJvZ3JhbQ==&#34;&gt;Fanqie&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;百度网盘：&lt;/p&gt;
 &lt;p&gt;链接：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMXhNY2stWlNvZE94cGNId080UkRFUnc=&#34;&gt;https://pan.baidu.com/s/1xMck-ZSodOxpcHwO4RDERw&lt;/span&gt;&lt;br&gt;
  提取码：rngi&lt;/p&gt;
+&lt;p&gt;或者直接来问我要也行～～&lt;/p&gt;
 &lt;h1 id=&#34;main-code-displayanalysis&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#main-code-displayanalysis&#34;&gt;#&lt;/a&gt; Main code display&amp;amp;analysis&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;主界面实现 (界面示例)&lt;/strong&gt;&lt;/li&gt;
@@ -77,11 +76,11 @@
 &lt;p&gt;&lt;strong&gt;3. 格式化命名界面运行图&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/T9AUljhp2Mztqa3.png&#34; alt=&#34;3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4. 格式化命名自定义填法示例：均不是必填项&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMTIvMDEvelF0cWZIZDk1NDhlUmhLLnBuZw==&#34;&gt;https://i.loli.net/2021/12/01/zQtqfHd9548eRhK.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.png&amp;quot; style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/zQtqfHd9548eRhK.png&#34; alt=&#34;4.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;5. 备份确认图&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMTIvMDEvekRCckk2UTdiRmhjc1VOLnBuZw==&#34;&gt;https://i.loli.net/2021/12/01/zDBrI6Q7bFhcsUN.png&lt;/span&gt;&amp;quot; alt=&amp;quot;5.png&amp;quot; style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/zDBrI6Q7bFhcsUN.png&#34; alt=&#34;3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;6. 修改确认图&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMTIvMDEvdFZuT2lDWXBicU5vRGxQLnBuZw==&#34;&gt;https://i.loli.net/2021/12/01/tVnOiCYpbqNoDlP.png&lt;/span&gt;&amp;quot; alt=&amp;quot;6.png&amp;quot; style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/tVnOiCYpbqNoDlP.png&#34; alt=&#34;6.png&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;update-log&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#update-log&#34;&gt;#&lt;/a&gt; Update log&lt;/h1&gt;
 &lt;div class=&#34;note default&#34;&gt;
 &lt;p&gt;日志记录了该工具各个版本的更新和坎坷历程，由于忘了日期，我就大概一记，您就看个乐呵吧 hhh&lt;/p&gt;
