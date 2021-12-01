@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>http://imfanqie.top</id>
     <title>imFanqie • Posts by &#34;upload及蚁剑运用&#34; category</title>
-    <link href="http://example.com" />
+    <link href="http://imfanqie.top" />
     <updated>2021-08-02T13:26:51.812Z</updated>
     <category term="随笔" />
     <category term="debug" />
     <category term="业余爱好" />
-    <category term="http" />
-    <category term="代码审计" />
     <category term="文件包含" />
     <category term="反序列化" />
-    <category term="RCE" />
     <category term="命令执行" />
+    <category term="RCE" />
+    <category term="http" />
     <category term="sql" />
+    <category term="代码审计" />
+    <category term="upload" />
     <category term="SSRF" />
     <category term="SSTI" />
     <category term="python" />
-    <category term="upload" />
     <category term="php" />
     <entry>
-        <id>http://example.com/2021/08/02/ctf/web/upload/(ctfwp)upload%E7%B1%BB%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%9A%81%E5%89%91%E7%9A%84%E8%BF%90%E7%94%A8/</id>
+        <id>http://imfanqie.top/2021/08/02/ctf/web/upload/(ctfwp)upload%E7%B1%BB%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%9A%81%E5%89%91%E7%9A%84%E8%BF%90%E7%94%A8/</id>
         <title>(ctfwp)upload类题目及蚁剑的运用</title>
-        <link rel="alternate" href="http://example.com/2021/08/02/ctf/web/upload/(ctfwp)upload%E7%B1%BB%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%9A%81%E5%89%91%E7%9A%84%E8%BF%90%E7%94%A8/"/>
+        <link rel="alternate" href="http://imfanqie.top/2021/08/02/ctf/web/upload/(ctfwp)upload%E7%B1%BB%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%9A%81%E5%89%91%E7%9A%84%E8%BF%90%E7%94%A8/"/>
         <content type="html">&lt;p&gt;无聊刷题的时候遇到了点麻烦，经过学习后，认识了下中国蚁剑这款 np 的工具。&lt;/p&gt;
 &lt;p&gt;结果没想到又遇到了 upload 类的题目，正好又用到了。。&lt;/p&gt;
 &lt;p&gt;晕了，那就写一下，以后方便复习吧。&lt;/p&gt;

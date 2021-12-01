@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>imFanqie • Posts by &#34;python&#34; category</title>
-        <link>http://example.com</link>
+        <link>http://imfanqie.top</link>
         <description>学习博客</description>
         <language>zh-CN</language>
         <pubDate>Wed, 01 Dec 2021 01:15:29 +0800</pubDate>
@@ -10,22 +10,22 @@
         <category>随笔</category>
         <category>debug</category>
         <category>业余爱好</category>
-        <category>http</category>
-        <category>代码审计</category>
         <category>文件包含</category>
         <category>反序列化</category>
-        <category>RCE</category>
         <category>命令执行</category>
+        <category>RCE</category>
+        <category>http</category>
         <category>sql</category>
+        <category>代码审计</category>
+        <category>upload</category>
         <category>SSRF</category>
         <category>SSTI</category>
         <category>python</category>
-        <category>upload</category>
         <category>php</category>
         <item>
-            <guid isPermalink="true">http://example.com/2021/12/01/program/py/pysolve/chre1.0/</guid>
+            <guid isPermalink="true">http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</guid>
             <title>chre1.0</title>
-            <link>http://example.com/2021/12/01/program/py/pysolve/chre1.0/</link>
+            <link>http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</link>
             <category>python</category>
             <pubDate>Wed, 01 Dec 2021 01:15:29 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;项目：check and rename 1.0&lt;/p&gt;
@@ -86,6 +86,16 @@
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/zDBrI6Q7bFhcsUN.png&#34; alt=&#34;3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;6. 修改确认图&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/tVnOiCYpbqNoDlP.png&#34; alt=&#34;6.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;excel-config&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#excel-config&#34;&gt;#&lt;/a&gt; Excel config&lt;/h1&gt;
+&lt;p&gt;Excel 配置说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Excel 第一行为预留列名，所以第一行不要放信息（空着就行）&lt;/li&gt;
+&lt;li&gt;第一列 (A 列) 放名字简称&lt;/li&gt;
+&lt;li&gt;第二列 (B 列) 放学号，注意学号前面加上 &lt;code&gt;&#39;&lt;/code&gt; ，例如： &lt;code&gt;&#39;20201100110&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;第三列 (C 列) 放名字全称，用 &lt;code&gt;·&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Excel 图例：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/12/01/SAhdwJWoYnMz8HP.png&#34; alt=&#34;9.png&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;update-log&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#update-log&#34;&gt;#&lt;/a&gt; Update log&lt;/h1&gt;
 &lt;div class=&#34;note default&#34;&gt;
 &lt;p&gt;日志记录了该工具各个版本的更新和坎坷历程，由于忘了日期，我就大概一记，您就看个乐呵吧 hhh&lt;/p&gt;
@@ -153,7 +163,6 @@
 &lt;li&gt;对所有功能进行了检测&lt;/li&gt;
 &lt;li&gt;优化了部分代码&lt;/li&gt;
 &lt;li&gt;确定了新的改善方向&lt;/li&gt;
-&lt;li&gt;更新至 github 仓库&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;shortbug&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#shortbug&#34;&gt;#&lt;/a&gt; Short&amp;amp;Bug&lt;/h1&gt;
 &lt;p&gt;经过测试，软件还有 bug 没有修复，不过大部分情况都可正常使用。&lt;/p&gt;
@@ -183,9 +192,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+            <guid isPermalink="true">http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
             <title>python学习中部分易忘知识点</title>
-            <link>http://example.com/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+            <link>http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
             <category>python</category>
             <pubDate>Tue, 29 Jun 2021 18:41:39 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;本文是我在 py 学习中总结梳理了一些常用的易忘的知识点，为方便回顾和复习，遂加以记录。&lt;/p&gt;

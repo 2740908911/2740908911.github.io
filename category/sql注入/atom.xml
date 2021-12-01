@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>http://imfanqie.top</id>
     <title>imFanqie • Posts by &#34;sql注入&#34; category</title>
-    <link href="http://example.com" />
+    <link href="http://imfanqie.top" />
     <updated>2021-08-17T13:51:59.954Z</updated>
     <category term="随笔" />
     <category term="debug" />
     <category term="业余爱好" />
-    <category term="http" />
-    <category term="代码审计" />
     <category term="文件包含" />
     <category term="反序列化" />
-    <category term="RCE" />
     <category term="命令执行" />
+    <category term="RCE" />
+    <category term="http" />
     <category term="sql" />
+    <category term="代码审计" />
+    <category term="upload" />
     <category term="SSRF" />
     <category term="SSTI" />
     <category term="python" />
-    <category term="upload" />
     <category term="php" />
     <entry>
-        <id>http://example.com/2021/08/17/ctf/web/sql/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/</id>
+        <id>http://imfanqie.top/2021/08/17/ctf/web/sql/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/</id>
         <title>ctfweb-各种盲注脚本</title>
-        <link rel="alternate" href="http://example.com/2021/08/17/ctf/web/sql/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/"/>
+        <link rel="alternate" href="http://imfanqie.top/2021/08/17/ctf/web/sql/ctfweb-%E5%90%84%E7%A7%8D%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/"/>
         <content type="html">&lt;p&gt;以下的几个脚本都是自己写的（有参考别的大佬），代码可能不是最精简，但是还算顺眼&lt;/p&gt;
 &lt;p&gt;核心算法都是&lt;strong&gt;二分法&lt;/strong&gt;，不推荐时间盲注（速度硬伤）&lt;/p&gt;
 &lt;p&gt;脚本 payload 参考题目：[第一章 web 入门] SQL 注入 - 2  / 极客大挑战 finilysql（buuctf）&lt;/p&gt;
@@ -50,9 +50,9 @@
         <updated>2021-08-17T13:51:59.954Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2021/08/01/ctf/web/sql/(ctfwp)sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/</id>
+        <id>http://imfanqie.top/2021/08/01/ctf/web/sql/(ctfwp)sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/</id>
         <title>(ctfwp)sql堆叠注入及预编译的学习</title>
-        <link rel="alternate" href="http://example.com/2021/08/01/ctf/web/sql/(ctfwp)sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
+        <link rel="alternate" href="http://imfanqie.top/2021/08/01/ctf/web/sql/(ctfwp)sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E5%8F%8A%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
         <content type="html">&lt;p&gt;很久没有碰 sql 注入了，最近几天复习了一下，顺便掌握了点新的知识。&lt;/p&gt;
 &lt;p&gt;好多题的 wp 我都懒得写了，挑一两道写吧&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -111,9 +111,9 @@
         <updated>2021-08-01T07:01:31.153Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2021/06/21/ctf/web/sql/ctfweb-sql%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5/</id>
+        <id>http://imfanqie.top/2021/06/21/ctf/web/sql/ctfweb-sql%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5/</id>
         <title>ctfweb-sql无列名注入</title>
-        <link rel="alternate" href="http://example.com/2021/06/21/ctf/web/sql/ctfweb-sql%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5/"/>
+        <link rel="alternate" href="http://imfanqie.top/2021/06/21/ctf/web/sql/ctfweb-sql%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5/"/>
         <content type="html">&lt;p&gt;谈谈 sql 注入无列名的情况&lt;/p&gt;
 &lt;p&gt;以及该如何解题&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -194,9 +194,9 @@ select 1,2,3 from users where linestring(id);
         <updated>2021-06-20T17:04:45.964Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2021/06/20/ctf/web/sql/(ctfwp)sql%E6%B3%A8%E5%85%A5%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/</id>
+        <id>http://imfanqie.top/2021/06/20/ctf/web/sql/(ctfwp)sql%E6%B3%A8%E5%85%A5%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/</id>
         <title>(ctfwp)sql注入极客大挑战</title>
-        <link rel="alternate" href="http://example.com/2021/06/20/ctf/web/sql/(ctfwp)sql%E6%B3%A8%E5%85%A5%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/"/>
+        <link rel="alternate" href="http://imfanqie.top/2021/06/20/ctf/web/sql/(ctfwp)sql%E6%B3%A8%E5%85%A5%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/"/>
         <content type="html">&lt;p&gt;buuctf 极客大挑战系列    &lt;em&gt;&lt;strong&gt;sql 注入&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h1 id=&#34;no1-easysql&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#no1-easysql&#34;&gt;#&lt;/a&gt; NO.1 EasySQL&lt;/h1&gt;
