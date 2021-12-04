@@ -6,15 +6,15 @@
     <updated>2021-07-27T09:46:52.065Z</updated>
     <category term="随笔" />
     <category term="debug" />
-    <category term="文件包含" />
-    <category term="http" />
     <category term="业余爱好" />
+    <category term="文件包含" />
     <category term="反序列化" />
-    <category term="命令执行" />
+    <category term="http" />
     <category term="代码审计" />
-    <category term="SSRF" />
-    <category term="RCE" />
     <category term="sql" />
+    <category term="命令执行" />
+    <category term="RCE" />
+    <category term="SSRF" />
     <category term="SSTI" />
     <category term="upload" />
     <category term="php" />
@@ -29,22 +29,22 @@
 &lt;h1 id=&#34;1极客大挑战-2019secret-file&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1极客大挑战-2019secret-file&#34;&gt;#&lt;/a&gt; 1.[极客大挑战 2019] Secret File&lt;/h1&gt;
 &lt;p&gt;进去先探索一下，没啥有用的，看源码，根据提示走。&lt;/p&gt;
 &lt;p&gt;发现第三步直接被跳过了，直接 end 了：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMjcvcEJJbzN3bkRaOWE3YktWLnBuZw==&#34;&gt;https://i.loli.net/2021/07/27/pBIo3wnDZ9a7bKV.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/pBIo3wnDZ9a7bKV.png&#34; alt&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
 &lt;p&gt;用 F12 看了半天没啥名堂，只能抓包确实能抓到东西：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMjcvdzhJMldudUtEYlV6UkNhLnBuZw==&#34;&gt;https://i.loli.net/2021/07/27/w8I2WnuKDbUzRCa.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.2.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/w8I2WnuKDbUzRCa.png&#34; alt&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
 &lt;p&gt;于是顺藤摸瓜打开网页，提示 flag 在 flag.php 里，但是打开后显示不出来：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMjcvZHQzVnJIbkFqSzd5dXB6LnBuZw==&#34;&gt;https://i.loli.net/2021/07/27/dt3VrHnAjK7yupz.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/dt3VrHnAjK7yupz.png&#34; alt&gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
 &lt;p&gt;前面还有个过滤，但是没有过滤 filter，考虑伪协议：&lt;/p&gt;
 &lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt;file&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token argument-name&#34;&gt;php&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;//filter/convert.base64-encode/resource=flag.php&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;得到 base64，解密得到 flag。&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMjcvNjFwTjlmenFkcmlnSjJ0LnBuZw==&#34;&gt;https://i.loli.net/2021/07/27/61pN9fzqdrigJ2t.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/61pN9fzqdrigJ2t.png&#34; alt&gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;2actf2020-新生赛include&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2actf2020-新生赛include&#34;&gt;#&lt;/a&gt; 2.[ACTF2020 新生赛] Include&lt;/h1&gt;
 &lt;p&gt;进去只有一个 tip，点开不难发现，是一个文件读取的方式读处的数据：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMjcvV1FoN2piZDY4bHEyeHRvLnBuZw==&#34;&gt;https://i.loli.net/2021/07/27/WQh7jbd68lq2xto.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/WQh7jbd68lq2xto.png&#34; alt&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
 &lt;p&gt;结合本题题目，考虑伪协议，文件包含。&lt;/p&gt;
 &lt;p&gt;我自己做的时候还抓了一下包，确实没有什么其他方法。&lt;/p&gt;
 &lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt;file&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token argument-name&#34;&gt;php&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;//filter/read=convert.base64-encode/resource=flag.php&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;得到 base64，解密得到 flag。&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDcvMjcvVFNkekk2Q0QxWXJHSlVtLnBuZw==&#34;&gt;https://i.loli.net/2021/07/27/TSdzI6CD1YrGJUm.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/07/27/TSdzI6CD1YrGJUm.png&#34; alt&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;有新题我会继续补两道&lt;/p&gt;
 &lt;p&gt;END&lt;/p&gt;

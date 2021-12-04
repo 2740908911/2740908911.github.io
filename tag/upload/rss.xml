@@ -9,15 +9,15 @@
         <lastBuildDate>Mon, 02 Aug 2021 21:26:51 +0800</lastBuildDate>
         <category>随笔</category>
         <category>debug</category>
-        <category>文件包含</category>
-        <category>http</category>
         <category>业余爱好</category>
+        <category>文件包含</category>
         <category>反序列化</category>
-        <category>命令执行</category>
+        <category>http</category>
         <category>代码审计</category>
-        <category>SSRF</category>
-        <category>RCE</category>
         <category>sql</category>
+        <category>命令执行</category>
+        <category>RCE</category>
+        <category>SSRF</category>
         <category>SSTI</category>
         <category>upload</category>
         <category>php</category>
@@ -36,16 +36,16 @@
 &lt;p&gt;先从最简单的写起：&lt;/p&gt;
 &lt;h1 id=&#34;1极客大挑战-2019knife&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1极客大挑战-2019knife&#34;&gt;#&lt;/a&gt; 1.[极客大挑战 2019] Knife&lt;/h1&gt;
 &lt;p&gt;进去后就一个界面，再无数尝试后学习了下别人的 wp：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvUFg4cjQ1S0hpbkFnbWtjLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/PX8r45KHinAgmkc.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/PX8r45KHinAgmkc.png&#34; alt&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
 &lt;p&gt;现在看来，确实提示的非常明显&lt;/p&gt;
 &lt;p&gt;1. 题目为 knife，可以想到 &lt;strong&gt;中国菜刀&lt;/strong&gt; 这个软件，他是 &lt;strong&gt;中国蚁剑&lt;/strong&gt; 的前辈了。&lt;/p&gt;
 &lt;p&gt;2. 中间有很明显得 一句话木马 的代码提示，可惜当时我还不知道。&lt;/p&gt;
 &lt;p&gt;折腾半天后用 蚁剑 成功连接上网站，查看目录，flag 在根目录：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvUmhXMkxzR3BBOHdvbktqLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/RhW2LsGpA8wonKj.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/RhW2LsGpA8wonKj.png&#34; alt&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;2actf2020-新生赛upload&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2actf2020-新生赛upload&#34;&gt;#&lt;/a&gt; 2.[ACTF2020 新生赛] Upload&lt;/h1&gt;
 &lt;p&gt;这道题稍微多了一点点难度：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvamhRbDRnTVB4WE9xRVI4LnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/jhQl4gMPxXOqER8.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/jhQl4gMPxXOqER8.png&#34; alt&gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
 &lt;p&gt;1. 加了上传文件这个功能，查资料后我了解到了这类题的解题方法。&lt;/p&gt;
 &lt;p&gt;2. 只能上传图片，无法直接解析代码，不能直接上传 php 来执行，需要绕过。&lt;/p&gt;
 &lt;p&gt;3. 要学习一下 一句话木马。&lt;/p&gt;
@@ -68,32 +68,32 @@
 &lt;p&gt;继续本题 &amp;gt;&amp;gt;&lt;/p&gt;
 &lt;p&gt;思路：先假装传图片，然后改格式为 php 或者其他的几个&lt;/p&gt;
 &lt;p&gt;在本地写一个 txt，用 php 的一句话，后缀改为 jpg 传入，同时用 burp 抓包：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvZlpUOHAzeW5YSXhyUGprLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/fZT8p3ynXIxrPjk.png&lt;/span&gt;&amp;quot; alt=&amp;quot;4.png&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/fZT8p3ynXIxrPjk.png&#34; alt&gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
 &lt;p&gt;然后改后缀，文件格式保持不变，经过尝试，php 会报错，用 phtml 可以成功上传：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvdGZJVjZUTlh6RHdFQWRQLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/tfIV6TNXzDwEAdP.png&lt;/span&gt;&amp;quot; alt=&amp;quot;5.png&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/tfIV6TNXzDwEAdP.png&#34; alt&gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
 &lt;p&gt;根据 unload 的位置，链接蚁剑，登录，在根目录获取 flag：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvaHhmVzQ5dXplMTdBbEt3LnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/hxfW49uze17AlKw.png&lt;/span&gt;&amp;quot; alt=&amp;quot;6.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/hxfW49uze17AlKw.png&#34; alt&gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;3极客大挑战-2019upload&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3极客大挑战-2019upload&#34;&gt;#&lt;/a&gt; 3.[极客大挑战 2019] Upload&lt;/h1&gt;
 &lt;p&gt;本题也是，只能上传图片格式，思路同上题一样，传一个 一句话木马 。&lt;/p&gt;
 &lt;p&gt;本地写好后，抓包，改后缀 phtml（php 被 ban 了），发现 &amp;lt;? 也被 ban 了：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvRWVBZ25TSmNSbWR6SXRGLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/EeAgnSJcRmdzItF.png&lt;/span&gt;&amp;quot; alt=&amp;quot;7.png&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/EeAgnSJcRmdzItF.png&#34; alt&gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
 &lt;p&gt;试一下上面的第一个代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-php+HTML&#34;&gt;&amp;lt;script language=&amp;quot;php&amp;quot;&amp;gt;eval($_POST[&#39;flag&#39;]);&amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvY2I3cnVHZXFvNFVwMVRCLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/cb7ruGeqo4Up1TB.png&lt;/span&gt;&amp;quot; alt=&amp;quot;8.png&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/cb7ruGeqo4Up1TB.png&#34; alt&gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
 &lt;p&gt;发现还是能检测不是图片，在语句前加一个  &lt;code&gt;GIF86a&lt;/code&gt;  伪装一下：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvNHlJdVFQWmhZSDFWS3p3LnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/4yIuQPZhYH1VKzw.png&lt;/span&gt;&amp;quot; alt=&amp;quot;9.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/4yIuQPZhYH1VKzw.png&#34; alt&gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
 &lt;p&gt;可以发现成功上传，因为没有具体回显地址，又根据网址后面的后缀，可以猜测应该是上传到 upload 中：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/jeQoCLwqA3vm5sn.png&#34; alt=&#34;10.png&#34;&gt;&amp;lt;!--p10--&amp;gt;&lt;/p&gt;
 &lt;p&gt;果然，直接打开蚁剑：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvWkNWa3ppdzFwbVdkU0h2LnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/ZCVkziw1pmWdSHv.png&lt;/span&gt;&amp;quot; alt=&amp;quot;11.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p11--&amp;gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvWWpmVWlKdkk2Q2xtRmVuLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/YjfUiJvI6ClmFen.png&lt;/span&gt;&amp;quot; alt=&amp;quot;12.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p12--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/ZCVkziw1pmWdSHv.png&#34; alt&gt;&amp;lt;!--p11--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/YjfUiJvI6ClmFen.png&#34; alt&gt;&amp;lt;!--p12--&amp;gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;4mrctf2020你传你呢&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4mrctf2020你传你呢&#34;&gt;#&lt;/a&gt; 4.[MRCTF2020] 你传你🐎呢&lt;/h1&gt;
 &lt;p&gt;这题前面的流程，思路和 2 一样，先伪造上传，然后改后缀&lt;/p&gt;
 &lt;p&gt;但是再多次尝试后发现改后缀依旧被 ban，采用 3 的方法还是被 ban, 只能上传图片：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvSjQ2SUNrSHRVeUJYcVB3LnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/J46ICkHtUyBXqPw.png&lt;/span&gt;&amp;quot; alt=&amp;quot;13.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p13--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/J46ICkHtUyBXqPw.png&#34; alt&gt;&amp;lt;!--p13--&amp;gt;&lt;/p&gt;
 &lt;p&gt;再查阅资料后，发现是需要更改 htaccess 配置，将其他类型文件转为 php 文件&lt;/p&gt;
 &lt;h2 id=&#34;htaccess&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#htaccess&#34;&gt;#&lt;/a&gt; &lt;strong&gt;htaccess&lt;/strong&gt;&lt;/h2&gt;
 &lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;.htaccess可以帮我们实现包括：文件夹密码保护、用户自动重定向、自定义错误页面、改变你的文件扩展名、封禁特定IP地址的用户、只允许特定IP地址的用户、禁止目录列表，以及使用其他文件作为index文件等一些功能
@@ -104,8 +104,8 @@
 &lt;pre&gt;&lt;code&gt;AddType application/x-httpd-php .jpg
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;随便选一个上传&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIveVUzY2diNnpTbmRIVEJSLnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/yU3cgb6zSndHTBR.png&lt;/span&gt;&amp;quot; alt=&amp;quot;14.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&amp;lt;!--p14--&amp;gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDgvMDIvZnpUOUFsVk1STFp0UGp2LnBuZw==&#34;&gt;https://i.loli.net/2021/08/02/fzT9AlVMRLZtPjv.png&lt;/span&gt;&amp;quot; alt=&amp;quot;15.png&amp;quot; style=&amp;quot;zoom:33%;&amp;quot; /&amp;gt;&amp;lt;!--p15--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/yU3cgb6zSndHTBR.png&#34; alt&gt;&amp;lt;!--p14--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/08/02/fzT9AlVMRLZtPjv.png&#34; alt&gt;&amp;lt;!--p15--&amp;gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;END&lt;/p&gt;
  ]]></description>

