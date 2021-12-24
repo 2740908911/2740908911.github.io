@@ -4,21 +4,21 @@
     <title>imFanqie • Posts by &#34;debug心得贴&#34; category</title>
     <link href="http://imfanqie.top" />
     <updated>2021-11-28T14:55:56.006Z</updated>
-    <category term="随笔" />
     <category term="debug" />
-    <category term="文件包含" />
+    <category term="随笔" />
+    <category term="python" />
+    <category term="业余爱好" />
+    <category term="php" />
     <category term="http" />
     <category term="代码审计" />
     <category term="反序列化" />
-    <category term="命令执行" />
     <category term="RCE" />
+    <category term="文件包含" />
+    <category term="命令执行" />
     <category term="sql" />
-    <category term="业余爱好" />
     <category term="SSRF" />
     <category term="upload" />
     <category term="SSTI" />
-    <category term="php" />
-    <category term="python" />
     <entry>
         <id>http://imfanqie.top/2021/11/28/debug/wsl2%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E5%8F%8Adebug%E5%BF%83%E5%BE%97/</id>
         <title>wsl2安装使用及debug心得</title>

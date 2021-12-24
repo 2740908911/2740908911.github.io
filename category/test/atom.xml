@@ -4,21 +4,21 @@
     <title>imFanqie • Posts by &#34;test&#34; category</title>
     <link href="http://imfanqie.top" />
     <updated>2021-06-16T08:24:31.783Z</updated>
-    <category term="随笔" />
     <category term="debug" />
-    <category term="文件包含" />
+    <category term="随笔" />
+    <category term="python" />
+    <category term="业余爱好" />
+    <category term="php" />
     <category term="http" />
     <category term="代码审计" />
     <category term="反序列化" />
-    <category term="命令执行" />
     <category term="RCE" />
+    <category term="文件包含" />
+    <category term="命令执行" />
     <category term="sql" />
-    <category term="业余爱好" />
     <category term="SSRF" />
     <category term="upload" />
     <category term="SSTI" />
-    <category term="php" />
-    <category term="python" />
     <entry>
         <id>http://imfanqie.top/2021/06/16/(Test)%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bmarkdown%E8%AF%AD%E6%B3%95/</id>
         <title>（Test）markdown语法复习</title>
