@@ -4,21 +4,21 @@
     <title>imFanqie • Posts by &#34;比赛&amp;训练&#34; category</title>
     <link href="http://imfanqie.top" />
     <updated>2021-08-28T10:37:25.122Z</updated>
-    <category term="debug" />
     <category term="随笔" />
+    <category term="debug" />
     <category term="python" />
-    <category term="业余爱好" />
     <category term="php" />
-    <category term="http" />
+    <category term="业余爱好" />
     <category term="代码审计" />
     <category term="反序列化" />
-    <category term="RCE" />
+    <category term="http" />
     <category term="文件包含" />
     <category term="命令执行" />
-    <category term="sql" />
     <category term="SSRF" />
-    <category term="upload" />
+    <category term="sql" />
+    <category term="RCE" />
     <category term="SSTI" />
+    <category term="upload" />
     <entry>
         <id>http://imfanqie.top/2021/08/28/ctf/match/xjusec%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B/</id>
         <title>xjusec考核赛解题过程</title>

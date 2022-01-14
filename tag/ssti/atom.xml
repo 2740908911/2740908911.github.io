@@ -4,21 +4,21 @@
     <title>imFanqie • Posts by &#34;ssti&#34; tag</title>
     <link href="http://imfanqie.top" />
     <updated>2021-11-23T11:57:15.038Z</updated>
-    <category term="debug" />
     <category term="随笔" />
+    <category term="debug" />
     <category term="python" />
-    <category term="业余爱好" />
     <category term="php" />
-    <category term="http" />
+    <category term="业余爱好" />
     <category term="代码审计" />
     <category term="反序列化" />
-    <category term="RCE" />
+    <category term="http" />
     <category term="文件包含" />
     <category term="命令执行" />
-    <category term="sql" />
     <category term="SSRF" />
-    <category term="upload" />
+    <category term="sql" />
+    <category term="RCE" />
     <category term="SSTI" />
+    <category term="upload" />
     <entry>
         <id>http://imfanqie.top/2021/11/23/ctf/web/ssti/ctfweb-SSTI%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/</id>
         <title>ctfweb-SSTI服务器模板注入</title>
