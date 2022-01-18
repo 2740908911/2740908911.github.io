@@ -7,17 +7,17 @@
     <category term="随笔" />
     <category term="debug" />
     <category term="python" />
-    <category term="php" />
     <category term="业余爱好" />
-    <category term="代码审计" />
-    <category term="反序列化" />
-    <category term="http" />
     <category term="文件包含" />
-    <category term="命令执行" />
-    <category term="SSRF" />
+    <category term="php" />
+    <category term="http" />
+    <category term="代码审计" />
     <category term="sql" />
-    <category term="RCE" />
+    <category term="SSRF" />
+    <category term="反序列化" />
     <category term="SSTI" />
+    <category term="RCE" />
+    <category term="命令执行" />
     <category term="upload" />
     <entry>
         <id>http://imfanqie.top/2021/08/04/ctf/web/ssrf/(ctfwp)ssrf%E5%AD%A6%E4%B9%A0/</id>
