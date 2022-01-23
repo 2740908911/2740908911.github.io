@@ -5,25 +5,25 @@
     <link href="http://imfanqie.top" />
     <updated>2022-01-23T11:06:17.894Z</updated>
     <category term="随笔" />
-    <category term="ICT" />
     <category term="debug" />
     <category term="业余爱好" />
     <category term="python" />
     <category term="http" />
-    <category term="反序列化" />
+    <category term="ICT" />
     <category term="文件包含" />
-    <category term="命令执行" />
-    <category term="代码审计" />
     <category term="RCE" />
+    <category term="代码审计" />
+    <category term="命令执行" />
+    <category term="反序列化" />
     <category term="sql" />
-    <category term="php" />
     <category term="SSRF" />
-    <category term="upload" />
+    <category term="php" />
     <category term="SSTI" />
+    <category term="upload" />
     <entry>
-        <id>http://imfanqie.top/2022/01/23/ICT/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A-%E9%AB%98%E8%90%8C-%E4%BF%A1%E5%AE%89203/</id>
+        <id>http://imfanqie.top/2022/01/23/ICT/Datacom%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A-%E9%AB%98%E8%90%8C-%E4%BF%A1%E5%AE%89203/</id>
         <title>ICT笔记-数据通信网络基础</title>
-        <link rel="alternate" href="http://imfanqie.top/2022/01/23/ICT/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A-%E9%AB%98%E8%90%8C-%E4%BF%A1%E5%AE%89203/"/>
+        <link rel="alternate" href="http://imfanqie.top/2022/01/23/ICT/Datacom%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A-%E9%AB%98%E8%90%8C-%E4%BF%A1%E5%AE%89203/"/>
         <content type="html">&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;基本概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本概念&#34;&gt;#&lt;/a&gt; 基本概念&lt;/h2&gt;
 &lt;p&gt;常见图标：&lt;/p&gt;

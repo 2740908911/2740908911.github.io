@@ -8,21 +8,21 @@
         <pubDate>Mon, 16 Aug 2021 20:35:41 +0800</pubDate>
         <lastBuildDate>Mon, 16 Aug 2021 20:35:41 +0800</lastBuildDate>
         <category>随笔</category>
-        <category>ICT</category>
         <category>debug</category>
         <category>业余爱好</category>
         <category>python</category>
         <category>http</category>
-        <category>反序列化</category>
+        <category>ICT</category>
         <category>文件包含</category>
-        <category>命令执行</category>
-        <category>代码审计</category>
         <category>RCE</category>
+        <category>代码审计</category>
+        <category>命令执行</category>
+        <category>反序列化</category>
         <category>sql</category>
-        <category>php</category>
         <category>SSRF</category>
-        <category>upload</category>
+        <category>php</category>
         <category>SSTI</category>
+        <category>upload</category>
         <item>
             <guid isPermalink="true">http://imfanqie.top/2021/08/16/ctf/web/http/(ctfwp)py%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</guid>
             <title>(ctfwp)py代码审计</title>
