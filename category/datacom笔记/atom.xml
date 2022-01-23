@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://imfanqie.top</id>
+    <title>imFanqie • Posts by &#34;datacom笔记&#34; category</title>
+    <link href="http://imfanqie.top" />
+    <updated>2022-01-23T11:06:17.894Z</updated>
+    <category term="随笔" />
+    <category term="ICT" />
+    <category term="debug" />
+    <category term="业余爱好" />
+    <category term="python" />
+    <category term="http" />
+    <category term="反序列化" />
+    <category term="文件包含" />
+    <category term="命令执行" />
+    <category term="代码审计" />
+    <category term="RCE" />
+    <category term="sql" />
+    <category term="php" />
+    <category term="SSRF" />
+    <category term="upload" />
+    <category term="SSTI" />
+    <entry>
+        <id>http://imfanqie.top/2022/01/23/ICT/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A-%E9%AB%98%E8%90%8C-%E4%BF%A1%E5%AE%89203/</id>
+        <title>ICT笔记-数据通信网络基础</title>
+        <link rel="alternate" href="http://imfanqie.top/2022/01/23/ICT/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6%E6%8A%A5%E5%91%8A-%E9%AB%98%E8%90%8C-%E4%BF%A1%E5%AE%89203/"/>
+        <content type="html">&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;基本概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基本概念&#34;&gt;#&lt;/a&gt; 基本概念&lt;/h2&gt;
+&lt;p&gt;常见图标：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/6mlz2ksgrvf87hB.png&#34; alt=&#34;1.png&#34;&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;网络通信基本概念：终端设备之间通过计算机网络进行的通信。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如图例：&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/apy8eGLsJNgXwRF.png&#34; alt=&#34;2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;数据通信可类比快递传输：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;• 需要快递的物品：
+	▫ 应用程序生成需要传递的信息 (或数据)。
+• 物品被包装起来形成包裹，并粘贴含有收货人姓名、地址的快递单：
+	▫ 应用程序将数据打包成原始的“数据载荷”，并添加“头部”和“尾部”形成报文，
+报文中的重要信息是接收者的地址信息，即“目的地址”。
+	▫ 在一个信息单元的基础上，增加一些新的信息段，使其形成一个新的信息单元，这个
+过程称为“封装”。
+• 包裹被送到集散中心，集散中心对包裹上的目的地址进行分检，去往同一个城市的物品被
+放入同一架飞机，并飞向天空：
+	▫ 报文通过网线到达“网关”，网关收到报文后，对其“解封装”，读取目的地址，再
+重新封装，并根据目的地址不同，送往不同的“路由器”，通过网关及路由器的传递，
+报文最终离开本地网络，进入Internet的干道进行传输。
+	▫ 其中，网线所起的作用跟公路一样，它是信息传输的介质。
+• 飞机抵达目的机场后，包裹被取出进行分检，去往同一地区的包裹，被送到了同一集散中
+心：
+	▫ 报文经过Internet干道的传输，到达目的地址所在的本地网络，本地网络的网关或路
+由器对报文进行解封装和封装，并根据目的地址决定发往相应的下一台路由器，最终
+到达目的计算机所在网络的网关。
+• 集散中心根据包裹上的目的地址进行分检，快递员送包裹上门，收件人拆开包裹，确认物
+品完好无损后收下。整个快递过程完成。
+	▫ 报文到达目的计算机所在网络的网关，解封装和封装，然后根据目的地址发往相应的
+计算机。计算机收到报文后，对报文进行校验处理，校验无误后，接收下报文，并将其中的数据载荷交由相应的应用程序进行处理。一次完整的网络通信过程就结束了。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常见术语：&lt;/p&gt;
+&lt;p&gt;数据载荷、报文、头部、尾部、封装、解封装、网关、路由器、终端设备。&lt;/p&gt;
+&lt;p&gt;如图：&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/NpWiu4dsLtqzvaC.png&#34; alt=&#34;3.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据通信网络 (Datacom)：由路由器、交换机、防火墙、无线控制器、无线接入点，以及个人电脑、网络打印机、服务器等设备构成的通信网络。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基本功能：实现数据互通&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;网络设备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络设备&#34;&gt;#&lt;/a&gt; 网络设备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;交换机&lt;/p&gt;
+&lt;p&gt;距离终端用户最近的设备，用于终端用户接入网络、对数据帧进行交换等。&lt;/p&gt;
+&lt;p&gt;（广播域：一传多）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/WHjQizX2EO5ehlD.png&#34; alt=&#34;4.png&#34;&gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;路由器&lt;/p&gt;
+&lt;p&gt;网络层设备，可以在因特网中进行数据报文转发。路由器根据所收到的报文的目的地址选择一条合适的路径，将报文传送到下一个路由器或目的地，路径中最后的路由器负责将报文送交目的主机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;路由器工作在 TCP/IP 模型的网络层&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/gOkdv3HZQSpticM.png&#34; alt=&#34;5.png&#34;&gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;防火墙&lt;/p&gt;
+&lt;p&gt;网络安全设备，用于控制两个网络之间的安全通信。他通过检测、限制、更爱跨越防火墙的数据流，尽可能地对外部屏蔽网络内部的消息、结构和运维状况，以此来实现对网络安全的保护&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/eacuDhgKosHTr6f.png&#34; alt=&#34;6.png&#34;&gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无线设备&lt;/p&gt;
+&lt;p&gt;无线局域网 WLAN 广义上是指以无线电波、激光、红外线等无线信号来代替有线局域网中 的部分或全部传输介质所构成的网络。而常见的 Wi-Fi 是指 IEEE 802.11 标准上的无线局域网 技术。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在 WLAN 中，常见的设备有胖 AP、瘦 AP 和无线控制器 AC。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;▫ 无线接入点 (AP, Access Point)
+	▪ 一般支持FAT AP、FIT AP和云管理工作模式，根据网络规划的需求，可以灵活
+地在各种模式下切换。
+	▪ FAT AP：适用于家庭，独立工作，需单独配置，功能较为单一，成本低。
+	▪ FIT AP：适用于大中型企业，需要配合AC使用，由AC统一管理和配置，功能丰
+富。
+	▪ 云管理：适用于中小型企业，需要配合云管理平台使用，由云管理平台统一管
+理和配置，功能丰富，即插即用。
+▫ 无线接入控制器 (AC, Access Controller)
+	▪ 一般位于整个网络的汇聚层，提供高速、安全、可靠的WLAN业务。
+	▪ 提供大容量、高性能、高可靠性、易安装、易维护的无线数据控制业务，具有
+组网灵活、绿色节能等优势。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/uLOknITgBqY2MQd.png&#34; alt=&#34;6.5.png&#34;&gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网络类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络类型&#34;&gt;#&lt;/a&gt; 网络类型&lt;/h2&gt;
+&lt;p&gt;按照地理覆盖范围来划分，可以分为：局域网、城域网、广域网，城域网介于局域网和广域网之间。&lt;/p&gt;
+&lt;p&gt;• &lt;strong&gt;局域网：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	▫ 基本特点：&lt;/p&gt;
+&lt;p&gt;​			 ▪ 覆盖范围一般在几公里之内；&lt;/p&gt;
+&lt;p&gt;​			 ▪ 主要作用是把分布距离较近 (如：有一个家庭内、一座或几座大楼内、一个校园 内，等等) 的若干终端电脑连接起来。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;▫ 使用技术：以太网、Wi-Fi等。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;• &lt;strong&gt;城域网：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	 ▫ 基本特点：&lt;/p&gt;
+&lt;p&gt;​			 ▪ 城域网是较大型的局域网，需要的成本较高，但可以提供更快的传输速率。它 改进了局域网中的传输介质，扩大了局域网的访问范围，范围可以包含一个大 学校园或城市；&lt;/p&gt;
+&lt;p&gt;​			 ▪ 主要作用是将同一城市内不同地点的主机、数据库以及局域网等连接起来；&lt;/p&gt;
+&lt;p&gt;​			▪ 与广域网作用相似，但实现方式和性能不同。&lt;/p&gt;
+&lt;p&gt;​	▫ 使用技术：基于大型的局域网，与局域网技术相似，如：以太网 (10Gbps/100Gbps)、 WiMAX (全球互通微波访问)。&lt;/p&gt;
+&lt;p&gt;• &lt;strong&gt;广域网：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	▫ 基本特点：&lt;/p&gt;
+&lt;p&gt;​			 ▪ 覆盖范围一般在几公里以上，可大至几十、几百或几千公里；&lt;/p&gt;
+&lt;p&gt;​			▪ 主要作用是把分布较远 (如：跨越城市、跨越国家， 等等) 的若干局域网或城域 网连接起来；&lt;/p&gt;
+&lt;p&gt;​			 ▪ 会用到电信运营商的通信线路。 ▫ 使用技术：HDLC、PPP 等。&lt;/p&gt;
+&lt;h2 id=&#34;网络拓扑&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络拓扑&#34;&gt;#&lt;/a&gt; 网络拓扑&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/9kqGcSUQ28N3nrT.png&#34; alt=&#34;7.png&#34;&gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
+&lt;p&gt;网络拓扑是指用传输介质（例如光纤等）互连各种设备（例如计算机终端，路由器，交换机等）所呈现的结构化布局。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;按照网络的拓扑形态来划分，网络可分为 星型网络、总线型网络、环形网络、树形网络、全网状网络和部分网状网络。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://s2.loli.net/2022/01/23/HZdBEPFosU5mKcO.png&#34; alt=&#34;8.png&#34;&gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;• 星型网络：
+	▫ 所有节点通过一个中心节点连接在一起。
+	▫ 优点：容易在网络中增加新的节点。通信数据必须经过中心节			点中转，易于实现网络监控。
+	▫ 缺点：中心节点的故障会影响到整个网络的通信。
+• 总线型网络：
+	▫ 所有节点通过一条总线（如同轴电缆）连接在一起。
+	▫ 优点：安装简便，节省线缆。某一节点的故障一般不会影响到			整个网络的通信。
+	▫ 缺点：总线故障会影响到整个网络的通信。某一节点发出的信			息可以被所有其他节点收到，安全性低。
+• 环型网络：
+	▫ 所有节点连成一个封闭的环形。
+	▫ 优点：节省线缆。
+	▫ 缺点：增加新的节点比较麻烦，必须先中断原来的环，才能插			入新节点以形成新环。
+• 树型网络：
+	▫ 树型结构实际上是一种层次化的星型结构。
+	▫ 优点：能够快速将多个星型网络连接在一起，易于扩充网络规			模。
+	▫ 缺点：层级越高的节点故障导致的网络问题越严重。
+• 全网状网络：
+	▫ 所有节点都通过线缆两两互联。
+	▫ 优点：具有高可靠性和高通信效率。
+	▫ 缺点：每个节点都需要大量的物理端口，同时还需要大量的互			连线缆。成本高，不易扩展。
+• 部分网状网络：
+	▫ 只是重点节点之间才两两互连。
+	▫ 优点：成本低于全网状网络。
+	▫ 缺点：可靠性比全网状网络有所降低。
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="ICT" />
+        <updated>2022-01-23T11:06:17.894Z</updated>
+    </entry>
+</feed>
