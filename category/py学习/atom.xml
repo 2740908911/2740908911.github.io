@@ -6,19 +6,19 @@
     <updated>2021-06-29T10:41:39.545Z</updated>
     <category term="随笔" />
     <category term="debug" />
-    <category term="业余爱好" />
-    <category term="python" />
-    <category term="http" />
     <category term="ICT" />
     <category term="文件包含" />
-    <category term="RCE" />
-    <category term="代码审计" />
-    <category term="命令执行" />
-    <category term="反序列化" />
-    <category term="sql" />
-    <category term="SSRF" />
     <category term="php" />
+    <category term="业余爱好" />
+    <category term="http" />
+    <category term="反序列化" />
+    <category term="命令执行" />
+    <category term="代码审计" />
+    <category term="SSRF" />
+    <category term="RCE" />
     <category term="SSTI" />
+    <category term="sql" />
+    <category term="python" />
     <category term="upload" />
     <entry>
         <id>http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
