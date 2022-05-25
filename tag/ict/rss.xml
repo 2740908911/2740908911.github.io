@@ -5,24 +5,433 @@
         <link>http://imfanqie.top</link>
         <description>学习博客</description>
         <language>zh-CN</language>
-        <pubDate>Sat, 29 Jan 2022 16:33:18 +0800</pubDate>
-        <lastBuildDate>Sat, 29 Jan 2022 16:33:18 +0800</lastBuildDate>
+        <pubDate>Mon, 28 Feb 2022 20:41:16 +0800</pubDate>
+        <lastBuildDate>Mon, 28 Feb 2022 20:41:16 +0800</lastBuildDate>
         <category>随笔</category>
         <category>debug</category>
         <category>ICT</category>
         <category>业余爱好</category>
-        <category>文件包含</category>
-        <category>php</category>
-        <category>反序列化</category>
         <category>http</category>
+        <category>文件包含</category>
         <category>代码审计</category>
-        <category>命令执行</category>
+        <category>反序列化</category>
         <category>RCE</category>
+        <category>命令执行</category>
         <category>sql</category>
         <category>SSRF</category>
         <category>SSTI</category>
-        <category>python</category>
         <category>upload</category>
+        <category>python</category>
+        <category>php</category>
+        <item>
+            <guid isPermalink="true">http://imfanqie.top/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</guid>
+            <title>ICT笔记-以太网交换基础</title>
+            <link>http://imfanqie.top/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</link>
+            <category>ICT</category>
+            <pubDate>Mon, 28 Feb 2022 20:41:16 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;以太网协议介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#以太网协议介绍&#34;&gt;#&lt;/a&gt; 以太网协议介绍&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;以太网协议&lt;/strong&gt;：以太网是当今现有局域网采用的最通用的通信协议标准，定义了局域网中采用的电缆类型和信号处理方法。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/b91dbfbfa2014bd0b231fc0631022e49.png&#34; alt=&#34;b91dbfbfa2014bd0b231fc0631022e49.png&#34;&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;冲突域&lt;/strong&gt;：连接在同一共享介质上的所有节点的集合。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;广播域&lt;/strong&gt;：广播报文所能达到的整个访问范围成为二层广播域，简称广播域。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/2e2fbae2c8a8eeb77647c1ff82eabe90.png&#34; alt=&#34;2e2fbae2c8a8eeb77647c1ff82eabe90.png&#34;&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/9dcb4fd28f1f0f292991b2a49a6eef09.png&#34; alt=&#34;9dcb4fd28f1f0f292991b2a49a6eef09.png&#34;&gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以太网卡&lt;/strong&gt;：网络接口卡。也称为网卡，具有全球唯一性。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/2042a5217547c92c696d7cdbc4b06867.png&#34; alt=&#34;2042a5217547c92c696d7cdbc4b06867.png&#34;&gt;&amp;lt;!--p4--&amp;gt;&lt;/p&gt;
+&lt;h2 id=&#34;以太网帧介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#以太网帧介绍&#34;&gt;#&lt;/a&gt; 以太网帧介绍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;以太网技术所使用的帧称为以太网帧，或简称以太帧。&lt;/li&gt;
+&lt;li&gt;以太帧的格式有两个标准：Ethernet_II 格式和 IEEE 802.3 格式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/8d922703fa64ad1de45b3e66f944d129.png&#34; alt=&#34;8d922703fa64ad1de45b3e66f944d129.png&#34;&gt;&amp;lt;!--p5--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MAC 地址&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MAC 地址在网络中唯一标识一个网卡，具有全球唯一性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/369c83bc990abeba6a445222c9277f80.png&#34; alt=&#34;369c83bc990abeba6a445222c9277f80.png&#34;&gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个 MAC 地址有 48bit，6Byte。格式如图：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/e3461837ca71bd12f7174422cbce92e3.png&#34; alt=&#34;e3461837ca71bd12f7174422cbce92e3.png&#34;&gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MAC 地址构成及分类：前 3Byte 为厂商代码，由 IEEE 分配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/fe42557aefe68d74a0e2c38e335252bc.png&#34; alt=&#34;fe42557aefe68d74a0e2c38e335252bc.png&#34;&gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单播以太帧：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;单播帧，目的 MAC 地址为单播 MAC 地址的帧，即 &lt;code&gt;1 &amp;gt;&amp;gt; 1&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/9c0561c5792036d0862cb482f2e8fe8a.png&#34; alt=&#34;9c0561c5792036d0862cb482f2e8fe8a.png&#34;&gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;广播以太帧：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;广播帧，目的 MAC 地址为广播 MAC 地址的帧，即 &lt;code&gt;1 &amp;gt;&amp;gt; N&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/db49c8d00b409ede1ce428253434d392.png&#34; alt=&#34;db49c8d00b409ede1ce428253434d392.png&#34;&gt;&amp;lt;!--p10--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;组播以太帧：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;组播帧，目的 MAC 地址为组播 MAC 地址的帧，即 &lt;code&gt;1 &amp;gt;&amp;gt; x&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/4be532fcdaf580a1ab00a52f52dbe931.png&#34; alt=&#34;4be532fcdaf580a1ab00a52f52dbe931.png&#34;&gt;&amp;lt;!--p11--&amp;gt;&lt;/p&gt;
+&lt;h2 id=&#34;交换机mac地址学习&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#交换机mac地址学习&#34;&gt;#&lt;/a&gt; 交换机 MAC 地址学习&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;园区网典型架构：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/f15ddb8d49c3b900857cba87a09fdb15.png&#34; alt=&#34;f15ddb8d49c3b900857cba87a09fdb15.png&#34;&gt;&amp;lt;!--p12--&amp;gt;&lt;/p&gt;
+&lt;p&gt;其中最下层四个为以太网二层交换机。&lt;/p&gt;
+&lt;p&gt;以太网二层交换机转发数据的端口都是以太网口，并且只能够针对数据的二层头部（以太网数据帧头）中的 MAC 地址进行寻址并转发数据。&lt;/p&gt;
+&lt;p&gt;** 交换机工作原理：** 根据 MAC 地址表查询并转发。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/11eba6b956a6cfd2fd38f1ce83fab940.png&#34; alt=&#34;11eba6b956a6cfd2fd38f1ce83fab940.png&#34;&gt;&amp;lt;!--p13--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MAC 地址表&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每台交换机中都有一个 MAC 地址表，存放了 MAC 地址与交换机端口编号之间的映射关系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/46beca99bd68475efe25f4d01488e12b.png&#34; alt=&#34;46beca99bd68475efe25f4d01488e12b.png&#34;&gt;&amp;lt;!--p14--&amp;gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始情况，交换机的 MAC 地址表是空的。&lt;/li&gt;
+&lt;li&gt;当连接主机 1 的端口收到数据帧后查询 MAC 地址表，若没有则标位 “未知单播帧”。&lt;/li&gt;
+&lt;li&gt;若没有查到则对该未知单播帧进行泛洪操作。同时交换机学习该 MAC 地址，创建表项。&lt;/li&gt;
+&lt;li&gt;交换机其他端口连接的主机收到泛洪后会丢弃，主机 2 收到后处理数据帧，后通过交换机向主机回复。&lt;/li&gt;
+&lt;li&gt;如果查到表项，则进行转发操作，同时会学习该数据帧的源 MAC 地址，与接收口关联，并创建表项。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;交换机数据帧处理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#交换机数据帧处理&#34;&gt;#&lt;/a&gt; 交换机数据帧处理&lt;/h2&gt;
+&lt;p&gt;交换机对于从传输介质进入某一端口的帧的处理行为一共有三种：泛洪、转发、丢弃。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/b61e6bbc57ad8f04d8bf968f652b70cf.png&#34; alt=&#34;b61e6bbc57ad8f04d8bf968f652b70cf.png&#34;&gt;&amp;lt;!--p15--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;泛洪&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从一个端口将数据帧传递至所有端口。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/8b1cefb5312e0663d0aeb9cc26217144.png&#34; alt=&#34;8b1cefb5312e0663d0aeb9cc26217144.png&#34;&gt;&amp;lt;!--p16--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;转发&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从一个端口将数据帧传递至特定端口。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/53832dd93ed48e22298cb551903968b8.png&#34; alt=&#34;53832dd93ed48e22298cb551903968b8.png&#34;&gt;&amp;lt;!--p17--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;丢弃&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将收到的某一数据帧丢弃。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/e49f7c454dcd7c870373a61339c381f4.png&#34; alt=&#34;e49f7c454dcd7c870373a61339c381f4.png&#34;&gt;&amp;lt;!--p18--&amp;gt;&lt;/p&gt;
+&lt;h2 id&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h2&gt;
+&lt;h2 id=&#34;同网络短数据通信全过程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#同网络短数据通信全过程&#34;&gt;#&lt;/a&gt; 同网络短数据通信全过程&lt;/h2&gt;
+&lt;p&gt;案例：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/0cbf006ee49b5cc3625f003153f97f4e.png&#34; alt=&#34;0cbf006ee49b5cc3625f003153f97f4e.png&#34;&gt;&amp;lt;!--p19--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据封装 &amp;amp; 解封装&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/9b5f63a3e539316c6f80a3e0980dbab9.png&#34; alt=&#34;9b5f63a3e539316c6f80a3e0980dbab9.png&#34;&gt;&amp;lt;!--p20--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;初始状态&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/66a7a5ae9c80a9789358f6c569f7e811.png&#34; alt=&#34;66a7a5ae9c80a9789358f6c569f7e811.png&#34;&gt;&amp;lt;!--p21--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;泛洪数据帧&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/ee88c756576c556580a09dff7c6bc447.png&#34; alt=&#34;ee88c756576c556580a09dff7c6bc447.png&#34;&gt;&amp;lt;!--p22--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;学习 MAC 地址&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/b0db5cfad6ea03c9b922adce71d0cfd7.png&#34; alt=&#34;b0db5cfad6ea03c9b922adce71d0cfd7.png&#34;&gt;&amp;lt;!--p23--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;目标主机回复&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/28/8765ccd9354d80fadfae9f06f54dbc20.png&#34; alt=&#34;8765ccd9354d80fadfae9f06f54dbc20.png&#34;&gt;&amp;lt;!--p24--&amp;gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://imfanqie.top/2022/02/11/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8F%8AIP%E7%BC%96%E5%9D%80/</guid>
+            <title>ICT笔记-网络层协议及IP编址</title>
+            <link>http://imfanqie.top/2022/02/11/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8F%8AIP%E7%BC%96%E5%9D%80/</link>
+            <category>ICT</category>
+            <pubDate>Fri, 11 Feb 2022 17:58:17 +0800</pubDate>
+            <description><![CDATA[ &lt;ul&gt;
+&lt;li&gt;描述网络层的主要协议&lt;/li&gt;
+&lt;li&gt;描述 IPv4 地址的概念、分类及特殊 IP 地址&lt;/li&gt;
+&lt;li&gt;计算 IP 网络以及 IP 子网&lt;/li&gt;
+&lt;li&gt;掌握 IP 网络地址规划方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;网络层协议&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络层协议&#34;&gt;#&lt;/a&gt; 网络层协议&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;网络层经常被称为 IP 层，但其中并不只有 IP 协议，还包括 ICMP、IPX 等协议。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/289557be8e1ebc61728f7f15022272d0.png&#34; alt=&#34;289557be8e1ebc61728f7f15022272d0.png&#34;&gt;&amp;lt;!--p1--&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IP 协议有版本之分，分别是 IPv4 和 IPv6。目前，Internet 上的 IP 报文主要都是 IPv4 报文，但是逐步在向 IPv6 过渡。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IPv4（Internet Protocol Version 4）协议族是 TCP/IP 协议族中最为核心的协议族。它工作在 TCP/IP 协议栈的网络层，该层与 OSI 参考模型的网络层相对应。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IPv6（Internet Protocol Version 6）是网络层协议的第二代标准协议，也被称为 IPng（IP Next Generation）。它是 Internet 工程任务组 IETF（Internet Engineering Task Force）设计的一套规范，是 IPv4（Internet Protocol Version 4）的升级版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;数据封装过程&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上层数据在传输层添加 TCP 报头后得到的 PDU 被称为 Segment（数据段）&lt;/li&gt;
+&lt;li&gt;数据段被传递给网络层，网络层添加 IP 报头得到的 PDU 被称为 Packet（数据包）&lt;/li&gt;
+&lt;li&gt;数据包被传递到数据链路层，封装数据链路层报头和尾部得到的 PDU 被称为 Frame（数据帧）&lt;/li&gt;
+&lt;li&gt;最后，帧被转换为比特，通过网络介质传输。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/f521d1c7e61a4a41c55113c2c5f50f3e.png&#34; alt=&#34;f521d1c7e61a4a41c55113c2c5f50f3e.png&#34;&gt;&amp;lt;!--p2--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IPv4 报文格式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/daa4d4f6fb4ded7a7eaeef0840dce472.png&#34; alt=&#34;daa4d4f6fb4ded7a7eaeef0840dce472.png&#34;&gt;&amp;lt;!--p3--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IP Packet（IP 数据包），其包头主要内容如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;▫ Version：4 bit，4：表示为IPv4；6：表示为IPv6。
+▫ Header Length：4 bit，首部长度，如果不带Option字段，则为20，最长为60。
+▫ Type of Service：8 bit，服务类型。只有在有QoS差分服务要求时，这个字段才起作用。
+▫ Total Length：16 bit，总长度，整个IP数据包的长度。
+▫ Identification：16 bit，标识，分片重组时会用到该字段。
+▫ Flags：3 bit，标志位。
+▫ Fragment Offset：12 bit，片偏移，分片重组时会用到该字段。
+▫ Time to Live：8 bit，生存时间。
+▫ Protocol：8 bit，协议：下一层协议。指出此数据包携带的数据使用何种协议，以便目的主机的IP层将数据部分上交给哪个进程处理。
+	▪ 常见值：
+	− 1: ICMP, Internet Control Message；
+	− 2: IGMP, Internet Group Management；
+	− 6: TCP , Transmission Control Protocol；
+	− 17: UDP, User Datagram Protocol。
+▫ Header Checksum：16 bit，首部检验和。
+▫ Source IP Address：32 bit，源IP地址。
+▫ Destination IP Address：32 bit，目的IP地址。
+▫ Options：可变，选项字段。
+▫ Padding：可变，填充字段，全填0。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;数据包分片&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;将报文分割成多个片段的过程叫做分片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果报文长度超过数据链路所支持的最大长度，则需要分割成若干个较小的片段才能传输。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/804be2d889f00b8a2337e1ff10a112fb.png&#34; alt=&#34;804be2d889f00b8a2337e1ff10a112fb.png&#34;&gt;&amp;lt;!--P4--&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;• Identification：16 bit，发送主机赋予的标识，分片重组时会用到该字段。
+• Flags：3 bit，标志位。
+	▫ 保留段位：0，保留。
+	▫ 不分段位：1，表示“不能分片”；0，表示“能分片”。
+	▫ 更多段位：1，表示“后面还有分片”；0，表示“最后一个数据片”。
+• Fragment Offset：12 bit，片偏移，分片重组时会用到该字段。指出较长的分组在分片后，该片在原分组中的相对位置，与更多段位组合，帮助接收方组合分段的报文。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;生存时间 TTL（Time To Live）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/9575059a278adfd6922e0dd166c4fadc.png&#34; alt=&#34;9575059a278adfd6922e0dd166c4fadc.png&#34;&gt;&amp;lt;!--p5 --&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;作用：为避免环路导致的网络拥塞，IP 报文头中包含一个生存时间 TTL（Time To Live）字段。报文每经过一台三层设备，TTL 值减 1。初始 TTL 值由源端设备设置。当报文中的 TTL 降为 0 时，报文会被丢弃。同时，丢弃报文的设备会根据报文头中的源 IP 地址向源端 发送 ICMP 错误消息。&lt;/li&gt;
+&lt;li&gt;TTL 最长 8bit，即取值范围 0--255&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;协议号（Protocol）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/ec1968a8a76866a2fa234a55b2251df2.png&#34; alt=&#34;ec1968a8a76866a2fa234a55b2251df2.png&#34;&gt;&amp;lt;!--p6--&amp;gt;&lt;/p&gt;
+&lt;p&gt;目的端的网络层在接收并处理报文以后，需要决定下一步对报文如何处理。IP 报文头中的协议字段标识了将会继续处理报文的协议，如图所示。&lt;/p&gt;
+&lt;h2 id=&#34;ipv4地址&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ipv4地址&#34;&gt;#&lt;/a&gt; IPv4 地址&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IP 地址在网络中用于标识一个节点（或网络设备的接口）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IP 地址用于 IP 报文在网络中的寻址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;注：需要使用 IP 地址的接口，通常是路由器和计算机的接口。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址表示&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/3da4ecab3a65ebbd12beb9f2d6818b33.png&#34; alt=&#34;3da4ecab3a65ebbd12beb9f2d6818b33.png&#34;&gt;&amp;lt;!--p7--&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;• IP地址表示
+	▫ IP地址是长度是32 bit，由4个字节组成。为了阅读和书写方便，IP地址通常采用点分十进制数来表示。
+	
+• 点分十进制表示法
+	▫ IP地址表现形式能够帮助我们更好的使用和配置网络，但通信设备在对IP地址进行计算时使用的是二进制的操作方式，因此掌握十进制、二进制的转换运算非常有必要。
+	
+• IPv4地址范围
+	▫ 00000000.00000000.00000000.00000000~11111111.11111111.11111111.11111111，即0.0.0.0~255.255.255.255。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址构成&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/941ab2172700677bac66aabdbc0acd3b.png&#34; alt=&#34;941ab2172700677bac66aabdbc0acd3b.png&#34;&gt;&amp;lt;!--p8--&amp;gt;&lt;/p&gt;
+&lt;p&gt;IPv4 地址由如下两部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;网络部分 (网络号)：用来标识一个网络。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IP 地址不能反映任何有关主机位置的地理信息，只能通过网络号码字段判断出 主机属于哪个网络。&lt;/p&gt;
+&lt;p&gt;对于网络号相同的设备，无论实际所处的物理位置如何，它们都是处在同一个 网络中。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主机部分 (主机号)：用来区分一个网络内的不同主机。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;网络掩码 (Netmask)，又称子网掩码 (Subnet Mask)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网络掩码为 32 bit，与 IP 地址的位数一样，通常也以点分十进制数来表示。&lt;/li&gt;
+&lt;li&gt;网络掩码不是一个 IP 地址，在二进制的表示上是一堆连续的 1、后面接一堆连续的 0。&lt;/li&gt;
+&lt;li&gt;通常将网络掩码中 1 的个数称为这个网络掩码的长度。如：掩码 0.0.0.0 的长度是 0，掩 码 252.0.0.0 的长度是 6。&lt;/li&gt;
+&lt;li&gt;网络掩码一般与 IP 地址结合使用，其中值为 1 的比特对应 IP 地址中的网络位；值为 0 的 比特对应 IP 地址中的主机位，以此来辅助我们识别一个 IP 地址中的网络位与主机位。 即网络掩码中 1 的个数就是 IP 地址的网络号的位数，0 的个数就是 IP 地址的主机号的位 数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址寻址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/7c3889f16d724fe14515ef8f60a3cf3e.png&#34; alt=&#34;7c3889f16d724fe14515ef8f60a3cf3e.png&#34;&gt;&amp;lt;!--p9--&amp;gt;&lt;/p&gt;
+&lt;p&gt;IP 寻址：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网络号用于表示主机所在的网络，类似于 “XX 省 XX 市 XX 区 XX 小区” 的作用。&lt;/p&gt;
+&lt;p&gt;主机号用于表示网络号所定义的网络范围内某个特定的主机接口，类似于门牌号 “XX 栋 XX 号” 的作用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;网络寻址：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;二层网络寻址：可直接通过 IP 地址，找到对应的主机接口。&lt;/p&gt;
+&lt;p&gt;三层网络寻址：利用网关转发来自不同网段之间的数据包。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址分类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/65ca4707825e352616214061d5e115d7.png&#34; alt=&#34;65ca4707825e352616214061d5e115d7.png&#34;&gt;&amp;lt;!--p10--&amp;gt;&lt;/p&gt;
+&lt;p&gt;为了方便 IP 地址的管理及组网，IP 地址分成五类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A、B、C、D、E 类的类别字段分别是二进制数 0、10、110、1110、1111，通过网络 号码字段的前几个比特就可以判断 IP 地址属于哪一类，这是区分各类地址最简单的方 法。&lt;/li&gt;
+&lt;li&gt;A、B、C 三类地址是单播 IP 地址 (除一些特殊地址外)，只有这三类地址才能分配给主 机接口使用。&lt;/li&gt;
+&lt;li&gt;D 类地址属于组播 IP 地址。&lt;/li&gt;
+&lt;li&gt;E 类地址专门用于特殊的实验目的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A、B、C 类地址比较：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 A 类地址的网络称为 A 类网络；使用 B 类地址的网络称为 B 类网络；使用 C 类地址的 网络称为 C 类网络。&lt;/li&gt;
+&lt;li&gt;A 类网络的网络号为 8 bit，个数很少，但所允许的主机接口的个数很多；首位恒定为 0， 地址空间为：0.0.0.0~127.255.255.255。&lt;/li&gt;
+&lt;li&gt;B 类网络的网络号为 16 bit，介于 A 类和 C 类网络之间；首两位恒定为 10，地址空间为： 128.0.0.0~191.255.255.255。&lt;/li&gt;
+&lt;li&gt;C 类网络的网络号为 24 bit，个数很多，但所允许的主机接口的个数就很少；首三位恒 定为 110，地址空间为：192.0.0.0~223.255.255.255。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主机 (Host)，通常指路由器和计算机的统称。并且常把主机的某个接口的 IP 地址简称 为主机 IP 地址。&lt;/p&gt;
+&lt;p&gt;组播地址：组播能实现一对多传递消息。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址类型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/f602f6dedd26839d2c5cd081495298bd.png&#34; alt=&#34;f602f6dedd26839d2c5cd081495298bd.png&#34;&gt;&amp;lt;!--p11--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网络地址：主机号全为 0，不能分配给具体的主机接口使用&lt;/li&gt;
+&lt;li&gt;广播地址：主机号全为 1，不能分配给具体的主机接口使用&lt;/li&gt;
+&lt;li&gt;可用地址：又称主机地址。&lt;/li&gt;
+&lt;li&gt;一个网段可用地址数量计算：若主机位为 n，则 IP 地址数为 2ⁿ，可用 IP 地址数为：2ⁿ-2 （减去网络地址 和广播地址）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址计算&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/d85854c9d6cad3a7f71943f18c8bee2e.png&#34; alt=&#34;d85854c9d6cad3a7f71943f18c8bee2e.png&#34;&gt;&amp;lt;!--p12--&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;• 网络地址：将IP地址的主机位全设为0，所得结果是该IP地址所在网络的网络地址。
+• 广播地址：将IP地址的主机位全设为1，所得结果是该IP地址所在网络的广播地址。
+• IP地址数：2ⁿ，n为主机位位数。
+• 可用IP地址数：2ⁿ-2，n为主机位位数。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;私网 IP 地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了解决 IP 地址短缺的问题，提出了私有地址的概念。私有地址是指内部网络或主机地址， 这些地址只能用于某个内部网络，不能用于公共网络。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;公网 IP 地址：连接到 Internet 的网络设备必须具有由 ICANN 分配的公网 IP 地址。&lt;/p&gt;
+&lt;p&gt;私网 IP 地址：私网 IP 地址的使用使得网络可以得到更为自由地扩展，因为同一个私网 IP 地址是可以在不同的私有网络中重复使用的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/ffe42a642d807c800d1132610c538309.png&#34; alt=&#34;ffe42a642d807c800d1132610c538309.png&#34;&gt;&amp;lt;!--p13--&amp;gt;&lt;/p&gt;
+&lt;p&gt;私有网络连接到 Internet：私有网络由于使用了私网 IP 地址，是不允许连接到 Internet 的。 后来在实际需求的驱动下，许多私有网络也希望能够连接到 Internet 上，从而实现私网与 Internet 之间的通信，以及通过 Internet 实现私网与私网之间的通信。私网与 Internet 的互联， 必须使用网络地址转换 (NAT) 技术实现。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特殊 IP 地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/cec81c4fa0c67104b3afd19afeacd8cd.png&#34; alt=&#34;cec81c4fa0c67104b3afd19afeacd8cd.png&#34;&gt;&amp;lt;!--p14--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;255.255.255&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;这个地址称为有限广播地址，它可以作为一个 IP 报文的目的 IP 地址使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;路由器接收到目的 IP 地址为有限广播地址的 IP 报文后，会停止对该 IP 报文的转发。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;0.0.0.0&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果把这个地址作为网络地址，它的意思就是 “任何网络” 的网络地址；如果把这个 地址作为主机接口地址，它的意思就是 “这个网络上主机接口” 的 IP 地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;例如：当一个主机接口在启动过程中尚未获得自己的 IP 地址时，就可以向网络发送目 的 IP 地址为有限广播地址、源 IP 地址为 0.0.0.0 的 DHCP 请求报文，希望 DHCP 服务器在 收到自己的请求后，能够给自己分配一个可用的 IP 地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;127.0.0.0/8&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;这个地址为环回地址，它可以作为一个 IP 报文的目的 IP 地址使用。其作用是测试设备 自身的软件系统。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一个设备产生的、目的 IP 地址为环回地址的 IP 报文是不可能离开这个设备本身的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;169.254.0.0/16&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果一个网络设备获取 IP 地址的方式被设置成了自动获取方式，但是该设备在网络上 又没有找到可用的 DHCP 服务器，那么该设备就会使用 169.254.0.0/16 网段的某个地址来进行临时通信。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;IPv4  vs  IPv6&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;第二种解决 IP 地址短缺的办法，如图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/6cc05b5b495ed01f4f491a5e7b3f3fdf.png&#34; alt=&#34;6cc05b5b495ed01f4f491a5e7b3f3fdf.png&#34;&gt;&amp;lt;!--p15--&amp;gt;&lt;/p&gt;
+&lt;h2 id=&#34;子网划分&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#子网划分&#34;&gt;#&lt;/a&gt; 子网划分&lt;/h2&gt;
+&lt;p&gt;“有类编址” 的地址划分过于死板，划分的颗粒度太大，会有大量的主机号不能被充分利 用，从而造成了大量的 IP 地址资源浪费。&lt;/p&gt;
+&lt;p&gt;因此可以利用子网划分来减少地址浪费，即 VLSM (Variable Length Subnet Mask)，可变长子网掩码。将一个大的有类网络，划分成若干个小的子网，使得 IP 地址的使用更为科学。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/db8b9646f353a0e0a4bd15a62f755fcc.png&#34; alt=&#34;db8b9646f353a0e0a4bd15a62f755fcc.png&#34;&gt;&amp;lt;!--p16--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;step1. 原网段分析&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/6495c91154faf28e1505803e6737d0e2.png&#34; alt=&#34;6495c91154faf28e1505803e6737d0e2.png&#34;&gt;&amp;lt;!--p17--&amp;gt;&lt;/p&gt;
+&lt;p&gt;假设有一个 C 类网段地址：192.168.10.0；默认情况下，网络掩码为 24 位，包括 24 位网络位，8 位主机位。所以通过计算可知，这样的网络中，有 256 个 IP 地址。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;step2. 向主机借位&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/adf939bd363c7733da3a7b72497f9497.png&#34; alt=&#34;adf939bd363c7733da3a7b72497f9497.png&#34;&gt;&amp;lt;!--p18--&amp;gt;&lt;/p&gt;
+&lt;p&gt;将原有的 24 位网络位向主机位去 “借” 1 位，这样网络位就扩充到了 25 位，相对的主机位就减少到了 7 位，而借过来的这 1 位就是子网位，此时网络掩码就变成了 25 位，即 255.255.255.128，或 / 25。&lt;/p&gt;
+&lt;p&gt;子网位：可取值 0 或取值 1，则得到了两个新的子网。通过计算可知，每个网络中，有 128 个 IP 地址。&lt;/p&gt;
+&lt;p&gt;**step3. 计算子网的网络地址和广播地址 **&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;每个子网主机位全为 0 时，可以计算出子网网络地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个子网主机位全为 1 时。可以计算出子网广播地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/c760a7fa917d82d28912c35c9672e101.png&#34; alt=&#34;c760a7fa917d82d28912c35c9672e101.png&#34;&gt;&amp;lt;!--p19--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/a19a452a4ba8912a220163aa7b18ea48.png&#34; alt=&#34;a19a452a4ba8912a220163aa7b18ea48.png&#34;&gt;&amp;lt;!--p20--&amp;gt;&lt;/p&gt;
+&lt;h2 id=&#34;icmp协议&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#icmp协议&#34;&gt;#&lt;/a&gt; ICMP 协议&lt;/h2&gt;
+&lt;p&gt;为了更有效地转发 IP 数据报文和提高数据报文交互成功的机会，在网络层使用 ICMP 协议。 ICMP 允许主机或设备报告差错情况和提供有关异常情况的报告。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/8c50b02bf8ea848453bd6774240d3030.png&#34; alt=&#34;8c50b02bf8ea848453bd6774240d3030.png&#34;&gt;&amp;lt;!--p21--&amp;gt;&lt;/p&gt;
+&lt;p&gt;ICMP 消息封装在 IP 报文中，IP 报文头部 Protocol 值为 1 时表示 ICMP 协议。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ICMP 重定向：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/b251552163caf3bec3a737891404805e.png&#34; alt=&#34;b251552163caf3bec3a737891404805e.png&#34;&gt;&amp;lt;!--p22--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ICMP 重定向过程：
+&lt;ol&gt;
+&lt;li&gt;主机 A 希望发送报文到服务器 A，于是根据配置的默认网关地址向网关 RTB 发送报文。&lt;/li&gt;
+&lt;li&gt;网关 RTB 收到报文后，检查报文信息，发现报文应该转发到与源主机在同一网段的另一个网关设备 RTA，此转发路径是更优的路径，所以 RTB 会向主机发送一个 Redirect 消息，通知主机直接向另一个网关 RTA 发送该报文。&lt;/li&gt;
+&lt;li&gt;主机收到 Redirect 消息后，会向 RTA 发送报文，然后 RTA 会将该报文再转发给服务器 A。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;ICMP 差错检测：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/e94f37f1d452331472737f00f16e2423.png&#34; alt=&#34;e94f37f1d452331472737f00f16e2423.png&#34;&gt;&amp;lt;!--p23--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ICMP 的一个典型应用是 Ping。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ping 是检测网络连通性的常用工具，同时也能够收集其他相 关信息。用户可以在 Ping 命令中指定不同参数，如 ICMP 报文长度、发送的 ICMP 报文个数、 等待回复响应的超时时间等，设备根据配置的参数来构造并发送 ICMP 报文，进行 Ping 测试。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ICMP 错误报告：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/b336e6434280e7823a1b8b3735213f2f.png&#34; alt=&#34;b336e6434280e7823a1b8b3735213f2f.png&#34;&gt;&amp;lt;!--p24--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ICMP 定义了各种错误消息，用于诊断网络连接性问题；根据这些错误消息，源设备可以判 断出数据传输失败的原因。
+&lt;ul&gt;
+&lt;li&gt;如果网络中发生了环路，导致报文在网络中循环，且最终 TTL 超时，这种情况下网络 设备会发送 TTL 超时消息给发送端设备。&lt;/li&gt;
+&lt;li&gt;如果目的地不可达，则中间的网络设备会发送目的不可达消息给发送端设备。目的不 可达的情况有多种，如果是网络设备无法找到目的网络，则发送目的网络不可达消息； 如果网络设备无法找到目的网络中的目的主机，则发送目的主机不可达消息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ICMP 的另一个典型应用是 Tracert。Tracert 基于报文头中的 TTL 值来逐跳跟踪报文的转发路 径。为了跟踪到达某特定目的地址的路径，源端首先将报文的 TTL 值设置为 1。该报文到达第一个节点后，TTL 超时，于是该节点向源端发送 TTL 超时消息，消息中携带时间戳。然后 源端将报文的 TTL 值设置为 2，报文到达第二个节点后超时，该节点同样返回 TTL 超时消息，以此类推，直到报文到达目的地。这样，源端根据返回的报文中的信息可以跟踪到报文经过的每一个节点，并根据时间戳信息计算往返时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ipv4地址配置及基本应用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ipv4地址配置及基本应用&#34;&gt;#&lt;/a&gt; IPv4 地址配置及基本应用&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;IP 地址的基础配置命令&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/f758d9e08e9f2cc76a617717864a65f4.png&#34; alt=&#34;f758d9e08e9f2cc76a617717864a65f4.png&#34;&gt;&amp;lt;!--p25--&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;物理接口：物理接口是指网络设备上实际存在的接口，分为负责承担业务传输的业务接口和负责管理设备的管理接口，例如 GE 业务接口和 MEth 管理接口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;逻辑接口：逻辑接口是指能够实现数据交换功能但物理上不存在、需要通过配置建立的接口，需要承担业务传输，例如 VLANIF 接口、Loopback 接口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;网络 IP 地址规划&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/02/13/d14237d8101a961f781fb35d13893905.png&#34; alt=&#34;d14237d8101a961f781fb35d13893905.png&#34;&gt;&amp;lt;!--p26--&amp;gt;&lt;/p&gt;
+&lt;p&gt;规划原则：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;唯一性：一个 IP 网络中不能有两个主机采用相同的 IP 地址。&lt;/p&gt;
+&lt;p&gt;连续性：连续地址在层次结构网络中易于进行路由汇总，大大缩减路由表，提高路由 计算的效率、加速路由收敛。&lt;/p&gt;
+&lt;p&gt;扩展性：地址分配在每一层次上都要有合理的预留，在网络规模扩展时能保证路由汇 总所需的连续性。避免网络扩展造成的地址、路由重新规划。&lt;/p&gt;
+&lt;p&gt;结构化、业务相关性：地址规划与网络拓扑结构和网络承载业务结合起来，便于路由 规划和 QoS 部署。好的 IP 地址规划使得每个地址都具有实际含义，看到一个地址就可 以大致判断出该地址所属的设备和对应的业务。&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://imfanqie.top/2022/01/29/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</guid>
             <title>ICT笔记-网络参考模型</title>

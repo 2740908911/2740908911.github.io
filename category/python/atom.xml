@@ -3,23 +3,227 @@
     <id>http://imfanqie.top</id>
     <title>imFanqie • Posts by &#34;python&#34; category</title>
     <link href="http://imfanqie.top" />
-    <updated>2021-11-30T17:15:29.817Z</updated>
+    <updated>2022-05-25T08:05:21.163Z</updated>
     <category term="随笔" />
     <category term="debug" />
     <category term="ICT" />
     <category term="业余爱好" />
-    <category term="文件包含" />
-    <category term="php" />
-    <category term="反序列化" />
     <category term="http" />
+    <category term="文件包含" />
     <category term="代码审计" />
-    <category term="命令执行" />
+    <category term="反序列化" />
     <category term="RCE" />
+    <category term="命令执行" />
     <category term="sql" />
     <category term="SSRF" />
     <category term="SSTI" />
-    <category term="python" />
     <category term="upload" />
+    <category term="python" />
+    <category term="php" />
+    <entry>
+        <id>http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</id>
+        <title>CTFRSAtools</title>
+        <link rel="alternate" href="http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/"/>
+        <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;p&gt;项目：CTFRSAtools&lt;/p&gt;
+&lt;p&gt;作者：Fanqie&lt;/p&gt;
+&lt;p&gt;最后时间：2022.05.25&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class=&#34;note info&#34;&gt;
+&lt;p&gt;本文及文中代码未经允许禁止私自转载或使用！&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;摘要&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#摘要&#34;&gt;#&lt;/a&gt; 摘要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;该工具定位于 CTF 比赛中 Crypto 方向中 RSA 类型题目的自动判断、分析与解题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CTFRSAtools (下文简称 CRts) 支持脚本扩充，可以将比赛中遇到的其他脚本及时补充至 CRtss 工具中。事实上，CRts 只是作为一个 RSA 脚本容器存在，并集成了部分 CTFCrypto 中 rsa 题型常见工具，您可以通过自行添加、补充甚至更改脚本的方式自定义 CRts。本工具已经加入了常见题型的脚本近 20 个，可以满足大部分比赛的基础格式 RSA 类型题目，如果您需要扩充脚本，请注意脚本的格式需参照其他脚本文件。脚本的扩容会在下文详细介绍。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CRts 没有加入 segamath 脚本，因此像有限域开方、CopperSmith 明文高位攻击、Franklin-Reiter 攻击、多项式等类型的题目，还请师傅手撸吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CRts 支持公钥分解、文件解密，具体使用方法见下文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用说明、其他问题及帮助详见下文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结构与思路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#结构与思路&#34;&gt;#&lt;/a&gt; 结构与思路&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;CRts 结构&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CTFRSAtools
+/example	# data.txt案例
+	--略
+/RSAtools	# 脚本储存、调用
+	--略
+--banner.py
+--main.py
+--RSAjudge.py	# 在此处添加识别信息
+
+附
+data.txt	# 题目数据
+flag.enc	# 解密文件
+pub.key		# 公钥文件
+readme.md	# 文件说明
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;设计思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​		CRts 作为一个解题容器，采用脚本和判断分离的方式，可以最大化保障工具的自定义能力。&lt;/p&gt;
+&lt;p&gt;​		CRts 采用 data.txt 方式读取数据而非命令行输入，可以保障数据的反复可阅且容易修改检查。&lt;/p&gt;
+&lt;p&gt;​		CRts 需要 python3 版本的支持，搭建的版本为 python3.8，使用时请注意库的安装。&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h2 id=&#34;功能与注意&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#功能与注意&#34;&gt;#&lt;/a&gt; 功能与注意&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;功能：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 功能会随着版本的更新不断增改，以CRts实际运行效果为准。
+# 每次比赛后都可能会添加脚本，若有新的想法，可以联系作者加入github项目组共同开发
+# 功能示例见&amp;lt;使用与测试&amp;gt;
+
++ 标准类型的RSA题型互解(详略)
++ 基与factordb.com和yafu的大数分解
++ dp泄露攻击
++ dp、dq泄露攻击
++ 共模攻击
++ 低解密指数攻击(e较大)
++ 维纳攻击
++ 公钥分解
++ 文件解密
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;由于分解 N 时会用到 factordb，故需要连接网络；若无网络连接，将使用 yafu 分解，在面临大数时效率可能过低。您也可以自行在 factordb.com 或 yafu 分解后，写入 data.txt。&lt;/li&gt;
+&lt;li&gt;segamath 暂时没有配备到 CRts 中，故 sega 类脚本无法加入脚本集。&lt;/li&gt;
+&lt;li&gt;有些功能可能不完善，为了避免不必要的错误，请尽量确保 data.txt 中的每个值都是有用的。&lt;/li&gt;
+&lt;li&gt;在使用该工具时，应当有一定的 RSA 基础，在解题时如果有 bug，可以根据分析调整甲苯，并请及时反馈。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;下载与安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载与安装&#34;&gt;#&lt;/a&gt; 下载与安装&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;下载：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CRts 暂未开源（还在不断的完善脚本，等效果很好了再放出，目前只能解简单题）&lt;/p&gt;
+&lt;p&gt;CRts 已托管至 github，有兴趣的师傅可以联系作者，协同开发。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. git clone 或 download 
+
+2. 安装python3 （有请略）
+
+3. pip install gmpy2
+
+4. pip install Crypto
+
+5. pip install RSA
+
+6. pip install numpy
+
+7. 缺啥库补啥。。。
+
+8. 运行测试
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装中有问题请参考百度（3、4 等）&lt;/p&gt;
+&lt;p&gt;预期在开源后发布 exe 版本（注：exe 版本可能无法自定义脚本）&lt;/p&gt;
+&lt;h2 id=&#34;使用与测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用与测试&#34;&gt;#&lt;/a&gt; 使用与测试&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;使用说明：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用前请确保数据已在 CRts 根目录中写入 data.txt 或存入 pub.key/flag.enc 文件&lt;/li&gt;
+&lt;li&gt;打开 cmd 或 powershell，cd 至 CRts 根目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;python main.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;脚本自动运行后，等待结果返回即可，若无结果或有 bug，请与作者联系&lt;/li&gt;
+&lt;li&gt;请调用完成后及时清除 data.txt、pub.key、flag.enc 文件，以便下一次使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;测试示例：&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例选取的题目数据均来自于 CTFshow 与 buuCTF&lt;/p&gt;
+&lt;p&gt;以下展示示例为乱序，与功能顺序无关。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!--p--&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/b9b5225684d4f0a1c1dab39aa492ae6f.png&#34; alt=&#34;b9b5225684d4f0a1c1dab39aa492ae6f.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/7e02342279d2641abc7bc54c92c9ed6a.png&#34; alt=&#34;7e02342279d2641abc7bc54c92c9ed6a.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/ec274f31481dfed3a503fe11eed37614.png&#34; alt=&#34;ec274f31481dfed3a503fe11eed37614.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/61ffc40146d6d83dee5511fbfa97d945.png&#34; alt=&#34;61ffc40146d6d83dee5511fbfa97d945.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/52ceae63a122db7c49ca637cc0f0549c.png&#34; alt=&#34;52ceae63a122db7c49ca637cc0f0549c.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/54aab50011f3a9d9bc9d5b0bb818f8aa.png&#34; alt=&#34;54aab50011f3a9d9bc9d5b0bb818f8aa.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/e734dd9a4caf01462a617b0af59cdeec.png&#34; alt=&#34;e734dd9a4caf01462a617b0af59cdeec.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/48e37229d386fa9425615eab652fc3ca.png&#34; alt=&#34;48e37229d386fa9425615eab652fc3ca.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://img.imfanqie.xyz/images/2022/05/25/37c0ded11a20d6dbd7febafb3720d782.png&#34; alt=&#34;37c0ded11a20d6dbd7febafb3720d782.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;自定义扩展&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自定义扩展&#34;&gt;#&lt;/a&gt; 自定义扩展&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用该方法时请确保您对 RSA 类型题目有一定的了解，并且已经参考过 RSAtools 中的其他脚本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果您需要自定义脚本（删除修改以及添加），您可以参考以下部分。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;请提前查看 RSAtools 中的其他脚本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这里以大多数文件的格式举例：&lt;br&gt;
+solves () 函数将作为解决问题的基本接口函数，以便于被其他脚本调用&lt;br&gt;
+ printf () 函数作为打印值函数，调用 solves () 进行计算，并返回于屏幕&lt;/li&gt;
+&lt;li&gt;调用其他脚本的格式为  &lt;code&gt;from RSAtools import xxxxx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;若计算结果为 d，可以参考如下格式：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;e&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;p&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;q&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    d &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; solves&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;e&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;p&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;q&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;=&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;int_d：&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;d&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;=&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;若计算结果为 m，可以参考如下格式：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;y&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;z&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	m &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; solves&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;y&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;z&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;=&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;int：&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;hex：&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;hex&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;except&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;int：&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;hex to ascii：&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;binascii&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;unhexlify&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;hex&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;except&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;libnum(n2s)：&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;libnum&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;n2s&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;hex&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;except&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;just hex or int &#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;=&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;99&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根据格式写好新脚本后，&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1SU0FqdWRnZS04dDFtNDRyODhidDBidTkwZXBpMmE0bGYucHk=&#34;&gt;将判断条件加入 RSAjudge.py&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 fun_call () 函数中，您能看到所有的方法调用，当您补充脚本时，也可以加入该函数以便使用。&lt;/li&gt;
+&lt;li&gt;在 judge (RSAdata) 函数中，你可以根据 print 和注释得出数据分类情况，将您的脚本加入相应的类别中即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;如果您有新的元素要定义，例如 r、x、y、z 等 可以参考 main.py 中的写法另赋值即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;版本及更新&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#版本及更新&#34;&gt;#&lt;/a&gt; 版本及更新&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;版本日志&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;版本&lt;/th&gt;
+&lt;th&gt;日期&lt;/th&gt;
+&lt;th&gt;日志 and 备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CTFRSAtools&lt;/td&gt;
+&lt;td&gt;beta 0.1&lt;/td&gt;
+&lt;td&gt;2022.5.24&lt;/td&gt;
+&lt;td&gt;基带版本，后续更新时间看情况&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;计划目标&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加入 sega 脚本&lt;/li&gt;
+&lt;li&gt;扩充 RSA 解题范围，加入其它类型题目求解法&lt;/li&gt;
+&lt;li&gt;整合其它密码类型，扩展 tools 应用范围，如：base 家族，进制转换，编码转换，md5 定向爆破等&lt;/li&gt;
+&lt;li&gt;待定……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结尾&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#结尾&#34;&gt;#&lt;/a&gt; 结尾&lt;/h2&gt;
+&lt;p&gt;本文档基于初代版本而写，因更新原因，可能会与实际产品有所差异，本说明仅供参考。&lt;/p&gt;
+&lt;p&gt;该项目仅供学习和比赛使用，未经允许禁止私自传播分享！&lt;/p&gt;
+&lt;p&gt;同时欢迎其他师傅加入开发共同完善，项目库未公开，项目地址请联系作者。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作者：Fanqie&lt;/p&gt;
+&lt;p&gt;联系方式：q/v 2740908911&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="python" />
+        <updated>2022-05-25T08:05:21.163Z</updated>
+    </entry>
     <entry>
         <id>http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</id>
         <title>chre1.0</title>
