@@ -7,19 +7,19 @@
     <category term="随笔" />
     <category term="debug" />
     <category term="ICT" />
-    <category term="python" />
-    <category term="php" />
     <category term="业余爱好" />
-    <category term="http" />
+    <category term="sql" />
+    <category term="代码审计" />
     <category term="文件包含" />
+    <category term="http" />
     <category term="反序列化" />
     <category term="命令执行" />
     <category term="RCE" />
-    <category term="代码审计" />
-    <category term="sql" />
-    <category term="SSRF" />
     <category term="SSTI" />
+    <category term="python" />
+    <category term="SSRF" />
     <category term="upload" />
+    <category term="php" />
     <entry>
         <id>http://imfanqie.top/2021/11/30/ctf/crypto&amp;misc/cryptotal/RSA%E8%84%9A%E6%9C%AC/</id>
         <title>RSA脚本</title>
