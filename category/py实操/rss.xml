@@ -2,31 +2,31 @@
 <rss version="2.0">
     <channel>
         <title>imFanqie • Posts by &#34;py实操&#34; category</title>
-        <link>http://imfanqie.top</link>
+        <link>http://git2740908911.gitee.io/fanqie.blog.io</link>
         <description>学习博客</description>
         <language>zh-CN</language>
         <pubDate>Wed, 25 May 2022 16:05:21 +0800</pubDate>
         <lastBuildDate>Wed, 25 May 2022 16:05:21 +0800</lastBuildDate>
         <category>随笔</category>
-        <category>debug</category>
         <category>ICT</category>
+        <category>debug</category>
         <category>业余爱好</category>
-        <category>sql</category>
-        <category>代码审计</category>
+        <category>反序列化</category>
         <category>文件包含</category>
         <category>http</category>
-        <category>反序列化</category>
-        <category>命令执行</category>
+        <category>代码审计</category>
+        <category>sql</category>
         <category>RCE</category>
+        <category>命令执行</category>
         <category>SSTI</category>
-        <category>python</category>
+        <category>php</category>
         <category>SSRF</category>
         <category>upload</category>
-        <category>php</category>
+        <category>python</category>
         <item>
-            <guid isPermalink="true">http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</guid>
+            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2022/05/25/program/py/pysolve/CTFRSAtools/</guid>
             <title>CTFRSAtools</title>
-            <link>http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</link>
+            <link>http://git2740908911.gitee.io/fanqie.blog.io/2022/05/25/program/py/pysolve/CTFRSAtools/</link>
             <category>python</category>
             <pubDate>Wed, 25 May 2022 16:05:21 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;[TOC]&lt;/p&gt;
@@ -228,9 +228,9 @@ solves () 函数将作为解决问题的基本接口函数，以便于被其他�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</guid>
+            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2021/12/01/program/py/pysolve/chre1.0/</guid>
             <title>chre1.0</title>
-            <link>http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</link>
+            <link>http://git2740908911.gitee.io/fanqie.blog.io/2021/12/01/program/py/pysolve/chre1.0/</link>
             <category>python</category>
             <pubDate>Wed, 01 Dec 2021 01:15:29 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;项目：check and rename 1.0&lt;/p&gt;

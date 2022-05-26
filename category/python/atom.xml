@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://imfanqie.top</id>
+    <id>http://git2740908911.gitee.io/fanqie.blog.io</id>
     <title>imFanqie • Posts by &#34;python&#34; category</title>
-    <link href="http://imfanqie.top" />
+    <link href="http://git2740908911.gitee.io/fanqie.blog.io" />
     <updated>2022-05-25T08:05:21.163Z</updated>
     <category term="随笔" />
-    <category term="debug" />
     <category term="ICT" />
+    <category term="debug" />
     <category term="业余爱好" />
-    <category term="sql" />
-    <category term="代码审计" />
+    <category term="反序列化" />
     <category term="文件包含" />
     <category term="http" />
-    <category term="反序列化" />
-    <category term="命令执行" />
+    <category term="代码审计" />
+    <category term="sql" />
     <category term="RCE" />
+    <category term="命令执行" />
     <category term="SSTI" />
-    <category term="python" />
+    <category term="php" />
     <category term="SSRF" />
     <category term="upload" />
-    <category term="php" />
+    <category term="python" />
     <entry>
-        <id>http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</id>
+        <id>http://git2740908911.gitee.io/fanqie.blog.io/2022/05/25/program/py/pysolve/CTFRSAtools/</id>
         <title>CTFRSAtools</title>
-        <link rel="alternate" href="http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/"/>
+        <link rel="alternate" href="http://git2740908911.gitee.io/fanqie.blog.io/2022/05/25/program/py/pysolve/CTFRSAtools/"/>
         <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;p&gt;项目：CTFRSAtools&lt;/p&gt;
 &lt;p&gt;作者：Fanqie&lt;/p&gt;
@@ -225,9 +225,9 @@ solves () 函数将作为解决问题的基本接口函数，以便于被其他�
         <updated>2022-05-25T08:05:21.163Z</updated>
     </entry>
     <entry>
-        <id>http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</id>
+        <id>http://git2740908911.gitee.io/fanqie.blog.io/2021/12/01/program/py/pysolve/chre1.0/</id>
         <title>chre1.0</title>
-        <link rel="alternate" href="http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/"/>
+        <link rel="alternate" href="http://git2740908911.gitee.io/fanqie.blog.io/2021/12/01/program/py/pysolve/chre1.0/"/>
         <content type="html">&lt;p&gt;项目：check and rename 1.0&lt;/p&gt;
 &lt;p&gt;作者：Fanqie&lt;/p&gt;
 &lt;p&gt;最后时间：2021.11.30&lt;/p&gt;
@@ -394,9 +394,9 @@ solves () 函数将作为解决问题的基本接口函数，以便于被其他�
         <updated>2021-11-30T17:15:29.817Z</updated>
     </entry>
     <entry>
-        <id>http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
+        <id>http://git2740908911.gitee.io/fanqie.blog.io/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
         <title>python学习中部分易忘知识点</title>
-        <link rel="alternate" href="http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+        <link rel="alternate" href="http://git2740908911.gitee.io/fanqie.blog.io/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
         <content type="html">&lt;p&gt;本文是我在 py 学习中总结梳理了一些常用的易忘的知识点，为方便回顾和复习，遂加以记录。&lt;/p&gt;
 &lt;p&gt;本文我会不断的学习并总结。&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;

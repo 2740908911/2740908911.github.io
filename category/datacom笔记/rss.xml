@@ -2,31 +2,31 @@
 <rss version="2.0">
     <channel>
         <title>imFanqie • Posts by &#34;datacom笔记&#34; category</title>
-        <link>http://imfanqie.top</link>
+        <link>http://git2740908911.gitee.io/fanqie.blog.io</link>
         <description>学习博客</description>
         <language>zh-CN</language>
         <pubDate>Mon, 28 Feb 2022 20:41:16 +0800</pubDate>
         <lastBuildDate>Mon, 28 Feb 2022 20:41:16 +0800</lastBuildDate>
         <category>随笔</category>
-        <category>debug</category>
         <category>ICT</category>
+        <category>debug</category>
         <category>业余爱好</category>
-        <category>sql</category>
-        <category>代码审计</category>
+        <category>反序列化</category>
         <category>文件包含</category>
         <category>http</category>
-        <category>反序列化</category>
-        <category>命令执行</category>
+        <category>代码审计</category>
+        <category>sql</category>
         <category>RCE</category>
+        <category>命令执行</category>
         <category>SSTI</category>
-        <category>python</category>
+        <category>php</category>
         <category>SSRF</category>
         <category>upload</category>
-        <category>php</category>
+        <category>python</category>
         <item>
-            <guid isPermalink="true">http://imfanqie.top/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</guid>
+            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</guid>
             <title>ICT笔记-以太网交换基础</title>
-            <link>http://imfanqie.top/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</link>
+            <link>http://git2740908911.gitee.io/fanqie.blog.io/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</link>
             <category>ICT</category>
             <pubDate>Mon, 28 Feb 2022 20:41:16 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -125,9 +125,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://imfanqie.top/2022/02/11/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8F%8AIP%E7%BC%96%E5%9D%80/</guid>
+            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2022/02/11/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8F%8AIP%E7%BC%96%E5%9D%80/</guid>
             <title>ICT笔记-网络层协议及IP编址</title>
-            <link>http://imfanqie.top/2022/02/11/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8F%8AIP%E7%BC%96%E5%9D%80/</link>
+            <link>http://git2740908911.gitee.io/fanqie.blog.io/2022/02/11/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8F%8AIP%E7%BC%96%E5%9D%80/</link>
             <category>ICT</category>
             <pubDate>Fri, 11 Feb 2022 17:58:17 +0800</pubDate>
             <description><![CDATA[ &lt;ul&gt;
@@ -433,9 +433,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://imfanqie.top/2022/01/29/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</guid>
+            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2022/01/29/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</guid>
             <title>ICT笔记-网络参考模型</title>
-            <link>http://imfanqie.top/2022/01/29/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</link>
+            <link>http://git2740908911.gitee.io/fanqie.blog.io/2022/01/29/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</link>
             <category>ICT</category>
             <pubDate>Sat, 29 Jan 2022 16:33:18 +0800</pubDate>
             <description><![CDATA[ &lt;ul&gt;
@@ -622,9 +622,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://imfanqie.top/2022/01/23/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</guid>
+            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2022/01/23/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</guid>
             <title>ICT笔记-数据通信网络基础</title>
-            <link>http://imfanqie.top/2022/01/23/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</link>
+            <link>http://git2740908911.gitee.io/fanqie.blog.io/2022/01/23/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</link>
             <category>ICT</category>
             <pubDate>Sun, 23 Jan 2022 19:06:17 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;

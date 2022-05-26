@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://imfanqie.top</id>
+    <id>http://git2740908911.gitee.io/fanqie.blog.io</id>
     <title>imFanqie • Posts by &#34;命令执行&#34; category</title>
-    <link href="http://imfanqie.top" />
+    <link href="http://git2740908911.gitee.io/fanqie.blog.io" />
     <updated>2021-08-13T10:49:41.433Z</updated>
     <category term="随笔" />
-    <category term="debug" />
     <category term="ICT" />
+    <category term="debug" />
     <category term="业余爱好" />
-    <category term="sql" />
-    <category term="代码审计" />
+    <category term="反序列化" />
     <category term="文件包含" />
     <category term="http" />
-    <category term="反序列化" />
-    <category term="命令执行" />
+    <category term="代码审计" />
+    <category term="sql" />
     <category term="RCE" />
+    <category term="命令执行" />
     <category term="SSTI" />
-    <category term="python" />
+    <category term="php" />
     <category term="SSRF" />
     <category term="upload" />
-    <category term="php" />
+    <category term="python" />
     <entry>
-        <id>http://imfanqie.top/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/</id>
+        <id>http://git2740908911.gitee.io/fanqie.blog.io/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/</id>
         <title>ctfweb-无参RCE</title>
-        <link rel="alternate" href="http://imfanqie.top/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/"/>
+        <link rel="alternate" href="http://git2740908911.gitee.io/fanqie.blog.io/2021/08/13/ctf/web/rce/ctfweb-%E6%97%A0%E5%8F%82RCE/"/>
         <content type="html">&lt;p&gt;最近做题遇到了几道无参数 RCE 的题，基本上还是不会，在此总结一下 payload&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -54,9 +54,9 @@
         <updated>2021-08-13T10:49:41.433Z</updated>
     </entry>
     <entry>
-        <id>http://imfanqie.top/2021/07/27/ctf/web/rce/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</id>
+        <id>http://git2740908911.gitee.io/fanqie.blog.io/2021/07/27/ctf/web/rce/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</id>
         <title>(ctfwp)网站中linux命令执行</title>
-        <link rel="alternate" href="http://imfanqie.top/2021/07/27/ctf/web/rce/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
+        <link rel="alternate" href="http://git2740908911.gitee.io/fanqie.blog.io/2021/07/27/ctf/web/rce/(ctfwp)linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
         <content type="html">&lt;p&gt;这类的题不算多，在这里稍微总结一下&lt;/p&gt;
 &lt;p&gt;&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h1 id=&#34;gxyctf2019ping-ping-ping&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gxyctf2019ping-ping-ping&#34;&gt;#&lt;/a&gt; [GXYCTF2019]Ping Ping Ping&lt;/h1&gt;
