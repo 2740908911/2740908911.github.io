@@ -8,18 +8,18 @@
     <category term="debug" />
     <category term="ICT" />
     <category term="业余爱好" />
+    <category term="php" />
     <category term="文件包含" />
     <category term="http" />
     <category term="代码审计" />
     <category term="反序列化" />
     <category term="命令执行" />
-    <category term="RCE" />
     <category term="sql" />
-    <category term="SSRF" />
-    <category term="SSTI" />
     <category term="upload" />
+    <category term="RCE" />
+    <category term="SSTI" />
     <category term="python" />
-    <category term="php" />
+    <category term="SSRF" />
     <entry>
         <id>http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
         <title>python学习中部分易忘知识点</title>
