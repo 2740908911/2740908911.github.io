@@ -2,31 +2,31 @@
 <rss version="2.0">
     <channel>
         <title>imFanqie • Posts by &#34;编程学习&#34; category</title>
-        <link>http://git2740908911.gitee.io/fanqie.blog.io</link>
+        <link>http://imfanqie.top</link>
         <description>学习博客</description>
         <language>zh-CN</language>
         <pubDate>Wed, 25 May 2022 16:05:21 +0800</pubDate>
         <lastBuildDate>Wed, 25 May 2022 16:05:21 +0800</lastBuildDate>
         <category>随笔</category>
-        <category>ICT</category>
         <category>debug</category>
+        <category>ICT</category>
+        <category>http</category>
+        <category>文件包含</category>
+        <category>代码审计</category>
         <category>业余爱好</category>
         <category>反序列化</category>
-        <category>文件包含</category>
-        <category>http</category>
-        <category>代码审计</category>
         <category>sql</category>
         <category>RCE</category>
         <category>命令执行</category>
-        <category>SSTI</category>
-        <category>php</category>
         <category>SSRF</category>
+        <category>SSTI</category>
         <category>upload</category>
         <category>python</category>
+        <category>php</category>
         <item>
-            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2022/05/25/program/py/pysolve/CTFRSAtools/</guid>
+            <guid isPermalink="true">http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</guid>
             <title>CTFRSAtools</title>
-            <link>http://git2740908911.gitee.io/fanqie.blog.io/2022/05/25/program/py/pysolve/CTFRSAtools/</link>
+            <link>http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</link>
             <category>python</category>
             <pubDate>Wed, 25 May 2022 16:05:21 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;[TOC]&lt;/p&gt;
@@ -228,9 +228,9 @@ solves () 函数将作为解决问题的基本接口函数，以便于被其他�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2021/12/01/program/py/pysolve/chre1.0/</guid>
+            <guid isPermalink="true">http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</guid>
             <title>chre1.0</title>
-            <link>http://git2740908911.gitee.io/fanqie.blog.io/2021/12/01/program/py/pysolve/chre1.0/</link>
+            <link>http://imfanqie.top/2021/12/01/program/py/pysolve/chre1.0/</link>
             <category>python</category>
             <pubDate>Wed, 01 Dec 2021 01:15:29 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;项目：check and rename 1.0&lt;/p&gt;
@@ -397,9 +397,9 @@ solves () 函数将作为解决问题的基本接口函数，以便于被其他�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+            <guid isPermalink="true">http://imfanqie.top/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
             <title>php的浅显学习中一些知识点</title>
-            <link>http://git2740908911.gitee.io/fanqie.blog.io/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+            <link>http://imfanqie.top/2021/07/01/program/php/phpstudy/php%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
             <category>php</category>
             <pubDate>Thu, 01 Jul 2021 11:03:51 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;为了读懂 web 一些漏洞和原理，浅显学习了一下 php 语言，并做了一点简陋的笔记，方便回顾。&lt;/p&gt;
@@ -455,9 +455,9 @@ solves () 函数将作为解决问题的基本接口函数，以便于被其他�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://git2740908911.gitee.io/fanqie.blog.io/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+            <guid isPermalink="true">http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
             <title>python学习中部分易忘知识点</title>
-            <link>http://git2740908911.gitee.io/fanqie.blog.io/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+            <link>http://imfanqie.top/2021/06/29/program/py/pystudy/python%E4%B8%AD%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
             <category>python</category>
             <pubDate>Tue, 29 Jun 2021 18:41:39 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;本文是我在 py 学习中总结梳理了一些常用的易忘的知识点，为方便回顾和复习，遂加以记录。&lt;/p&gt;
