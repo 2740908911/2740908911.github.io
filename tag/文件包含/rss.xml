@@ -11,18 +11,18 @@
         <category>debug</category>
         <category>ICT</category>
         <category>业余爱好</category>
-        <category>php</category>
         <category>文件包含</category>
-        <category>http</category>
         <category>代码审计</category>
-        <category>反序列化</category>
         <category>命令执行</category>
+        <category>http</category>
+        <category>RCE</category>
+        <category>反序列化</category>
+        <category>SSTI</category>
         <category>sql</category>
         <category>upload</category>
-        <category>RCE</category>
-        <category>SSTI</category>
-        <category>python</category>
         <category>SSRF</category>
+        <category>python</category>
+        <category>php</category>
         <item>
             <guid isPermalink="true">http://imfanqie.top/2021/07/27/ctf/web/file/(ctfwp)%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%20%E4%BC%AA%E5%8D%8F%E8%AE%AE/</guid>
             <title>(ctfwp)伪协议文件包含漏洞</title>
