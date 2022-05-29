@@ -7,19 +7,19 @@
     <category term="随笔" />
     <category term="ICT" />
     <category term="debug" />
-    <category term="业余爱好" />
     <category term="文件包含" />
+    <category term="业余爱好" />
+    <category term="代码审计" />
     <category term="http" />
     <category term="反序列化" />
-    <category term="sql" />
-    <category term="代码审计" />
     <category term="命令执行" />
     <category term="RCE" />
     <category term="SSRF" />
-    <category term="python" />
-    <category term="upload" />
+    <category term="sql" />
     <category term="SSTI" />
+    <category term="upload" />
     <category term="php" />
+    <category term="python" />
     <entry>
         <id>http://imfanqie.top/2022/05/25/program/py/pysolve/CTFRSAtools/</id>
         <title>CTFRSAtools</title>
