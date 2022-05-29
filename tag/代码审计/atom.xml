@@ -5,21 +5,21 @@
     <link href="http://imfanqie.top" />
     <updated>2021-08-16T12:35:41.221Z</updated>
     <category term="随笔" />
-    <category term="ICT" />
     <category term="debug" />
-    <category term="文件包含" />
+    <category term="ICT" />
+    <category term="php" />
     <category term="业余爱好" />
-    <category term="代码审计" />
+    <category term="文件包含" />
     <category term="http" />
+    <category term="代码审计" />
     <category term="反序列化" />
     <category term="命令执行" />
     <category term="RCE" />
     <category term="SSRF" />
     <category term="sql" />
-    <category term="SSTI" />
     <category term="upload" />
-    <category term="php" />
     <category term="python" />
+    <category term="SSTI" />
     <entry>
         <id>http://imfanqie.top/2021/08/16/ctf/web/http/(ctfwp)py%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</id>
         <title>(ctfwp)py代码审计</title>
