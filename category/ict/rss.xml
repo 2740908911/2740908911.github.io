@@ -10,19 +10,19 @@
         <category>随笔</category>
         <category>debug</category>
         <category>ICT</category>
-        <category>php</category>
         <category>业余爱好</category>
-        <category>文件包含</category>
         <category>http</category>
-        <category>代码审计</category>
         <category>反序列化</category>
-        <category>命令执行</category>
+        <category>代码审计</category>
         <category>RCE</category>
-        <category>SSRF</category>
+        <category>文件包含</category>
         <category>sql</category>
         <category>upload</category>
-        <category>python</category>
         <category>SSTI</category>
+        <category>SSRF</category>
+        <category>python</category>
+        <category>命令执行</category>
+        <category>php</category>
         <item>
             <guid isPermalink="true">http://imfanqie.top/2022/02/28/ICT/Datacom%E7%AC%94%E8%AE%B0/ICT%E7%AC%94%E8%AE%B0-%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E5%9F%BA%E7%A1%80/</guid>
             <title>ICT笔记-以太网交换基础</title>
